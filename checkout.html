@@ -195,8 +195,8 @@
 
   <!-- Scripts -->
   <script src="js/products.js"></script>
+  <script src="js/catalog.js"></script>
   <script src="js/utils.js"></script>
-  <script src="js/firebase-config.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/wishlist.js"></script>
@@ -210,7 +210,8 @@
     let activeTotals = null;
     let placedOrderRecord = null;
 
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (window.ShopSmartCatalog) await window.ShopSmartCatalog.load();
       window.ShopSmartCart.loadCart();
       const totals = window.ShopSmartCart.calculateTotals();
       activeTotals = totals;
@@ -241,7 +242,8 @@
       const cart = JSON.parse(localStorage.getItem(window.ShopSmartCart.getCartStorageKey ? window.ShopSmartCart.getCartStorageKey() : 'shopsmart_cart_guest') || '[]');
       if (listEl) {
         listEl.innerHTML = cart.map(item => {
-          const p = PRODUCTS.find(x => x.id === item.productId);
+          const p = (window.ShopSmartCatalog && window.ShopSmartCatalog.getProductById(item.productId)) || 
+                    (typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(x => x.id === item.productId) : null);
           if (!p) return '';
           return `
             <div style="display: flex; justify-content: space-between; font-size: 0.8125rem;">

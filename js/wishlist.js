@@ -44,7 +44,8 @@ function saveWishlist() {
 function toggleWishlist(productId) {
   loadWishlist();
   const index = activeWishlist.indexOf(productId);
-  const product = typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === productId) : null;
+  const product = (window.ShopSmartCatalog && window.ShopSmartCatalog.getProductById(productId)) || 
+                  (typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === productId) : null);
   const name = product ? product.name : 'Product';
 
   if (index > -1) {
@@ -104,9 +105,9 @@ function renderWishlistPage() {
     return;
   }
 
-  const items = activeWishlist
-    .map(id => typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === id) : null)
-    .filter(Boolean);
+  const getP = id => (window.ShopSmartCatalog && window.ShopSmartCatalog.getProductById(id)) || 
+                     (typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === id) : null);
+  const items = activeWishlist.map(getP).filter(Boolean);
 
   container.innerHTML = items.map(product => {
     return `

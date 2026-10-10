@@ -1,31 +1,50 @@
 /**
- * ShopSmart — Authentication & User Profile Controller
- * Supports Production Firebase Auth & Firestore with Transparent Development Mode
+ * ShopSmart — Frontend Demonstration Authentication & User Profile Controller
+ * Strictly Vanilla JavaScript & Browser LocalStorage
+ *
+ * IMPORTANT SECURITY NOTICE:
+ * This is a frontend demonstration system. Because no server-side backend
+ * is used, credentials and sessions are demonstrated locally using Web Crypto SHA-256 hashing
+ * and LocalStorage. Do not use real production passwords.
  */
 
 'use strict';
 
 const AUTH_STORAGE_KEYS = {
-  CURRENT_USER: 'shopsmart_auth_user',
-  DEV_USERS: 'shopsmart_dev_users'
+  CURRENT_USER: 'shopsmart_current_user',
+  DEMO_USERS: 'shopsmart_demo_users'
 };
 
-// Seed demo user in development mode if not present
-(function initDevUsers() {
-  if (!localStorage.getItem(AUTH_STORAGE_KEYS.DEV_USERS)) {
-    const defaultDevUsers = [
+// SHA-256 Password Hashing using native Web Crypto API
+async function hashPassword(plainText) {
+  if (!plainText) return '';
+  const encoder = new TextEncoder();
+  const data = encoder.encode(plainText + '_shopsmart_demo_salt');
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Seed demonstration user if none exists
+(async function initDemoUsers() {
+  const existing = localStorage.getItem(AUTH_STORAGE_KEYS.DEMO_USERS);
+  if (!existing) {
+    const passwordHash = await hashPassword('Password@123');
+    const defaultUsers = [
       {
-        uid: 'dev-user-01',
+        uid: 'user-cbe-001',
         fullName: 'Sanjith Y',
         email: 'sanjith@example.com',
         phone: '9876543210',
-        password: 'Password@123',
-        createdAt: new Date().toISOString(),
+        passwordHash: passwordHash,
         role: 'admin',
+        createdAt: new Date().toISOString(),
         addresses: [
           {
-            house: 'Flat 4B, Green Nest',
+            id: 'addr-01',
+            house: 'Flat 4B, Green Nest Apartments',
             street: 'D.B. Road, R.S. Puram',
+            locality: 'Near Flower Market',
             city: 'Coimbatore',
             state: 'Tamil Nadu',
             pin: '641002',
@@ -34,309 +53,237 @@ const AUTH_STORAGE_KEYS = {
         ]
       }
     ];
-    localStorage.setItem(AUTH_STORAGE_KEYS.DEV_USERS, JSON.stringify(defaultDevUsers));
+    localStorage.setItem(AUTH_STORAGE_KEYS.DEMO_USERS, JSON.stringify(defaultUsers));
   }
 })();
 
 // Listeners collection
-const authStateListeners = [];
+const authListeners = [];
 
 /**
- * Register an auth state listener callback
- * @param {Function} callback (user) => void
+ * Register auth state listener
  */
 function onAuthStateChanged(callback) {
-  authStateListeners.push(callback);
-  // Immediately call with current state
-  const currentUser = getCurrentUser();
-  callback(currentUser);
-
-  // If live Firebase is configured, bind live listener
-  const fb = window.ShopSmartFirebase;
-  if (fb && fb.isConfigured && fb.auth) {
-    fb.auth.onAuthStateChanged(async (firebaseUser) => {
-      if (firebaseUser) {
-        let profile = {
-          uid: firebaseUser.uid,
-          fullName: firebaseUser.displayName || firebaseUser.email.split('@')[0],
-          email: firebaseUser.email,
-          phone: '',
-          role: 'customer'
-        };
-        if (fb.db) {
-          try {
-            const doc = await fb.db.collection('users').doc(firebaseUser.uid).get();
-            if (doc.exists) {
-              profile = { ...profile, ...doc.data() };
-            }
-          } catch (e) {
-            console.warn('[ShopSmart] Error fetching Firestore profile:', e);
-          }
-        }
-        localStorage.setItem(AUTH_STORAGE_KEYS.CURRENT_USER, JSON.stringify(profile));
-        notifyListeners(profile);
-      } else {
-        localStorage.removeItem(AUTH_STORAGE_KEYS.CURRENT_USER);
-        notifyListeners(null);
-      }
-    });
-  }
+  authListeners.push(callback);
+  callback(getCurrentUser());
 }
 
-function notifyListeners(user) {
-  authStateListeners.forEach(fn => {
-    try { fn(user); } catch (e) { console.error(e); }
+function notifyAuthListeners(user) {
+  authListeners.forEach(fn => {
+    try {
+      fn(user);
+    } catch (e) {
+      console.error('[ShopSmart Auth Listener Error]:', e);
+    }
   });
-  updateNavAuthUi(user);
 }
 
 /**
- * Retrieve current active user profile
- * @returns {Object|null}
+ * Retrieve current active user profile or null
  */
 function getCurrentUser() {
   try {
-    const raw = localStorage.getItem(AUTH_STORAGE_KEYS.CURRENT_USER);
-    return raw ? JSON.parse(raw) : null;
+    const stored = localStorage.getItem(AUTH_STORAGE_KEYS.CURRENT_USER);
+    return stored ? JSON.parse(stored) : null;
   } catch (e) {
+    console.warn('[ShopSmart] Error reading current user from LocalStorage:', e);
     return null;
   }
 }
 
 /**
- * Register a new user account
- * @param {Object} data { fullName, email, phone, password }
- * @returns {Promise<Object>}
+ * Check if a user is authenticated
+ */
+function isAuthenticated() {
+  return Boolean(getCurrentUser());
+}
+
+/**
+ * Register a new user (demonstration only)
  */
 async function registerUser({ fullName, email, phone, password }) {
-  const cleanEmail = email.trim().toLowerCase();
-  const cleanPhone = phone.trim();
-  const cleanName = fullName.trim();
-
-  // Validate Indian Phone (10 digits starting with 6-9)
-  if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
-    throw new Error('Please enter a valid 10-digit Indian mobile number.');
+  if (!fullName || !email || !password) {
+    return { success: false, error: 'Full name, email and password are required.' };
   }
 
-  const fb = window.ShopSmartFirebase;
+  const normalizedEmail = email.trim().toLowerCase();
+  const users = JSON.parse(localStorage.getItem(AUTH_STORAGE_KEYS.DEMO_USERS) || '[]');
 
-  // 1. Production Firebase Registration
-  if (fb && fb.isConfigured && fb.auth) {
-    const cred = await fb.auth.createUserWithEmailAndPassword(cleanEmail, password);
-    const user = cred.user;
-    await user.updateProfile({ displayName: cleanName });
-
-    const userDoc = {
-      uid: user.uid,
-      fullName: cleanName,
-      email: cleanEmail,
-      phone: cleanPhone,
-      role: 'customer',
-      createdAt: new Date().toISOString(),
-      addresses: []
-    };
-
-    if (fb.db) {
-      await fb.db.collection('users').doc(user.uid).set(userDoc);
-    }
-
-    localStorage.setItem(AUTH_STORAGE_KEYS.CURRENT_USER, JSON.stringify(userDoc));
-    notifyListeners(userDoc);
-    return userDoc;
+  if (users.some(u => u.email.toLowerCase() === normalizedEmail)) {
+    return { success: false, error: 'An account with this email address already exists.' };
   }
 
-  // 2. Development Mode Registration
-  const rawDev = localStorage.getItem(AUTH_STORAGE_KEYS.DEV_USERS) || '[]';
-  const devUsers = JSON.parse(rawDev);
-
-  if (devUsers.some(u => u.email === cleanEmail)) {
-    throw new Error('An account with this email address already exists.');
-  }
-
+  const passwordHash = await hashPassword(password);
   const newUser = {
-    uid: `dev-user-${Date.now()}`,
-    fullName: cleanName,
-    email: cleanEmail,
-    phone: cleanPhone,
-    password: password,
+    uid: 'user-' + Date.now(),
+    fullName: fullName.trim(),
+    email: normalizedEmail,
+    phone: (phone || '').trim(),
+    passwordHash: passwordHash,
     role: 'customer',
     createdAt: new Date().toISOString(),
     addresses: [
       {
-        house: '12, Sunrise Residency',
-        street: 'Avinashi Road',
+        id: 'addr-' + Date.now(),
+        house: '104, Avinashi Road',
+        street: 'Peelamedu',
+        locality: 'Near PSG Tech',
         city: 'Coimbatore',
         state: 'Tamil Nadu',
-        pin: '641018',
+        pin: '641004',
         isDefault: true
       }
     ]
   };
 
-  devUsers.push(newUser);
-  localStorage.setItem(AUTH_STORAGE_KEYS.DEV_USERS, JSON.stringify(devUsers));
+  users.push(newUser);
+  localStorage.setItem(AUTH_STORAGE_KEYS.DEMO_USERS, JSON.stringify(users));
 
-  const userProfile = { ...newUser };
-  delete userProfile.password;
-  localStorage.setItem(AUTH_STORAGE_KEYS.CURRENT_USER, JSON.stringify(userProfile));
+  // Auto-login newly registered user
+  const publicProfile = {
+    uid: newUser.uid,
+    fullName: newUser.fullName,
+    email: newUser.email,
+    phone: newUser.phone,
+    role: newUser.role,
+    addresses: newUser.addresses,
+    createdAt: newUser.createdAt
+  };
+  localStorage.setItem(AUTH_STORAGE_KEYS.CURRENT_USER, JSON.stringify(publicProfile));
+  notifyAuthListeners(publicProfile);
 
-  notifyListeners(userProfile);
-  return userProfile;
+  return { success: true, user: publicProfile };
 }
 
 /**
  * Log in an existing user
- * @param {string} email
- * @param {string} password
- * @param {boolean} rememberMe
- * @returns {Promise<Object>}
  */
-async function loginUser(email, password, rememberMe = true) {
-  const cleanEmail = email.trim().toLowerCase();
-  const fb = window.ShopSmartFirebase;
-
-  // 1. Production Firebase Login
-  if (fb && fb.isConfigured && fb.auth) {
-    const cred = await fb.auth.signInWithEmailAndPassword(cleanEmail, password);
-    let profile = {
-      uid: cred.user.uid,
-      fullName: cred.user.displayName || cleanEmail.split('@')[0],
-      email: cred.user.email,
-      phone: '',
-      role: 'customer'
-    };
-
-    if (fb.db) {
-      try {
-        const doc = await fb.db.collection('users').doc(cred.user.uid).get();
-        if (doc.exists) {
-          profile = { ...profile, ...doc.data() };
-        }
-      } catch (e) {
-        console.warn('[ShopSmart] Error fetching Firestore profile:', e);
-      }
-    }
-
-    localStorage.setItem(AUTH_STORAGE_KEYS.CURRENT_USER, JSON.stringify(profile));
-    notifyListeners(profile);
-    return profile;
+async function loginUser(email, password) {
+  if (!email || !password) {
+    return { success: false, error: 'Please enter both email and password.' };
   }
 
-  // 2. Development Mode Login
-  const rawDev = localStorage.getItem(AUTH_STORAGE_KEYS.DEV_USERS) || '[]';
-  const devUsers = JSON.parse(rawDev);
-  const found = devUsers.find(u => u.email === cleanEmail && u.password === password);
+  const normalizedEmail = email.trim().toLowerCase();
+  const users = JSON.parse(localStorage.getItem(AUTH_STORAGE_KEYS.DEMO_USERS) || '[]');
+  const user = users.find(u => u.email.toLowerCase() === normalizedEmail);
 
-  if (!found) {
-    throw new Error('Invalid email or password. Please try again.');
+  if (!user) {
+    return { success: false, error: 'No account found with this email. Try demo: sanjith@example.com / Password@123' };
   }
 
-  const userProfile = { ...found };
-  delete userProfile.password;
-  localStorage.setItem(AUTH_STORAGE_KEYS.CURRENT_USER, JSON.stringify(userProfile));
-
-  notifyListeners(userProfile);
-  return userProfile;
-}
-
-/**
- * Log out active user
- */
-async function logoutUser() {
-  const fb = window.ShopSmartFirebase;
-  if (fb && fb.isConfigured && fb.auth) {
-    try {
-      await fb.auth.signOut();
-    } catch (e) {
-      console.warn('[ShopSmart] Error signing out from Firebase:', e);
-    }
+  const inputHash = await hashPassword(password);
+  if (user.passwordHash !== inputHash) {
+    return { success: false, error: 'Incorrect password. Demonstration password is Password@123' };
   }
 
-  localStorage.removeItem(AUTH_STORAGE_KEYS.CURRENT_USER);
-  notifyListeners(null);
-  window.ShopSmartUtils.showToast('You have been logged out.', 'info');
-}
-
-/**
- * Request password reset
- * @param {string} email
- */
-async function sendPasswordReset(email) {
-  const cleanEmail = email.trim().toLowerCase();
-  const fb = window.ShopSmartFirebase;
-
-  if (fb && fb.isConfigured && fb.auth) {
-    await fb.auth.sendPasswordResetEmail(cleanEmail);
-    return { success: true, message: 'Password reset link sent to your email.' };
-  }
-
-  // Development mode response
-  return {
-    success: true,
-    message: `[Dev Mode] Password reset link simulated for ${cleanEmail}. In production, Firebase will dispatch an actual email.`
+  const publicProfile = {
+    uid: user.uid,
+    fullName: user.fullName,
+    email: user.email,
+    phone: user.phone,
+    role: user.role,
+    addresses: user.addresses || [],
+    createdAt: user.createdAt
   };
+
+  localStorage.setItem(AUTH_STORAGE_KEYS.CURRENT_USER, JSON.stringify(publicProfile));
+  notifyAuthListeners(publicProfile);
+
+  return { success: true, user: publicProfile };
 }
 
 /**
- * Update User Profile
- * @param {Object} updates
+ * Log out current user
  */
-async function updateUserProfile(updates) {
+function logoutUser() {
+  localStorage.removeItem(AUTH_STORAGE_KEYS.CURRENT_USER);
+  notifyAuthListeners(null);
+  return { success: true };
+}
+
+/**
+ * Update user profile
+ */
+function updateUserProfile(updates) {
   const current = getCurrentUser();
-  if (!current) throw new Error('You must be logged in to update your profile.');
+  if (!current) return { success: false, error: 'Not authenticated' };
 
-  const updated = { ...current, ...updates };
+  const updatedProfile = { ...current, ...updates };
+  localStorage.setItem(AUTH_STORAGE_KEYS.CURRENT_USER, JSON.stringify(updatedProfile));
 
-  const fb = window.ShopSmartFirebase;
-  if (fb && fb.isConfigured && fb.db) {
-    await fb.db.collection('users').doc(current.uid).update(updates);
-  } else {
-    // Dev Mode update
-    const rawDev = localStorage.getItem(AUTH_STORAGE_KEYS.DEV_USERS) || '[]';
-    const devUsers = JSON.parse(rawDev);
-    const index = devUsers.findIndex(u => u.uid === current.uid);
-    if (index !== -1) {
-      devUsers[index] = { ...devUsers[index], ...updates };
-      localStorage.setItem(AUTH_STORAGE_KEYS.DEV_USERS, JSON.stringify(devUsers));
-    }
+  // Sync to demo users store
+  const users = JSON.parse(localStorage.getItem(AUTH_STORAGE_KEYS.DEMO_USERS) || '[]');
+  const idx = users.findIndex(u => u.uid === current.uid);
+  if (idx !== -1) {
+    users[idx] = { ...users[idx], ...updates };
+    localStorage.setItem(AUTH_STORAGE_KEYS.DEMO_USERS, JSON.stringify(users));
   }
 
-  localStorage.setItem(AUTH_STORAGE_KEYS.CURRENT_USER, JSON.stringify(updated));
-  notifyListeners(updated);
-  return updated;
+  notifyAuthListeners(updatedProfile);
+  return { success: true, user: updatedProfile };
 }
 
 /**
- * Update Header Navigation Authentication UI
- * @param {Object|null} user
+ * Add a saved delivery address
  */
-function updateNavAuthUi(user) {
-  const guestGroup = document.getElementById('navGuestGroup');
-  const userGroup = document.getElementById('navUserGroup');
-  const userNameEl = document.getElementById('navUserName');
-  const userEmailEl = document.getElementById('navUserEmail');
+function addAddress(newAddress) {
+  const current = getCurrentUser();
+  if (!current) return { success: false, error: 'Not authenticated' };
 
-  if (user) {
-    if (guestGroup) guestGroup.classList.add('hidden');
-    if (userGroup) userGroup.classList.remove('hidden');
-    if (userNameEl) userNameEl.textContent = user.fullName || 'My Account';
-    if (userEmailEl) userEmailEl.textContent = user.email || '';
-  } else {
-    if (guestGroup) guestGroup.classList.remove('hidden');
-    if (userGroup) userGroup.classList.add('hidden');
-    if (userNameEl) userNameEl.textContent = 'Sign In';
+  const addresses = current.addresses || [];
+  if (newAddress.isDefault) {
+    addresses.forEach(a => a.isDefault = false);
+  } else if (addresses.length === 0) {
+    newAddress.isDefault = true;
   }
 
-  window.ShopSmartUtils.refreshIcons();
+  const addressWithId = {
+    ...newAddress,
+    id: 'addr-' + Date.now()
+  };
+
+  addresses.push(addressWithId);
+  return updateUserProfile({ addresses });
 }
 
-// Global Export
+/**
+ * Remove an address
+ */
+function removeAddress(addressId) {
+  const current = getCurrentUser();
+  if (!current) return { success: false, error: 'Not authenticated' };
+
+  let addresses = (current.addresses || []).filter(a => a.id !== addressId);
+  if (addresses.length > 0 && !addresses.some(a => a.isDefault)) {
+    addresses[0].isDefault = true;
+  }
+  return updateUserProfile({ addresses });
+}
+
+/**
+ * Set an address as default
+ */
+function setDefaultAddress(addressId) {
+  const current = getCurrentUser();
+  if (!current) return { success: false, error: 'Not authenticated' };
+
+  const addresses = (current.addresses || []).map(a => ({
+    ...a,
+    isDefault: a.id === addressId
+  }));
+  return updateUserProfile({ addresses });
+}
+
+// Global exports
 window.ShopSmartAuth = {
   getCurrentUser,
-  registerUser,
+  isAuthenticated,
   loginUser,
+  registerUser,
   logoutUser,
-  sendPasswordReset,
   updateUserProfile,
+  addAddress,
+  removeAddress,
+  setDefaultAddress,
   onAuthStateChanged
 };

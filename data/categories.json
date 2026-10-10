@@ -1,0 +1,447 @@
+[
+  {
+    "id": "mobiles-tablets",
+    "name": "Mobiles and Tablets",
+    "icon": "smartphone",
+    "description": "Smartphones, tablets, foldables, fast chargers, power banks, and premium accessories.",
+    "productTypes": [
+      "Smartphones",
+      "Tablets",
+      "Foldable Phones",
+      "Chargers & Adapters",
+      "Power Banks",
+      "Cases & Screen Protectors"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "Anker",
+      "Apple",
+      "ESR",
+      "Google",
+      "Motorola",
+      "Nothing",
+      "OnePlus",
+      "POCO"
+    ]
+  },
+  {
+    "id": "laptops-computers",
+    "name": "Laptops and Computers",
+    "icon": "laptop",
+    "description": "Student laptops, gaming rigs, MacBooks, 4K monitors, mechanical keyboards, and SSD storage.",
+    "productTypes": [
+      "MacBooks",
+      "Gaming Laptops",
+      "Thin & Light Laptops",
+      "Monitors",
+      "Keyboards & Mice",
+      "Storage & Components"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "ASUS",
+      "Acer",
+      "Anker",
+      "Apple",
+      "Corsair",
+      "Crucial",
+      "Dell",
+      "HP"
+    ]
+  },
+  {
+    "id": "audio-accessories",
+    "name": "Audio and Accessories",
+    "icon": "headphones",
+    "description": "TWS earbuds, noise-cancelling headphones, soundbars, Bluetooth party speakers, and studio microphones.",
+    "productTypes": [
+      "TWS Earbuds",
+      "Over-Ear Headphones",
+      "Bluetooth Speakers",
+      "Soundbars",
+      "Studio Microphones",
+      "Gaming Headsets"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "Apple",
+      "Audio-Technica",
+      "Bose",
+      "HyperX",
+      "JBL",
+      "Marshall",
+      "Noise",
+      "OnePlus"
+    ]
+  },
+  {
+    "id": "mens-fashion",
+    "name": "Men’s Fashion",
+    "icon": "shirt",
+    "description": "Authentic denim, formal and casual shirts, chinos, polos, blazers, and luxury leather accessories.",
+    "productTypes": [
+      "Casual Shirts",
+      "Formal Shirts",
+      "Jeans & Trousers",
+      "T-Shirts & Polos",
+      "Hoodies & Jackets",
+      "Blazers & Suits",
+      "Accessories",
+      "Innerwear"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "Allen Solly",
+      "Calvin Klein",
+      "Casio",
+      "Fastrack",
+      "Fossil",
+      "H&M",
+      "Jack & Jones",
+      "Levi's"
+    ]
+  },
+  {
+    "id": "womens-fashion",
+    "name": "Women’s Fashion",
+    "icon": "sparkles",
+    "description": "Anarkali kurtas, handloom sarees, contemporary dresses, satchel handbags, and jewellery.",
+    "productTypes": [
+      "Kurtis & Ethnic Sets",
+      "Handloom Sarees",
+      "Dupattas & Shawls",
+      "Dresses & Jumpsuits",
+      "Tops & Tees",
+      "Jackets & Coats",
+      "Handbags & Clutches",
+      "Watches & Jewellery"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "Aurelia",
+      "Baggit",
+      "Biba",
+      "Caprese",
+      "Fabindia",
+      "Fastrack",
+      "Fossil",
+      "Global Desi"
+    ]
+  },
+  {
+    "id": "footwear",
+    "name": "Footwear",
+    "icon": "footprints",
+    "description": "Performance running shoes, sneakers, leather formal brogues, walking clogs, and sport slides.",
+    "productTypes": [
+      "Running Shoes",
+      "Sneakers",
+      "Formal Shoes",
+      "Loafers & Slip-ons",
+      "Boots",
+      "Walking Shoes & Clogs",
+      "Sandals & Slides"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "ASICS",
+      "Adidas",
+      "Bata",
+      "Birkenstock",
+      "Campus",
+      "Clarks",
+      "Converse",
+      "Crocs"
+    ]
+  },
+  {
+    "id": "home-kitchen",
+    "name": "Home and Kitchen",
+    "icon": "utensils",
+    "description": "High-torque mixer grinders, hard anodized pressure cookers, non-stick cookware, kettles, and dinnerware.",
+    "productTypes": [
+      "Cookware",
+      "Pressure Cookers",
+      "Mixer Grinders",
+      "Electric Kettles",
+      "Lunch Boxes & Containers",
+      "Storage & Containers",
+      "Water Bottles & Flasks",
+      "Dinner Sets"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "Bajaj",
+      "Borosil",
+      "Cello",
+      "Eureka Forbes",
+      "Havells",
+      "Hawkins",
+      "Kent",
+      "Milton"
+    ]
+  },
+  {
+    "id": "home-appliances",
+    "name": "Home Appliances",
+    "icon": "tv",
+    "description": "Inverter refrigerators, front-load washing machines, 5-star split ACs, dishwashers, and vacuum cleaners.",
+    "productTypes": [
+      "Refrigerators",
+      "Washing Machines",
+      "Air Conditioners",
+      "Microwave Ovens",
+      "Dishwashers",
+      "Ceiling Fans",
+      "Vacuum Cleaners",
+      "Water Purifiers"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "Atomberg",
+      "Bajaj",
+      "Blue Star",
+      "Bosch",
+      "Crompton",
+      "Daikin",
+      "Dyson",
+      "Eureka Forbes"
+    ]
+  },
+  {
+    "id": "beauty-personal-care",
+    "name": "Beauty and Personal Care",
+    "icon": "heart",
+    "description": "Dermatological serums, gentle cleansers, SPF 50 sunscreens, hair oils, trimmers, and makeup essentials.",
+    "productTypes": [
+      "Serums & Treatments",
+      "Face Serums & Treatments",
+      "Face Wash & Cleansers",
+      "Sunscreens & Moisturisers",
+      "Hair Care & Serums",
+      "Trimmers & Shavers",
+      "Grooming & Styling",
+      "Makeup & Cosmetics"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "Beardo",
+      "Biotique",
+      "Bombay Shaving Company",
+      "Braun",
+      "Cetaphil",
+      "Dove",
+      "Forest Essentials",
+      "Gillette"
+    ]
+  },
+  {
+    "id": "sports-fitness",
+    "name": "Sports and Fitness",
+    "icon": "activity",
+    "description": "Gym dumbbells, anti-tear yoga mats, cricket bats, match footballs, badminton rackets, and fitness gear.",
+    "productTypes": [
+      "Gym & Strength Training",
+      "Cardio Equipment",
+      "Cricket Gear",
+      "Footballs & Sports Balls",
+      "Badminton & Tennis",
+      "Fitness Accessories"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "Adidas",
+      "AmazonBasics",
+      "Boldfit",
+      "Cockatoo",
+      "Cosco",
+      "Cult.Sport",
+      "DSC",
+      "Decathlon"
+    ]
+  },
+  {
+    "id": "books-stationery",
+    "name": "Books and Stationery",
+    "icon": "book-open",
+    "description": "Computer science textbooks, international bestsellers, spiral registers, fine pens, and art supplies.",
+    "productTypes": [
+      "Programming Books",
+      "AI & Machine Learning",
+      "Web Development",
+      "Computer Science",
+      "Academic Books",
+      "Fiction",
+      "Non-Fiction",
+      "Notebooks & Paper",
+      "Planners & Journals",
+      "Pens & Writing",
+      "Art Supplies",
+      "Pencils & Erasers",
+      "Study Accessories",
+      "Desk Organizers",
+      "Files and Folders"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "AmazonBasics",
+      "Bloomsbury",
+      "Cambridge University Press",
+      "Casio",
+      "Classmate",
+      "DOMS",
+      "Faber-Castell",
+      "HarperCollins"
+    ]
+  },
+  {
+    "id": "gaming",
+    "name": "Gaming",
+    "icon": "gamepad-2",
+    "description": "Next-gen consoles, esports keyboards, gaming mice, surround headsets, racing wheels, and gaming chairs.",
+    "productTypes": [
+      "Consoles",
+      "Controllers",
+      "Gaming Laptops",
+      "Gaming Mice",
+      "Gaming Keyboards",
+      "Gaming Headsets",
+      "Mousepads",
+      "Streaming & Microphones",
+      "Gaming Chairs",
+      "Gaming Desks",
+      "Racing Wheels",
+      "Cooling Pads",
+      "Gaming Accessories"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "ASUS ROG",
+      "Acer Predator",
+      "Ant Esports",
+      "Corsair",
+      "Cosmic Byte",
+      "Elgato",
+      "Green Soul",
+      "HP OMEN"
+    ]
+  },
+  {
+    "id": "bags-travel",
+    "name": "Bags and Travel",
+    "icon": "briefcase",
+    "description": "Polycarbonate cabin luggage, large check-in suitcases, laptop backpacks, gym duffels, and sling bags.",
+    "productTypes": [
+      "Cabin Luggage",
+      "Check-in Suitcases",
+      "Laptop Backpacks",
+      "College Backpacks",
+      "School Backpacks",
+      "Travel Backpacks",
+      "Gaming Backpacks",
+      "Sports Backpacks",
+      "Duffel Bags",
+      "Gym Bags",
+      "Sling Bags",
+      "Laptop Sleeves",
+      "Office Bags",
+      "Luggage Sets",
+      "Travel Accessories",
+      "Travel Organizers"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "Adidas",
+      "American Tourister",
+      "Decathlon",
+      "Gear",
+      "HP",
+      "Lenovo",
+      "Nike",
+      "Puma"
+    ]
+  },
+  {
+    "id": "furniture-home-decor",
+    "name": "Furniture and Home Decor",
+    "icon": "home",
+    "description": "Ergonomic mesh chairs, solid wood dining tables, orthopedic mattresses, modern sofas, and floor lamps.",
+    "productTypes": [
+      "Office Chairs",
+      "Plastic Chairs",
+      "Study Tables",
+      "Study & Computer Desks",
+      "Dining Tables",
+      "Coffee Tables",
+      "Sofas",
+      "Recliners",
+      "Beds",
+      "Mattresses",
+      "Wardrobes",
+      "Bookshelves",
+      "Storage Cabinets",
+      "Shoe Racks",
+      "Shoe Cabinets",
+      "Bedside Tables",
+      "Floor Lamps",
+      "Table Lamps",
+      "Wall Clocks",
+      "Rugs",
+      "Curtains",
+      "Cushions & Covers",
+      "Cushions & Pillows",
+      "Decorative Vases",
+      "Wall Art & Mirrors",
+      "Photo Frames",
+      "Candles & Holders",
+      "Artificial Plants"
+    ],
+    "productCount": 67,
+    "popularBrands": [
+      "Durian",
+      "Godrej Interio",
+      "Home Centre",
+      "IKEA",
+      "Nilkamal",
+      "Sleepyhead",
+      "Solimo",
+      "Urban Ladder"
+    ]
+  },
+  {
+    "id": "toys-accessories",
+    "name": "Toys and Accessories",
+    "icon": "puzzle",
+    "description": "Creative LEGO sets, Hot Wheels die-cast tracks, Barbie dolls, Nerf dart blasters, and family board games.",
+    "productTypes": [
+      "Building Blocks",
+      "Toy Cars & Tracks",
+      "Dolls & Playsets",
+      "Action Figures",
+      "Card Games",
+      "Outdoor Toys",
+      "Board Games",
+      "Preschool & Learning",
+      "Art & Craft",
+      "Puzzles",
+      "Puzzles & Brainteasers",
+      "Soft Toys",
+      "Remote Controlled",
+      "Science Kits",
+      "Musical Toys",
+      "Wooden Toys",
+      "Indoor Sports"
+    ],
+    "productCount": 68,
+    "popularBrands": [
+      "Barbie",
+      "Fisher-Price",
+      "Funskool",
+      "Hamleys",
+      "Hasbro",
+      "Hot Wheels",
+      "LEGO",
+      "Mattel"
+    ]
+  }
+]

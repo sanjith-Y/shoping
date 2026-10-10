@@ -24,8 +24,8 @@ function generateBudgetBundle(totalBudget, selectedCategories = [], goalText = '
 
   currentBudgetGoal = budget;
 
-  // Filter pool of products
-  let pool = PRODUCTS.filter(p => p.stock > 0);
+  const catalogList = (window.ShopSmartCatalog && window.ShopSmartCatalog.getProducts().length > 0) ? window.ShopSmartCatalog.getProducts() : (typeof PRODUCTS !== 'undefined' ? PRODUCTS : []);
+  let pool = catalogList.filter(p => p.stock > 0);
   if (selectedCategories && selectedCategories.length > 0 && !selectedCategories.includes('All')) {
     pool = pool.filter(p => selectedCategories.includes(p.category));
   }

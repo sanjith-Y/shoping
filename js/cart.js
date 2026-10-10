@@ -143,6 +143,10 @@ function mergeGuestCart(userUid) {
  * Find product by ID
  */
 function getProductById(id) {
+  if (window.ShopSmartCatalog && window.ShopSmartCatalog.getProductById) {
+    const prod = window.ShopSmartCatalog.getProductById(id);
+    if (prod) return prod;
+  }
   if (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS)) {
     return PRODUCTS.find(p => p.id === id) || null;
   }

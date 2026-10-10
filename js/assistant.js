@@ -96,8 +96,30 @@ function askAssistant(userQuery) {
     }
   }
 
+  // Get complete product list
+  const allProducts = (window.ShopSmartCatalog && window.ShopSmartCatalog.getProducts().length > 0) 
+    ? window.ShopSmartCatalog.getProducts() 
+    : (typeof PRODUCTS !== 'undefined' ? PRODUCTS : []);
+
+  // Detect brands in catalog
+  const matchedBrands = [];
+  const knownBrands = window.ShopSmartCatalog && window.ShopSmartCatalog.getBrands().length > 0
+    ? window.ShopSmartCatalog.getBrands().map(b => b.name)
+    : ['Apple', 'Samsung', 'OnePlus', 'Xiaomi', 'boAt', 'Sony', 'JBL', 'Nike', 'Adidas', 'Puma', 'ASUS', 'HP', 'Dell', 'Lenovo', 'LG', 'Prestige', 'Philips', 'Logitech', 'LEGO'];
+
+  for (const b of knownBrands) {
+    const bLower = b.toLowerCase();
+    if (q.includes(bLower) && !matchedBrands.includes(b)) {
+      matchedBrands.push(b);
+    }
+  }
+
   // Filter products
-  let results = PRODUCTS.filter(p => p.stock > 0);
+  let results = allProducts.filter(p => p.stock > 0);
+
+  if (matchedBrands.length > 0) {
+    results = results.filter(p => matchedBrands.some(b => p.brand.toLowerCase() === b.toLowerCase()));
+  }
 
   if (matchedCategories.length > 0) {
     results = results.filter(p => matchedCategories.includes(p.category));
@@ -107,32 +129,42 @@ function askAssistant(userQuery) {
     results = results.filter(p => p.price <= maxPrice);
   }
 
-  // Free text search matching
-  const terms = q.replace(/(show|find|suggest|search|for|under|below|within|rupees|₹|rs|me|a|an|the)/gi, '').trim().split(/\s+/).filter(Boolean);
-  if (terms.length > 0 && results.length > 5) {
-    results = results.filter(p => {
-      const pText = (p.name + ' ' + p.brand + ' ' + p.description).toLowerCase();
-      return terms.some(t => pText.includes(t));
-    });
+  // Free text search matching if still many results or brand/cat weren't matched
+  const terms = q.replace(/(show|find|suggest|search|compare|for|under|below|within|rupees|₹|rs|me|a|an|the)/gi, '').trim().split(/\s+/).filter(Boolean);
+  if (terms.length > 0 && (results.length > 6 || (matchedBrands.length === 0 && matchedCategories.length === 0))) {
+    const scored = results.map(p => {
+      const pText = (p.name + ' ' + p.brand + ' ' + (p.series || '') + ' ' + (p.productType || '') + ' ' + p.description).toLowerCase();
+      let matchCount = 0;
+      for (const t of terms) {
+        if (pText.includes(t)) matchCount++;
+      }
+      return { product: p, score: matchCount };
+    }).filter(item => item.score > 0);
+
+    if (scored.length > 0) {
+      scored.sort((a, b) => b.score - a.score || b.product.rating - a.product.rating);
+      results = scored.map(s => s.product);
+    }
   }
 
-  // If still empty, fall back to closest price matches
+  // If still empty and budget is specified, fall back to closest price matches
   if (results.length === 0 && maxPrice !== null) {
-    results = PRODUCTS.filter(p => p.price <= maxPrice).slice(0, 4);
+    results = allProducts.filter(p => p.price <= maxPrice).slice(0, 4);
   }
 
   // Limit to top 6
   results = results.slice(0, 6);
 
   let explanation = `Found ${results.length} verified catalog products`;
+  if (matchedBrands.length > 0) explanation += ` for brand "${matchedBrands.join(', ')}"`;
   if (matchedCategories.length > 0) explanation += ` in "${matchedCategories.join(', ')}"`;
   if (maxPrice !== null) explanation += ` priced under ${window.ShopSmartUtils.formatINR(maxPrice)}`;
-  explanation += `. Each item has direct stock availability and customer ratings.`;
+  explanation += `. Sourced directly from our authentic catalog with live pricing.`;
 
   return {
     message: results.length > 0
       ? `Here are the best matching items from our live catalog:`
-      : `I couldn't find an exact match for "${userQuery}". Try broadening your search or adjusting the price ceiling.`,
+      : `I couldn't find an exact match for "${userQuery}". Try asking for a specific brand (e.g. "Samsung", "Nike", "Sony") or category.`,
     products: results,
     explanation
   };

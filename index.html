@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ShopSmart — Complete Online Shopping Cart Website</title>
-  <meta name="description" content="ShopSmart is a premier online shopping destination based in Coimbatore, Tamil Nadu, offering 150+ authentic products across 15 categories with transparent pricing and instant delivery.">
+  <meta name="description"
+    content="ShopSmart is a premier online shopping destination based in Coimbatore, Tamil Nadu, offering 150+ authentic products across 15 categories with transparent pricing and instant delivery.">
   <link rel="icon" type="image/svg+xml" href="assets/fallback/product-fallback.svg">
   <link rel="stylesheet" href="css/style.css">
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
+
 <body>
 
   <!-- Top Announcement Bar -->
@@ -21,27 +24,28 @@
       </div>
       <div class="right">
         <span>📍 Coimbatore, Tamil Nadu - 641002</span>
-        <a href="contact.html">📞 1800-456-7890</a>
+        <a href="contact.html">📞 8004567890</a>
       </div>
     </div>
   </aside>
 
-  <!-- Development Mode Notification Banner -->
+  <!-- Store Notification Banner -->
   <div class="dev-mode-banner" id="devModeBanner">
-    <i data-lucide="info" style="width: 16px; height: 16px;"></i>
-    <span>Running in <strong>Development Mode</strong> (Local Simulated Auth &amp; Storage). To connect live Firebase, see <code>README.md</code>.</span>
+    <i data-lucide="store" style="width: 16px; height: 16px;"></i>
+    <span>ShopSmart Coimbatore Regional Hub — Serving Tamil Nadu &amp; All India | <strong>1,000+ Verified Products</strong> Across 15 Categories</span>
   </div>
 
   <!-- Main Sticky Header -->
   <header class="site-header">
     <div class="container header-inner">
-      
+
       <!-- Brand Logo -->
       <a href="index.html" class="site-logo" aria-label="ShopSmart Home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="8" cy="21" r="1"/>
-          <circle cx="19" cy="21" r="1"/>
-          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1" />
+          <circle cx="19" cy="21" r="1" />
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
         </svg>
         <span>ShopSmart<span class="logo-dot">.</span></span>
       </a>
@@ -49,18 +53,15 @@
       <!-- Search Bar -->
       <div class="header-search-wrapper">
         <i data-lucide="search" class="header-search-icon"></i>
-        <input 
-          type="search" 
-          id="headerSearchInput" 
-          class="header-search-input" 
-          placeholder="Search 150+ products, brands, or categories..." 
-          aria-label="Search catalog"
-        >
+        <input type="search" id="headerSearchInput" class="header-search-input"
+          placeholder="Search 1,000+ products, brands, or categories..." aria-label="Search catalog">
         <div class="search-action-btns">
-          <button type="button" class="btn-search-tool" id="headerVoiceSearchBtn" title="Voice Search" aria-label="Voice Search">
+          <button type="button" class="btn-search-tool" id="headerVoiceSearchBtn" title="Voice Search"
+            aria-label="Voice Search">
             <i data-lucide="mic" style="width: 16px; height: 16px;"></i>
           </button>
-          <button type="button" class="btn-search-tool" id="headerImageSearchBtn" title="Search by Image" aria-label="Search by Image">
+          <button type="button" class="btn-search-tool" id="headerImageSearchBtn" title="Search by Image"
+            aria-label="Search by Image">
             <i data-lucide="camera" style="width: 16px; height: 16px;"></i>
           </button>
         </div>
@@ -78,19 +79,23 @@
           <div class="nav-dropdown-menu" id="headerCategoriesDropdown">
             <!-- Dynamically populated or linked -->
             <a href="products.html?category=Mobiles%20and%20Tablets" class="nav-dropdown-item">Mobiles and Tablets</a>
-            <a href="products.html?category=Laptops%20and%20Computers" class="nav-dropdown-item">Laptops and Computers</a>
-            <a href="products.html?category=Audio%20and%20Accessories" class="nav-dropdown-item">Audio and Accessories</a>
+            <a href="products.html?category=Laptops%20and%20Computers" class="nav-dropdown-item">Laptops and
+              Computers</a>
+            <a href="products.html?category=Audio%20and%20Accessories" class="nav-dropdown-item">Audio and
+              Accessories</a>
             <a href="products.html?category=Men%E2%80%99s%20Fashion" class="nav-dropdown-item">Men’s Fashion</a>
             <a href="products.html?category=Women%E2%80%99s%20Fashion" class="nav-dropdown-item">Women’s Fashion</a>
             <a href="products.html?category=Footwear" class="nav-dropdown-item">Footwear</a>
             <a href="products.html?category=Home%20and%20Kitchen" class="nav-dropdown-item">Home and Kitchen</a>
             <a href="products.html?category=Home%20Appliances" class="nav-dropdown-item">Home Appliances</a>
-            <a href="products.html?category=Beauty%20and%20Personal%20Care" class="nav-dropdown-item">Beauty and Personal Care</a>
+            <a href="products.html?category=Beauty%20and%20Personal%20Care" class="nav-dropdown-item">Beauty and
+              Personal Care</a>
             <a href="products.html?category=Sports%20and%20Fitness" class="nav-dropdown-item">Sports and Fitness</a>
             <a href="products.html?category=Books%20and%20Stationery" class="nav-dropdown-item">Books and Stationery</a>
             <a href="products.html?category=Gaming" class="nav-dropdown-item">Gaming</a>
             <a href="products.html?category=Bags%20and%20Travel" class="nav-dropdown-item">Bags and Travel</a>
-            <a href="products.html?category=Furniture%20and%20Home%20Decor" class="nav-dropdown-item">Furniture and Home Decor</a>
+            <a href="products.html?category=Furniture%20and%20Home%20Decor" class="nav-dropdown-item">Furniture and Home
+              Decor</a>
             <a href="products.html?category=Toys%20and%20Accessories" class="nav-dropdown-item">Toys and Accessories</a>
           </div>
         </div>
@@ -100,9 +105,10 @@
 
       <!-- Action Icons (Theme, Compare, Wishlist, Cart, Auth) -->
       <div class="header-actions">
-        
+
         <!-- Theme Toggle -->
-        <button type="button" class="icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+        <button type="button" class="icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme"
+          aria-label="Toggle Theme">
           <i data-lucide="moon"></i>
         </button>
 
@@ -119,7 +125,8 @@
         </a>
 
         <!-- Cart Trigger Button -->
-        <button type="button" class="icon-btn" id="openCartDrawerBtn" title="Shopping Cart" aria-label="Open Cart Drawer">
+        <button type="button" class="icon-btn" id="openCartDrawerBtn" title="Shopping Cart"
+          aria-label="Open Cart Drawer">
           <i data-lucide="shopping-cart"></i>
           <span class="badge-count cart-badge-count hidden">0</span>
         </button>
@@ -139,12 +146,17 @@
                 <div class="user-menu-name" id="navUserName">My Account</div>
                 <div class="user-menu-email" id="navUserEmail">user@example.com</div>
               </div>
-              <a href="profile.html" class="user-menu-link"><i data-lucide="user" style="width: 16px; height: 16px;"></i> My Profile</a>
-              <a href="orders.html" class="user-menu-link"><i data-lucide="package" style="width: 16px; height: 16px;"></i> Order History</a>
-              <a href="wishlist.html" class="user-menu-link"><i data-lucide="heart" style="width: 16px; height: 16px;"></i> Saved Wishlist</a>
-              <a href="admin.html" class="user-menu-link"><i data-lucide="shield" style="width: 16px; height: 16px;"></i> Admin Console</a>
+              <a href="profile.html" class="user-menu-link"><i data-lucide="user"
+                  style="width: 16px; height: 16px;"></i> My Profile</a>
+              <a href="orders.html" class="user-menu-link"><i data-lucide="package"
+                  style="width: 16px; height: 16px;"></i> Order History</a>
+              <a href="wishlist.html" class="user-menu-link"><i data-lucide="heart"
+                  style="width: 16px; height: 16px;"></i> Saved Wishlist</a>
+              <a href="admin.html" class="user-menu-link"><i data-lucide="shield"
+                  style="width: 16px; height: 16px;"></i> Admin Console</a>
               <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 4px 0;">
-              <button type="button" class="user-menu-link text-danger" id="navLogoutBtn" style="width: 100%; text-align: left;">
+              <button type="button" class="user-menu-link text-danger" id="navLogoutBtn"
+                style="width: 100%; text-align: left;">
                 <i data-lucide="log-out" style="width: 16px; height: 16px;"></i> Logout
               </button>
             </div>
@@ -160,9 +172,11 @@
     </div>
 
     <!-- Mobile Navigation Drawer -->
-    <div id="mobileNavDrawer" class="hidden" style="background-color: var(--bg-surface); border-bottom: 1px solid var(--border-color); padding: 16px 24px;">
+    <div id="mobileNavDrawer" class="hidden"
+      style="background-color: var(--bg-surface); border-bottom: 1px solid var(--border-color); padding: 16px 24px;">
       <div style="display: flex; flex-direction: column; gap: 12px;">
-        <input type="search" placeholder="Search products..." onkeydown="if(event.key==='Enter') window.location.href='products.html?search='+encodeURIComponent(this.value)">
+        <input type="search" placeholder="Search products..."
+          onkeydown="if(event.key==='Enter') window.location.href='products.html?search='+encodeURIComponent(this.value)">
         <a href="index.html" style="font-weight: 600;">Home</a>
         <a href="products.html">All Products</a>
         <a href="budget-shopping.html">Budget Shopping</a>
@@ -190,7 +204,8 @@
             </span>
             <h1 class="hero-heading">Smart Shopping. Honest Pricing.</h1>
             <p class="hero-subtitle">
-              Discover genuine electronics, fashion, home essentials, and lifestyle products curated for Coimbatore and delivered with speed across India.
+              Discover genuine electronics, fashion, home essentials, and lifestyle products curated for Coimbatore and
+              delivered with speed across India.
             </p>
             <div class="hero-cta-group">
               <a href="products.html" class="btn btn-primary btn-lg">Shop All Products</a>
@@ -198,7 +213,8 @@
             </div>
           </div>
           <div class="hero-image-pane">
-            <img src="assets/banners/hero-banner.jpg" alt="ShopSmart Online Shopping Storefront" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&auto=format&fit=crop&q=80';">
+            <img src="assets/banners/hero-banner.jpg" alt="ShopSmart Online Shopping Storefront"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&auto=format&fit=crop&q=80';">
           </div>
         </div>
       </div>
@@ -217,6 +233,22 @@
 
         <div class="categories-grid" id="homeCategoriesGrid">
           <!-- Dynamically populated via JS for all 15 categories -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Brands Showcase -->
+    <section class="products-section" style="background-color: var(--bg-subtle); padding: 40px 0;">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Popular Brands Showroom</h2>
+            <p class="section-subtitle">Verified products and official series from over 200 leading brands</p>
+          </div>
+          <a href="brand.html" class="text-primary font-semibold" style="font-size: 0.875rem;">View All 219 Brands &rarr;</a>
+        </div>
+        <div class="popular-brands-grid" id="homePopularBrandsGrid">
+          <!-- Populated dynamically via JS -->
         </div>
       </div>
     </section>
@@ -240,13 +272,15 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="hero-pill" style="background-color: var(--accent-rose-light); color: var(--accent-rose); margin-bottom: 6px;">
+            <span class="hero-pill"
+              style="background-color: var(--accent-rose-light); color: var(--accent-rose); margin-bottom: 6px;">
               🔥 Limited Time
             </span>
             <h2 class="section-title">Today's Best Deals &amp; Discounts</h2>
             <p class="section-subtitle">Verified savings on smartphones, laptops, clothing, and home gear</p>
           </div>
-          <a href="products.html?sort=discount" class="text-primary font-semibold" style="font-size: 0.875rem;">All Deals &rarr;</a>
+          <a href="products.html?sort=discount" class="text-primary font-semibold" style="font-size: 0.875rem;">All
+            Deals &rarr;</a>
         </div>
         <div class="products-grid" id="homeDealsGrid"></div>
       </div>
@@ -257,11 +291,13 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="hero-pill" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 6px;">
+            <span class="hero-pill"
+              style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 6px;">
               📍 Coimbatore Special
             </span>
             <h2 class="section-title">Local Deals in Coimbatore</h2>
-            <p class="section-subtitle">Exclusive pricing and prioritized dispatch from our Coimbatore regional center</p>
+            <p class="section-subtitle">Exclusive pricing and prioritized dispatch from our Coimbatore regional center
+            </p>
           </div>
           <a href="products.html" class="text-primary font-semibold" style="font-size: 0.875rem;">Explore Hub &rarr;</a>
         </div>
@@ -348,22 +384,27 @@
         <i data-lucide="x"></i>
       </button>
       <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center;">
-        <div style="background-color: var(--bg-subtle); padding: 16px; border-radius: var(--radius-lg); text-align: center;">
+        <div
+          style="background-color: var(--bg-subtle); padding: 16px; border-radius: var(--radius-lg); text-align: center;">
           <img id="qvImage" src="" alt="" style="max-height: 280px; margin: 0 auto; object-fit: contain;">
         </div>
         <div>
-          <div id="qvCategory" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-subtle); font-weight: 600;"></div>
+          <div id="qvCategory"
+            style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-subtle); font-weight: 600;"></div>
           <h2 id="qvTitle" style="font-size: 1.25rem; font-weight: 700; margin: 4px 0 8px;"></h2>
           <div id="qvRating" style="font-size: 0.875rem; margin-bottom: 12px;"></div>
           <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px;">
             <span id="qvPrice" style="font-size: 1.5rem; font-weight: 700; color: var(--primary);"></span>
-            <span id="qvOriginalPrice" style="font-size: 0.9375rem; color: var(--text-subtle); text-decoration: line-through;"></span>
+            <span id="qvOriginalPrice"
+              style="font-size: 0.9375rem; color: var(--text-subtle); text-decoration: line-through;"></span>
             <span id="qvDiscount" class="card-badge-discount" style="position: static;"></span>
           </div>
           <div id="qvStock" style="font-size: 0.875rem; margin-bottom: 12px;"></div>
           <p id="qvDesc" class="text-muted" style="font-size: 0.875rem; line-height: 1.4; margin-bottom: 16px;"></p>
-          <ul id="qvHighlights" style="list-style: disc; padding-left: 18px; font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 20px;"></ul>
-          
+          <ul id="qvHighlights"
+            style="list-style: disc; padding-left: 18px; font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 20px;">
+          </ul>
+
           <div style="display: flex; gap: 10px; align-items: center;">
             <input type="number" id="qvQuantity" value="1" min="1" max="99" style="width: 70px; text-align: center;">
             <button type="button" class="btn btn-primary" id="qvAddToCartBtn">Add to Cart</button>
@@ -384,8 +425,10 @@
       <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 16px;">
         Upload a photo of any item to find visually similar products in the ShopSmart catalog.
       </p>
-      <input type="file" id="imageSearchFileInput" accept="image/*" onchange="window.ShopSmartSearch.handleImageSearchUpload(this.files[0])">
-      <img id="imageSearchPreview" src="" alt="Uploaded preview" class="hidden" style="max-height: 160px; margin: 16px auto; border-radius: var(--radius-md);">
+      <input type="file" id="imageSearchFileInput" accept="image/*"
+        onchange="window.ShopSmartSearch.handleImageSearchUpload(this.files[0])">
+      <img id="imageSearchPreview" src="" alt="Uploaded preview" class="hidden"
+        style="max-height: 160px; margin: 16px auto; border-radius: var(--radius-md);">
       <div id="imageSearchResults"></div>
     </div>
   </div>
@@ -394,14 +437,16 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        
+
         <!-- About Store -->
         <div>
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-weight: 700; font-size: 1.25rem; color: #fff;">
+          <div
+            style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-weight: 700; font-size: 1.25rem; color: #fff;">
             <i data-lucide="shopping-cart" style="color: var(--primary);"></i> ShopSmart
           </div>
           <p style="color: #a8a29e; font-size: 0.875rem; line-height: 1.5; margin-bottom: 16px;">
-            A complete, human-crafted online shopping experience featuring 150+ products across 15 categories, verified photography, and authentic pricing in Indian Rupees.
+            A complete, human-crafted online shopping experience featuring 1,000+ authentic products across 15 categories, verified
+            photography, and transparent pricing in Indian Rupees.
           </p>
           <div style="font-size: 0.8125rem; color: #78716c;">
             <strong>Coimbatore Commercial Hub:</strong><br>
@@ -428,7 +473,8 @@
         <div>
           <h4 class="footer-heading">Features &amp; Tools</h4>
           <ul class="footer-links-list">
-            <li><a href="products.html">All 150 Products</a></li>
+            <li><a href="products.html">All 1,000+ Products</a></li>
+            <li><a href="brand.html">Brand Directory (219 Brands)</a></li>
             <li><a href="budget-shopping.html">Smart Budget Shopping</a></li>
             <li><a href="assistant.html">AI Shopping Assistant</a></li>
             <li><a href="compare.html">Product Comparison</a></li>
@@ -468,77 +514,79 @@
 
   <!-- Scripts -->
   <script src="js/products.js"></script>
+  <script src="js/catalog.js"></script>
   <script src="js/utils.js"></script>
-  <script src="js/firebase-config.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/wishlist.js"></script>
   <script src="js/comparison.js"></script>
+  <script src="js/category-navigation.js"></script>
+  <script src="js/brand-navigation.js"></script>
   <script src="js/product-renderer.js"></script>
   <script src="js/search.js"></script>
   <script src="js/app.js"></script>
 
   <!-- Home Page Dynamic Population -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1. Render 15 Category Chips
-      const categories = [
-        { name: "Mobiles and Tablets", icon: "smartphone" },
-        { name: "Laptops and Computers", icon: "laptop" },
-        { name: "Audio and Accessories", icon: "headphones" },
-        { name: "Men’s Fashion", icon: "shirt" },
-        { name: "Women’s Fashion", icon: "sparkles" },
-        { name: "Footwear", icon: "footprints" },
-        { name: "Home and Kitchen", icon: "utensils" },
-        { name: "Home Appliances", icon: "tv" },
-        { name: "Beauty and Personal Care", icon: "heart" },
-        { name: "Sports and Fitness", icon: "activity" },
-        { name: "Books and Stationery", icon: "book-open" },
-        { name: "Gaming", icon: "gamepad-2" },
-        { name: "Bags and Travel", icon: "briefcase" },
-        { name: "Furniture and Home Decor", icon: "armchair" },
-        { name: "Toys and Accessories", icon: "toy-brick" }
-      ];
-
-      const catContainer = document.getElementById('homeCategoriesGrid');
-      if (catContainer) {
-        catContainer.innerHTML = categories.map(c => `
-          <a href="products.html?category=${encodeURIComponent(c.name)}" class="category-chip">
-            <div class="category-chip-icon"><i data-lucide="${c.icon || 'tag'}"></i></div>
-            <div class="category-chip-name">${c.name}</div>
-          </a>
-        `).join('');
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (window.ShopSmartCatalog) {
+        await window.ShopSmartCatalog.load();
       }
 
-      // 2. Render Featured Products (first 8)
+      const catalog = window.ShopSmartCatalog;
+      const allProds = (catalog && catalog.getProducts().length > 0) 
+        ? catalog.getProducts() 
+        : (typeof PRODUCTS !== 'undefined' ? PRODUCTS : []);
+
+      // 1. Render 15 Category Chips
+      if (window.ShopSmartCategoryNav) {
+        window.ShopSmartCategoryNav.renderCategoryStrip('homeCategoriesGrid');
+      }
+
+      // 2. Render Popular Brands Showroom Grid
+      const brandGrid = document.getElementById('homePopularBrandsGrid');
+      if (brandGrid && catalog) {
+        const topBrands = ['Apple', 'Samsung', 'Sony', 'Nike', 'ASUS', 'boAt', 'LG', 'Prestige', 'Puma', 'LEGO', 'Dell', 'Logitech G'];
+        brandGrid.innerHTML = topBrands.map(bName => {
+          const b = catalog.getBrandByName(bName) || { name: bName, productCount: 15 };
+          return `
+            <a href="brand.html?brand=${encodeURIComponent(bName)}" class="popular-brand-card">
+              <div class="popular-brand-name">${bName}</div>
+              <div class="popular-brand-count">${b.productCount || 10}+ Products</div>
+            </a>
+          `;
+        }).join('');
+      }
+
+      // 3. Render Featured Products (first 8)
       const featGrid = document.getElementById('homeFeaturedGrid');
-      if (featGrid && typeof PRODUCTS !== 'undefined') {
-        const featured = PRODUCTS.slice(0, 8);
+      if (featGrid) {
+        const featured = allProds.slice(0, 8);
         featGrid.innerHTML = featured.map(p => window.ShopSmartRenderer.createProductCardHTML(p)).join('');
       }
 
-      // 3. Render Today's Deals (high discount items)
+      // 4. Render Today's Deals (high discount items)
       const dealsGrid = document.getElementById('homeDealsGrid');
-      if (dealsGrid && typeof PRODUCTS !== 'undefined') {
-        const deals = PRODUCTS.filter(p => p.discountPercent >= 40).slice(0, 8);
+      if (dealsGrid) {
+        const deals = allProds.filter(p => (p.discount || p.discountPercent) >= 25).slice(0, 8);
         dealsGrid.innerHTML = deals.map(p => window.ShopSmartRenderer.createProductCardHTML(p)).join('');
       }
 
-      // 4. Render Coimbatore Local Deals (products with Bestseller/Top Rated)
+      // 5. Render Coimbatore Local Deals
       const coimbGrid = document.getElementById('homeCoimbatoreGrid');
-      if (coimbGrid && typeof PRODUCTS !== 'undefined') {
-        const local = PRODUCTS.filter(p => p.badge === 'Bestseller' || p.badge === 'Top Rated').slice(0, 8);
+      if (coimbGrid && catalog) {
+        const local = catalog.getCoimbatoreDeals(8);
         coimbGrid.innerHTML = local.map(p => window.ShopSmartRenderer.createProductCardHTML(p)).join('');
       }
 
-      // 5. Render Bestsellers
+      // 6. Render Bestsellers
       const bestGrid = document.getElementById('homeBestsellersGrid');
-      if (bestGrid && typeof PRODUCTS !== 'undefined') {
-        const best = PRODUCTS.filter(p => p.rating >= 4.7).slice(0, 8);
+      if (bestGrid) {
+        const best = allProds.filter(p => p.rating >= 4.6).slice(0, 8);
         bestGrid.innerHTML = best.map(p => window.ShopSmartRenderer.createProductCardHTML(p)).join('');
       }
 
-      // 6. Check Recently Viewed
+      // 7. Check Recently Viewed
       const recentGrid = document.getElementById('homeRecentGrid');
       const recentSec = document.getElementById('homeRecentSection');
       if (recentGrid && window.ShopSmartRenderer) {
@@ -553,4 +601,5 @@
     });
   </script>
 </body>
+
 </html>

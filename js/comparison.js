@@ -19,7 +19,8 @@ function getCompareList() {
 
 function addToCompare(productId) {
   const list = getCompareList();
-  const product = typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === productId) : null;
+  const product = (window.ShopSmartCatalog && window.ShopSmartCatalog.getProductById(productId)) || 
+                  (typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === productId) : null);
   if (!product) return;
 
   if (list.includes(productId)) {
@@ -82,7 +83,9 @@ function renderCompareTable() {
     return;
   }
 
-  const products = list.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+  const getP = id => (window.ShopSmartCatalog && window.ShopSmartCatalog.getProductById(id)) || 
+                     (typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === id) : null);
+  const products = list.map(getP).filter(Boolean);
 
   let html = `
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">

@@ -24,7 +24,8 @@ function getRecentlyViewedProducts() {
   try {
     const raw = localStorage.getItem(RECENTLY_VIEWED_KEY);
     const list = raw ? JSON.parse(raw) : [];
-    return list.map(id => typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === id) : null).filter(Boolean);
+    const getP = (id) => (window.ShopSmartCatalog && window.ShopSmartCatalog.getProductById(id)) || (typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === id) : null);
+    return list.map(getP).filter(Boolean);
   } catch (e) {
     return [];
   }
@@ -50,7 +51,7 @@ function createProductCardHTML(product) {
           onerror="this.onerror=null; this.src='assets/fallback/product-fallback.svg';"
         >
 
-        ${product.discountPercent > 0 ? `<span class="card-badge-discount">${product.discountPercent}% OFF</span>` : ''}
+        ${(product.discount || product.discountPercent) > 0 ? `<span class="card-badge-discount">${product.discount || product.discountPercent}% OFF</span>` : ''}
         ${product.badge ? `<span class="card-badge-tag">${product.badge}</span>` : ''}
 
         <div class="card-floating-actions">
@@ -126,7 +127,8 @@ function createProductCardHTML(product) {
  * @param {string} productId
  */
 function openQuickView(productId) {
-  const product = typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === productId) : null;
+  const product = (window.ShopSmartCatalog && window.ShopSmartCatalog.getProductById(productId)) || 
+                  (typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === productId) : null);
   if (!product) return;
 
   trackRecentlyViewed(productId);
@@ -188,8 +190,9 @@ function openQuickView(productId) {
  */
 function renderProductDetailsPage() {
   const params = new URLSearchParams(window.location.search);
-  const productId = params.get('id') || (typeof PRODUCTS !== 'undefined' ? PRODUCTS[0].id : null);
-  const product = typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(p => p.id === productId) : null;
+  const catalogList = (window.ShopSmartCatalog && window.ShopSmartCatalog.getProducts().length > 0) ? window.ShopSmartCatalog.getProducts() : (typeof PRODUCTS !== 'undefined' ? PRODUCTS : []);
+  const productId = params.get('id') || (catalogList.length > 0 ? catalogList[0].id : null);
+  const product = (window.ShopSmartCatalog && window.ShopSmartCatalog.getProductById(productId)) || catalogList.find(p => p.id === productId) || null;
 
   if (!product) {
     const main = document.getElementById('productDetailsMain');
@@ -221,29 +224,78 @@ function renderProductDetailsPage() {
   if (brand) brand.textContent = product.brand;
   if (price) price.textContent = window.ShopSmartUtils.formatINR(product.price);
   if (origPrice) origPrice.textContent = product.originalPrice > product.price ? window.ShopSmartUtils.formatINR(product.originalPrice) : '';
+  const discountVal = product.discount || product.discountPercent || 0;
   if (discount) {
-    discount.textContent = product.discountPercent > 0 ? `${product.discountPercent}% OFF` : '';
-    discount.style.display = product.discountPercent > 0 ? 'inline-block' : 'none';
+    discount.textContent = discountVal > 0 ? `${discountVal}% OFF` : '';
+    discount.style.display = discountVal > 0 ? 'inline-block' : 'none';
   }
   if (stock) {
     stock.textContent = product.stock > 0 ? `In Stock (${product.stock} units available)` : 'Out of Stock';
     stock.className = product.stock > 0 ? 'text-success font-semibold' : 'text-danger font-semibold';
   }
-  if (rating) rating.innerHTML = `${window.ShopSmartUtils.generateStarRatingHtml(product.rating)} <strong>${product.rating}</strong> (${product.reviewCount} customer ratings)`;
+  if (rating) rating.innerHTML = `${window.ShopSmartUtils.generateStarRatingHtml(product.rating)} <strong>${product.rating}</strong> (${product.reviewCount} verified ratings)`;
   if (desc) desc.textContent = product.description;
   if (highlights) {
-    highlights.innerHTML = (product.highlights || []).map(h => `<li>${h}</li>`).join('');
+    const hlList = product.highlights || (product.specifications ? Object.entries(product.specifications).slice(0, 4).map(([k, v]) => `${k}: ${v}`) : []);
+    highlights.innerHTML = hlList.map(h => `<li>${h}</li>`).join('');
   }
-  if (specsContainer && product.specs) {
-    specsContainer.innerHTML = Object.entries(product.specs).map(([k, v]) => `
-      <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.875rem;">
-        <span style="font-weight: 600; text-transform: capitalize;">${k}</span>
+  
+  const specs = product.specifications || product.specs;
+  if (specsContainer && specs) {
+    specsContainer.innerHTML = Object.entries(specs).map(([k, v]) => `
+      <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border-color); font-size: 0.875rem;">
+        <span style="font-weight: 600; color: var(--text-main);">${k}</span>
         <span class="text-muted">${v}</span>
       </div>
     `).join('');
   }
+
+  // Render Variants if present (colors, sizes)
+  const variants = product.variants || {};
+  let variantContainer = document.getElementById('pdVariantsContainer');
+  if (!variantContainer && desc) {
+    variantContainer = document.createElement('div');
+    variantContainer.id = 'pdVariantsContainer';
+    variantContainer.style.marginBottom = '20px';
+    desc.parentNode.insertBefore(variantContainer, highlights ? highlights.parentNode : desc.nextSibling);
+  }
+  if (variantContainer) {
+    let varHtml = '';
+    if (product.colors && product.colors.length > 0) {
+      varHtml += `
+        <div style="margin-bottom: 14px;">
+          <div style="font-size: 0.8125rem; font-weight: 700; margin-bottom: 6px;">Color: <span id="pdActiveColor" style="color: var(--primary); font-weight: 600;">${product.colors[0]}</span></div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            ${product.colors.map((c, i) => `
+              <button type="button" class="btn btn-outline btn-sm ${i === 0 ? 'active' : ''}" style="padding: 4px 12px; border-radius: var(--radius-full);" onclick="document.getElementById('pdActiveColor').textContent='${c}'; this.parentNode.querySelectorAll('button').forEach(b => b.classList.remove('active')); this.classList.add('active');">${c}</button>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+    if (product.sizes && product.sizes.length > 0) {
+      varHtml += `
+        <div style="margin-bottom: 14px;">
+          <div style="font-size: 0.8125rem; font-weight: 700; margin-bottom: 6px;">Option / Size: <span id="pdActiveSize" style="color: var(--primary); font-weight: 600;">${product.sizes[0]}</span></div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            ${product.sizes.map((s, i) => `
+              <button type="button" class="btn btn-outline btn-sm ${i === 0 ? 'active' : ''}" style="padding: 4px 12px; border-radius: var(--radius-full);" onclick="document.getElementById('pdActiveSize').textContent='${s}'; this.parentNode.querySelectorAll('button').forEach(b => b.classList.remove('active')); this.classList.add('active');">${s}</button>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+    variantContainer.innerHTML = varHtml;
+  }
+
   if (breadcrumb) {
-    breadcrumb.innerHTML = `
+    breadcrumb.innerHTML = window.ShopSmartCategoryNav ? window.ShopSmartCategoryNav.generateBreadcrumbs({
+      category: product.category,
+      brand: product.brand,
+      productType: product.productType,
+      series: product.series,
+      productName: product.name
+    }) : `
       <a href="index.html">Home</a> &gt; 
       <a href="products.html?category=${encodeURIComponent(product.category)}">${product.category}</a> &gt; 
       <span>${product.name}</span>
@@ -276,7 +328,12 @@ function renderProductDetailsPage() {
   // Render Related Products (same category, excluding this one)
   const relatedGrid = document.getElementById('pdRelatedGrid');
   if (relatedGrid) {
-    const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+    let related = [];
+    if (window.ShopSmartCatalog && window.ShopSmartCatalog.getRelatedProducts) {
+      related = window.ShopSmartCatalog.getRelatedProducts(product.id, 4);
+    } else if (typeof PRODUCTS !== 'undefined') {
+      related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+    }
     relatedGrid.innerHTML = related.map(p => createProductCardHTML(p)).join('');
   }
 
@@ -297,8 +354,11 @@ function renderProductDetailsPage() {
 // Global Export
 window.ShopSmartRenderer = {
   createProductCardHTML,
+  renderProductCard: createProductCardHTML,
   openQuickView,
   renderProductDetailsPage,
   trackRecentlyViewed,
   getRecentlyViewedProducts
 };
+
+window.ShopSmartProductRenderer = window.ShopSmartRenderer;

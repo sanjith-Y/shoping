@@ -1,0 +1,1794 @@
+[
+  {
+    "name": "ASICS",
+    "slug": "asics",
+    "categories": [
+      "Footwear"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "ASUS",
+    "slug": "asus",
+    "categories": [
+      "Laptops and Computers"
+    ],
+    "productCount": 8
+  },
+  {
+    "name": "ASUS ROG",
+    "slug": "asus-rog",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Acer",
+    "slug": "acer",
+    "categories": [
+      "Laptops and Computers"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Acer Predator",
+    "slug": "acer-predator",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Adidas",
+    "slug": "adidas",
+    "categories": [
+      "Bags and Travel",
+      "Footwear",
+      "Sports and Fitness"
+    ],
+    "productCount": 14
+  },
+  {
+    "name": "Allen Solly",
+    "slug": "allen-solly",
+    "categories": [
+      "Men’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "AmazonBasics",
+    "slug": "amazonbasics",
+    "categories": [
+      "Books and Stationery",
+      "Sports and Fitness"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "American Tourister",
+    "slug": "american-tourister",
+    "categories": [
+      "Bags and Travel"
+    ],
+    "productCount": 9
+  },
+  {
+    "name": "Anker",
+    "slug": "anker",
+    "categories": [
+      "Laptops and Computers",
+      "Mobiles and Tablets"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Ant Esports",
+    "slug": "ant-esports",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Apple",
+    "slug": "apple",
+    "categories": [
+      "Audio and Accessories",
+      "Laptops and Computers",
+      "Mobiles and Tablets"
+    ],
+    "productCount": 24
+  },
+  {
+    "name": "Atomberg",
+    "slug": "atomberg",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Audio-Technica",
+    "slug": "audio-technica",
+    "categories": [
+      "Audio and Accessories"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Aurelia",
+    "slug": "aurelia",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Baggit",
+    "slug": "baggit",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Bajaj",
+    "slug": "bajaj",
+    "categories": [
+      "Home Appliances",
+      "Home and Kitchen"
+    ],
+    "productCount": 6
+  },
+  {
+    "name": "Barbie",
+    "slug": "barbie",
+    "categories": [
+      "Toys and Accessories"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Bata",
+    "slug": "bata",
+    "categories": [
+      "Footwear"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Beardo",
+    "slug": "beardo",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Biba",
+    "slug": "biba",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 9
+  },
+  {
+    "name": "Biotique",
+    "slug": "biotique",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Birkenstock",
+    "slug": "birkenstock",
+    "categories": [
+      "Footwear"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Bloomsbury",
+    "slug": "bloomsbury",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Blue Star",
+    "slug": "blue-star",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Boldfit",
+    "slug": "boldfit",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 9
+  },
+  {
+    "name": "Bombay Shaving Company",
+    "slug": "bombay-shaving-company",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Borosil",
+    "slug": "borosil",
+    "categories": [
+      "Home and Kitchen"
+    ],
+    "productCount": 6
+  },
+  {
+    "name": "Bosch",
+    "slug": "bosch",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Bose",
+    "slug": "bose",
+    "categories": [
+      "Audio and Accessories"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Braun",
+    "slug": "braun",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Calvin Klein",
+    "slug": "calvin-klein",
+    "categories": [
+      "Men’s Fashion"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Cambridge University Press",
+    "slug": "cambridge-university-press",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Campus",
+    "slug": "campus",
+    "categories": [
+      "Footwear"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Caprese",
+    "slug": "caprese",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Casio",
+    "slug": "casio",
+    "categories": [
+      "Books and Stationery",
+      "Men’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Cello",
+    "slug": "cello",
+    "categories": [
+      "Home and Kitchen"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Cetaphil",
+    "slug": "cetaphil",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Clarks",
+    "slug": "clarks",
+    "categories": [
+      "Footwear"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Classmate",
+    "slug": "classmate",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Cockatoo",
+    "slug": "cockatoo",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Converse",
+    "slug": "converse",
+    "categories": [
+      "Footwear"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Corsair",
+    "slug": "corsair",
+    "categories": [
+      "Gaming",
+      "Laptops and Computers"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Cosco",
+    "slug": "cosco",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Cosmic Byte",
+    "slug": "cosmic-byte",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Crocs",
+    "slug": "crocs",
+    "categories": [
+      "Footwear"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Crompton",
+    "slug": "crompton",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Crucial",
+    "slug": "crucial",
+    "categories": [
+      "Laptops and Computers"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Cult.Sport",
+    "slug": "cult.sport",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "DOMS",
+    "slug": "doms",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "DSC",
+    "slug": "dsc",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Daikin",
+    "slug": "daikin",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Decathlon",
+    "slug": "decathlon",
+    "categories": [
+      "Bags and Travel",
+      "Sports and Fitness"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Dell",
+    "slug": "dell",
+    "categories": [
+      "Laptops and Computers"
+    ],
+    "productCount": 8
+  },
+  {
+    "name": "Dove",
+    "slug": "dove",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Durian",
+    "slug": "durian",
+    "categories": [
+      "Furniture and Home Decor"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Dyson",
+    "slug": "dyson",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "ESR",
+    "slug": "esr",
+    "categories": [
+      "Mobiles and Tablets"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Elgato",
+    "slug": "elgato",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Eureka Forbes",
+    "slug": "eureka-forbes",
+    "categories": [
+      "Home Appliances",
+      "Home and Kitchen"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Faber-Castell",
+    "slug": "faber-castell",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Fabindia",
+    "slug": "fabindia",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 8
+  },
+  {
+    "name": "Fastrack",
+    "slug": "fastrack",
+    "categories": [
+      "Men’s Fashion",
+      "Women’s Fashion"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Fisher-Price",
+    "slug": "fisher-price",
+    "categories": [
+      "Toys and Accessories"
+    ],
+    "productCount": 7
+  },
+  {
+    "name": "Forest Essentials",
+    "slug": "forest-essentials",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Fossil",
+    "slug": "fossil",
+    "categories": [
+      "Men’s Fashion",
+      "Women’s Fashion"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Funskool",
+    "slug": "funskool",
+    "categories": [
+      "Toys and Accessories"
+    ],
+    "productCount": 6
+  },
+  {
+    "name": "Gear",
+    "slug": "gear",
+    "categories": [
+      "Bags and Travel"
+    ],
+    "productCount": 7
+  },
+  {
+    "name": "Gillette",
+    "slug": "gillette",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Global Desi",
+    "slug": "global-desi",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Godrej Interio",
+    "slug": "godrej-interio",
+    "categories": [
+      "Furniture and Home Decor"
+    ],
+    "productCount": 7
+  },
+  {
+    "name": "Google",
+    "slug": "google",
+    "categories": [
+      "Mobiles and Tablets"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Green Soul",
+    "slug": "green-soul",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "H&M",
+    "slug": "h&m",
+    "categories": [
+      "Men’s Fashion",
+      "Women’s Fashion"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "HP",
+    "slug": "hp",
+    "categories": [
+      "Bags and Travel",
+      "Laptops and Computers"
+    ],
+    "productCount": 10
+  },
+  {
+    "name": "HP OMEN",
+    "slug": "hp-omen",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Haier",
+    "slug": "haier",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Hamleys",
+    "slug": "hamleys",
+    "categories": [
+      "Toys and Accessories"
+    ],
+    "productCount": 8
+  },
+  {
+    "name": "HarperCollins",
+    "slug": "harpercollins",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Hasbro",
+    "slug": "hasbro",
+    "categories": [
+      "Toys and Accessories"
+    ],
+    "productCount": 8
+  },
+  {
+    "name": "Havells",
+    "slug": "havells",
+    "categories": [
+      "Home Appliances",
+      "Home and Kitchen"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Hawkins",
+    "slug": "hawkins",
+    "categories": [
+      "Home and Kitchen"
+    ],
+    "productCount": 9
+  },
+  {
+    "name": "Home Centre",
+    "slug": "home-centre",
+    "categories": [
+      "Furniture and Home Decor"
+    ],
+    "productCount": 12
+  },
+  {
+    "name": "Hot Wheels",
+    "slug": "hot-wheels",
+    "categories": [
+      "Toys and Accessories"
+    ],
+    "productCount": 8
+  },
+  {
+    "name": "HyperX",
+    "slug": "hyperx",
+    "categories": [
+      "Audio and Accessories",
+      "Gaming"
+    ],
+    "productCount": 6
+  },
+  {
+    "name": "IFB",
+    "slug": "ifb",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "IKEA",
+    "slug": "ikea",
+    "categories": [
+      "Furniture and Home Decor"
+    ],
+    "productCount": 10
+  },
+  {
+    "name": "JBL",
+    "slug": "jbl",
+    "categories": [
+      "Audio and Accessories"
+    ],
+    "productCount": 7
+  },
+  {
+    "name": "Jack & Jones",
+    "slug": "jack-&-jones",
+    "categories": [
+      "Men’s Fashion"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Kangaroo",
+    "slug": "kangaroo",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Kent",
+    "slug": "kent",
+    "categories": [
+      "Home Appliances",
+      "Home and Kitchen"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Keychron",
+    "slug": "keychron",
+    "categories": [
+      "Laptops and Computers"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Kingston",
+    "slug": "kingston",
+    "categories": [
+      "Laptops and Computers"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Kobo",
+    "slug": "kobo",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Kookaburra",
+    "slug": "kookaburra",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "L'Oréal Paris",
+    "slug": "loréal-paris",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "LEGO",
+    "slug": "lego",
+    "categories": [
+      "Toys and Accessories"
+    ],
+    "productCount": 12
+  },
+  {
+    "name": "LG",
+    "slug": "lg",
+    "categories": [
+      "Home Appliances",
+      "Laptops and Computers"
+    ],
+    "productCount": 13
+  },
+  {
+    "name": "Lakme",
+    "slug": "lakme",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Lavie",
+    "slug": "lavie",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Lenovo",
+    "slug": "lenovo",
+    "categories": [
+      "Bags and Travel",
+      "Laptops and Computers"
+    ],
+    "productCount": 10
+  },
+  {
+    "name": "Lenovo Legion",
+    "slug": "lenovo-legion",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Levi's",
+    "slug": "levis",
+    "categories": [
+      "Men’s Fashion"
+    ],
+    "productCount": 8
+  },
+  {
+    "name": "Li-Ning",
+    "slug": "li-ning",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Libas",
+    "slug": "libas",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Logitech",
+    "slug": "logitech",
+    "categories": [
+      "Laptops and Computers"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Logitech G",
+    "slug": "logitech-g",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 8
+  },
+  {
+    "name": "Louis Philippe",
+    "slug": "louis-philippe",
+    "categories": [
+      "Men’s Fashion"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "MCaffeine",
+    "slug": "mcaffeine",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "MSI",
+    "slug": "msi",
+    "categories": [
+      "Gaming",
+      "Laptops and Computers"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Mamaearth",
+    "slug": "mamaearth",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Marshall",
+    "slug": "marshall",
+    "categories": [
+      "Audio and Accessories"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Mattel",
+    "slug": "mattel",
+    "categories": [
+      "Toys and Accessories"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Maybelline",
+    "slug": "maybelline",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "McGraw Hill",
+    "slug": "mcgraw-hill",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Michael Kors",
+    "slug": "michael-kors",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Microsoft",
+    "slug": "microsoft",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 6
+  },
+  {
+    "name": "Milton",
+    "slug": "milton",
+    "categories": [
+      "Home and Kitchen"
+    ],
+    "productCount": 6
+  },
+  {
+    "name": "Minimalist",
+    "slug": "minimalist",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 10
+  },
+  {
+    "name": "Moleskine",
+    "slug": "moleskine",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Moonwalkr",
+    "slug": "moonwalkr",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Motorola",
+    "slug": "motorola",
+    "categories": [
+      "Mobiles and Tablets"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Navneet",
+    "slug": "navneet",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Nerf",
+    "slug": "nerf",
+    "categories": [
+      "Toys and Accessories"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Neutrogena",
+    "slug": "neutrogena",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "New Balance",
+    "slug": "new-balance",
+    "categories": [
+      "Footwear"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Nike",
+    "slug": "nike",
+    "categories": [
+      "Bags and Travel",
+      "Footwear",
+      "Men’s Fashion",
+      "Sports and Fitness"
+    ],
+    "productCount": 17
+  },
+  {
+    "name": "Nilkamal",
+    "slug": "nilkamal",
+    "categories": [
+      "Furniture and Home Decor"
+    ],
+    "productCount": 7
+  },
+  {
+    "name": "Nintendo",
+    "slug": "nintendo",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Nivea",
+    "slug": "nivea",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Nivia",
+    "slug": "nivia",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 7
+  },
+  {
+    "name": "Noise",
+    "slug": "noise",
+    "categories": [
+      "Audio and Accessories"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Nothing",
+    "slug": "nothing",
+    "categories": [
+      "Mobiles and Tablets"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "O'Reilly",
+    "slug": "oreilly",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "ONLY",
+    "slug": "only",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "OnePlus",
+    "slug": "oneplus",
+    "categories": [
+      "Audio and Accessories",
+      "Mobiles and Tablets"
+    ],
+    "productCount": 10
+  },
+  {
+    "name": "Oxford University Press",
+    "slug": "oxford-university-press",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "POCO",
+    "slug": "poco",
+    "categories": [
+      "Mobiles and Tablets"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Packt",
+    "slug": "packt",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Panasonic",
+    "slug": "panasonic",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Parker",
+    "slug": "parker",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Pearson",
+    "slug": "pearson",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Penguin Random House",
+    "slug": "penguin-random-house",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Peter England",
+    "slug": "peter-england",
+    "categories": [
+      "Men’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Philips",
+    "slug": "philips",
+    "categories": [
+      "Beauty and Personal Care",
+      "Home and Kitchen"
+    ],
+    "productCount": 10
+  },
+  {
+    "name": "Pigeon",
+    "slug": "pigeon",
+    "categories": [
+      "Home and Kitchen"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Pilot",
+    "slug": "pilot",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Play-Doh",
+    "slug": "play-doh",
+    "categories": [
+      "Toys and Accessories"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Plum",
+    "slug": "plum",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Portronics",
+    "slug": "portronics",
+    "categories": [
+      "Audio and Accessories",
+      "Laptops and Computers"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Post-it",
+    "slug": "post-it",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Preethi",
+    "slug": "preethi",
+    "categories": [
+      "Home and Kitchen"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Prestige",
+    "slug": "prestige",
+    "categories": [
+      "Home and Kitchen"
+    ],
+    "productCount": 11
+  },
+  {
+    "name": "Puma",
+    "slug": "puma",
+    "categories": [
+      "Bags and Travel",
+      "Footwear",
+      "Men’s Fashion",
+      "Sports and Fitness"
+    ],
+    "productCount": 17
+  },
+  {
+    "name": "Raymond",
+    "slug": "raymond",
+    "categories": [
+      "Men’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Razer",
+    "slug": "razer",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 9
+  },
+  {
+    "name": "Reach",
+    "slug": "reach",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Realme",
+    "slug": "realme",
+    "categories": [
+      "Audio and Accessories",
+      "Mobiles and Tablets"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Red Tape",
+    "slug": "red-tape",
+    "categories": [
+      "Footwear"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Redmi",
+    "slug": "redmi",
+    "categories": [
+      "Mobiles and Tablets"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Redragon",
+    "slug": "redragon",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Reynolds",
+    "slug": "reynolds",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Roadster",
+    "slug": "roadster",
+    "categories": [
+      "Men’s Fashion",
+      "Women’s Fashion"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Rode",
+    "slug": "rode",
+    "categories": [
+      "Audio and Accessories"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Rubik's",
+    "slug": "rubiks",
+    "categories": [
+      "Toys and Accessories"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "SG",
+    "slug": "sg",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "SS",
+    "slug": "ss",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Safari",
+    "slug": "safari",
+    "categories": [
+      "Bags and Travel"
+    ],
+    "productCount": 6
+  },
+  {
+    "name": "Samsonite",
+    "slug": "samsonite",
+    "categories": [
+      "Bags and Travel"
+    ],
+    "productCount": 7
+  },
+  {
+    "name": "Samsung",
+    "slug": "samsung",
+    "categories": [
+      "Home Appliances",
+      "Laptops and Computers",
+      "Mobiles and Tablets"
+    ],
+    "productCount": 25
+  },
+  {
+    "name": "SanDisk",
+    "slug": "sandisk",
+    "categories": [
+      "Laptops and Computers"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Scotch",
+    "slug": "scotch",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Sennheiser",
+    "slug": "sennheiser",
+    "categories": [
+      "Audio and Accessories"
+    ],
+    "productCount": 6
+  },
+  {
+    "name": "Shure",
+    "slug": "shure",
+    "categories": [
+      "Audio and Accessories"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Signoraware",
+    "slug": "signoraware",
+    "categories": [
+      "Home and Kitchen"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Skechers",
+    "slug": "skechers",
+    "categories": [
+      "Footwear"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Skullcandy",
+    "slug": "skullcandy",
+    "categories": [
+      "Audio and Accessories"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Skybags",
+    "slug": "skybags",
+    "categories": [
+      "Bags and Travel"
+    ],
+    "productCount": 6
+  },
+  {
+    "name": "Sleepyhead",
+    "slug": "sleepyhead",
+    "categories": [
+      "Furniture and Home Decor"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Solimo",
+    "slug": "solimo",
+    "categories": [
+      "Furniture and Home Decor"
+    ],
+    "productCount": 7
+  },
+  {
+    "name": "Solo",
+    "slug": "solo",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Sony",
+    "slug": "sony",
+    "categories": [
+      "Audio and Accessories",
+      "Gaming"
+    ],
+    "productCount": 18
+  },
+  {
+    "name": "Sparx",
+    "slug": "sparx",
+    "categories": [
+      "Footwear"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Speedo",
+    "slug": "speedo",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Spigen",
+    "slug": "spigen",
+    "categories": [
+      "Mobiles and Tablets"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "SteelSeries",
+    "slug": "steelseries",
+    "categories": [
+      "Gaming"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Strauss",
+    "slug": "strauss",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 6
+  },
+  {
+    "name": "Symphony",
+    "slug": "symphony",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "TP-Link",
+    "slug": "tp-link",
+    "categories": [
+      "Laptops and Computers"
+    ],
+    "productCount": 1
+  },
+  {
+    "name": "Targus",
+    "slug": "targus",
+    "categories": [
+      "Bags and Travel"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "The Derma Co",
+    "slug": "the-derma-co",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "The Ordinary",
+    "slug": "the-ordinary",
+    "categories": [
+      "Beauty and Personal Care"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Titan",
+    "slug": "titan",
+    "categories": [
+      "Men’s Fashion",
+      "Women’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Tommy Hilfiger",
+    "slug": "tommy-hilfiger",
+    "categories": [
+      "Men’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Tupperware",
+    "slug": "tupperware",
+    "categories": [
+      "Home and Kitchen"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "U.S. Polo Assn.",
+    "slug": "u.s.-polo-assn.",
+    "categories": [
+      "Men’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Urban Ladder",
+    "slug": "urban-ladder",
+    "categories": [
+      "Furniture and Home Decor"
+    ],
+    "productCount": 8
+  },
+  {
+    "name": "VIP",
+    "slug": "vip",
+    "categories": [
+      "Bags and Travel"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Van Heusen",
+    "slug": "van-heusen",
+    "categories": [
+      "Men’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Vero Moda",
+    "slug": "vero-moda",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Vivo",
+    "slug": "vivo",
+    "categories": [
+      "Mobiles and Tablets"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Voltas",
+    "slug": "voltas",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Voylla",
+    "slug": "voylla",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "W",
+    "slug": "w",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 4
+  },
+  {
+    "name": "Wakefit",
+    "slug": "wakefit",
+    "categories": [
+      "Furniture and Home Decor"
+    ],
+    "productCount": 9
+  },
+  {
+    "name": "Western Digital",
+    "slug": "western-digital",
+    "categories": [
+      "Laptops and Computers"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Whirlpool",
+    "slug": "whirlpool",
+    "categories": [
+      "Home Appliances"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Wildcraft",
+    "slug": "wildcraft",
+    "categories": [
+      "Bags and Travel",
+      "Men’s Fashion"
+    ],
+    "productCount": 7
+  },
+  {
+    "name": "Wiley",
+    "slug": "wiley",
+    "categories": [
+      "Books and Stationery"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Wilson",
+    "slug": "wilson",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Wonderchef",
+    "slug": "wonderchef",
+    "categories": [
+      "Home and Kitchen"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Woodland",
+    "slug": "woodland",
+    "categories": [
+      "Footwear",
+      "Men’s Fashion"
+    ],
+    "productCount": 5
+  },
+  {
+    "name": "Xiaomi",
+    "slug": "xiaomi",
+    "categories": [
+      "Mobiles and Tablets"
+    ],
+    "productCount": 3
+  },
+  {
+    "name": "Yonex",
+    "slug": "yonex",
+    "categories": [
+      "Sports and Fitness"
+    ],
+    "productCount": 7
+  },
+  {
+    "name": "Zara",
+    "slug": "zara",
+    "categories": [
+      "Men’s Fashion",
+      "Women’s Fashion"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Zaveri Pearls",
+    "slug": "zaveri-pearls",
+    "categories": [
+      "Women’s Fashion"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "Zebronics",
+    "slug": "zebronics",
+    "categories": [
+      "Audio and Accessories"
+    ],
+    "productCount": 2
+  },
+  {
+    "name": "boAt",
+    "slug": "boat",
+    "categories": [
+      "Audio and Accessories",
+      "Mobiles and Tablets"
+    ],
+    "productCount": 9
+  },
+  {
+    "name": "iQOO",
+    "slug": "iqoo",
+    "categories": [
+      "Mobiles and Tablets"
+    ],
+    "productCount": 2
+  }
+]

@@ -55,17 +55,7 @@ async function createOrder(orderData) {
     createdAt: new Date().toISOString()
   };
 
-  // 1. Production Firebase Firestore
-  const fb = window.ShopSmartFirebase;
-  if (fb && fb.isConfigured && fb.db) {
-    try {
-      await fb.db.collection('orders').doc(orderId).set(orderRecord);
-    } catch (e) {
-      console.warn('Firestore order save error:', e);
-    }
-  }
-
-  // 2. LocalStorage Persistence
+  // LocalStorage Demonstration Persistence
   try {
     const raw = localStorage.getItem(ORDERS_STORAGE_KEY);
     const existing = raw ? JSON.parse(raw) : [];

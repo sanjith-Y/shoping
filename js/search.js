@@ -1,6 +1,6 @@
 /**
- * ShopSmart — Search, Multi-Filter, Voice Search & Image Search Controller
- * Full product catalog discovery system
+ * ShopSmart — Search, Multi-Filter, Voice Search & Discovery Controller
+ * Full product catalog discovery across 1,006 products and 15 categories
  */
 
 'use strict';
@@ -8,11 +8,13 @@
 const searchState = {
   query: '',
   category: 'All',
+  brand: 'All',
+  productType: 'All',
+  series: 'All',
   minPrice: null,
   maxPrice: null,
   minRating: 0,
   inStockOnly: false,
-  brand: 'All',
   sort: 'featured'
 };
 
@@ -20,27 +22,49 @@ const searchState = {
  * Filter and Sort entire catalog
  */
 function getFilteredCatalog() {
-  if (typeof PRODUCTS === 'undefined') return [];
+  const prods = (typeof PRODUCTS !== 'undefined') ? PRODUCTS : (window.ShopSmartCatalog ? window.ShopSmartCatalog.getProducts() : []);
+  if (!prods || prods.length === 0) return [];
 
-  return PRODUCTS.filter(product => {
-    // 1. Text Query Search
+  return prods.filter(product => {
+    // 1. Text Query Search (name, brand, model, series, category, productType, specs)
     if (searchState.query) {
       const q = searchState.query.toLowerCase().trim();
-      const matchName = product.name.toLowerCase().includes(q);
+      const matchName = product.name ? product.name.toLowerCase().includes(q) : false;
       const matchBrand = product.brand ? product.brand.toLowerCase().includes(q) : false;
-      const matchCategory = product.category.toLowerCase().includes(q);
-      const matchDesc = product.description.toLowerCase().includes(q);
-      if (!matchName && !matchBrand && !matchCategory && !matchDesc) return false;
+      const matchModel = product.model ? product.model.toLowerCase().includes(q) : false;
+      const matchSeries = product.series ? product.series.toLowerCase().includes(q) : false;
+      const matchCategory = product.category ? product.category.toLowerCase().includes(q) : false;
+      const matchType = product.productType ? product.productType.toLowerCase().includes(q) : false;
+      const matchDesc = product.description ? product.description.toLowerCase().includes(q) : false;
+
+      if (!matchName && !matchBrand && !matchModel && !matchSeries && !matchCategory && !matchType && !matchDesc) {
+        return false;
+      }
     }
 
     // 2. Category Filter
-    if (searchState.category && searchState.category !== 'All') {
-      const targetCat = searchState.category.toLowerCase().replace(/&/g, 'and');
-      const prodCat = product.category.toLowerCase().replace(/&/g, 'and');
-      if (prodCat !== targetCat && !prodCat.startsWith(targetCat)) return false;
+    if (searchState.category && searchState.category !== 'All' && searchState.category !== 'all') {
+      const targetCat = searchState.category.toLowerCase().replace(/&/g, 'and').trim();
+      const prodCat = (product.category || '').toLowerCase().replace(/&/g, 'and').trim();
+      if (prodCat !== targetCat) return false;
     }
 
-    // 3. Price Filter
+    // 3. Brand Filter
+    if (searchState.brand && searchState.brand !== 'All' && searchState.brand !== 'all') {
+      if ((product.brand || '').toLowerCase() !== searchState.brand.toLowerCase()) return false;
+    }
+
+    // 4. Product Type Filter
+    if (searchState.productType && searchState.productType !== 'All' && searchState.productType !== 'all') {
+      if ((product.productType || '').toLowerCase() !== searchState.productType.toLowerCase()) return false;
+    }
+
+    // 5. Series Filter
+    if (searchState.series && searchState.series !== 'All' && searchState.series !== 'all') {
+      if ((product.series || '').toLowerCase() !== searchState.series.toLowerCase()) return false;
+    }
+
+    // 6. Price Filter
     if (searchState.minPrice !== null && !isNaN(searchState.minPrice)) {
       if (product.price < searchState.minPrice) return false;
     }
@@ -48,19 +72,14 @@ function getFilteredCatalog() {
       if (product.price > searchState.maxPrice) return false;
     }
 
-    // 4. Rating Filter
+    // 7. Rating Filter
     if (searchState.minRating > 0) {
       if (product.rating < searchState.minRating) return false;
     }
 
-    // 5. Stock Filter
+    // 8. Stock Filter
     if (searchState.inStockOnly) {
       if (product.stock <= 0) return false;
-    }
-
-    // 6. Brand Filter
-    if (searchState.brand && searchState.brand !== 'All') {
-      if (product.brand !== searchState.brand) return false;
     }
 
     return true;
@@ -69,12 +88,40 @@ function getFilteredCatalog() {
       case 'price-asc': return a.price - b.price;
       case 'price-desc': return b.price - a.price;
       case 'rating': return b.rating - a.rating;
-      case 'discount': return b.discountPercent - a.discountPercent;
+      case 'discount': return (b.discount || b.discountPercent || 0) - (a.discount || a.discountPercent || 0);
       case 'newest': return b.id.localeCompare(a.id);
       case 'name-asc': return a.name.localeCompare(b.name);
-      default: return (b.badge ? 1 : 0) - (a.badge ? 1 : 0);
+      default: return (b.discount || 0) - (a.discount || 0);
     }
   });
+}
+
+/**
+ * Populate dynamic filters (Brands and Types) for active category
+ */
+function updateDynamicFilterOptions() {
+  const brandSel = document.getElementById('catalogBrandSelect');
+  const typeSel = document.getElementById('catalogTypeSelect');
+  const prods = (typeof PRODUCTS !== 'undefined') ? PRODUCTS : [];
+
+  let relevantProds = prods;
+  if (searchState.category && searchState.category !== 'All') {
+    relevantProds = prods.filter(p => p.category.toLowerCase() === searchState.category.toLowerCase());
+  }
+
+  if (brandSel) {
+    const brands = Array.from(new Set(relevantProds.map(p => p.brand).filter(Boolean))).sort();
+    const currBrand = searchState.brand;
+    brandSel.innerHTML = '<option value="All">All Brands</option>' +
+      brands.map(b => `<option value="${b}" ${b.toLowerCase() === currBrand.toLowerCase() ? 'selected' : ''}>${b}</option>`).join('');
+  }
+
+  if (typeSel) {
+    const types = Array.from(new Set(relevantProds.map(p => p.productType).filter(Boolean))).sort();
+    const currType = searchState.productType;
+    typeSel.innerHTML = '<option value="All">All Product Types</option>' +
+      types.map(t => `<option value="${t}" ${t.toLowerCase() === currType.toLowerCase() ? 'selected' : ''}>${t}</option>`).join('');
+  }
 }
 
 /**
@@ -86,9 +133,10 @@ function renderCatalogPage() {
   if (!container) return;
 
   const results = getFilteredCatalog();
+  const totalCount = typeof PRODUCTS !== 'undefined' ? PRODUCTS.length : 1006;
 
   if (countEl) {
-    countEl.textContent = `Showing ${results.length} of ${PRODUCTS.length} products`;
+    countEl.textContent = `Showing ${results.length} of ${totalCount} products`;
   }
 
   if (results.length === 0) {
@@ -102,12 +150,12 @@ function renderCatalogPage() {
         </button>
       </div>
     `;
-    window.ShopSmartUtils.refreshIcons();
+    if (window.ShopSmartUtils && window.ShopSmartUtils.refreshIcons) window.ShopSmartUtils.refreshIcons();
     return;
   }
 
   container.innerHTML = results.map(p => window.ShopSmartRenderer.createProductCardHTML(p)).join('');
-  window.ShopSmartUtils.refreshIcons();
+  if (window.ShopSmartUtils && window.ShopSmartUtils.refreshIcons) window.ShopSmartUtils.refreshIcons();
 }
 
 /**
@@ -116,15 +164,19 @@ function renderCatalogPage() {
 function resetFilters() {
   searchState.query = '';
   searchState.category = 'All';
+  searchState.brand = 'All';
+  searchState.productType = 'All';
+  searchState.series = 'All';
   searchState.minPrice = null;
   searchState.maxPrice = null;
   searchState.minRating = 0;
   searchState.inStockOnly = false;
-  searchState.brand = 'All';
   searchState.sort = 'featured';
 
   const searchInput = document.getElementById('catalogSearchInput');
   const catSelect = document.getElementById('catalogCategorySelect');
+  const brandSelect = document.getElementById('catalogBrandSelect');
+  const typeSelect = document.getElementById('catalogTypeSelect');
   const minPrice = document.getElementById('catalogMinPrice');
   const maxPrice = document.getElementById('catalogMaxPrice');
   const ratingSelect = document.getElementById('catalogRatingSelect');
@@ -133,14 +185,19 @@ function resetFilters() {
 
   if (searchInput) searchInput.value = '';
   if (catSelect) catSelect.value = 'All';
+  if (brandSelect) brandSelect.value = 'All';
+  if (typeSelect) typeSelect.value = 'All';
   if (minPrice) minPrice.value = '';
   if (maxPrice) maxPrice.value = '';
   if (ratingSelect) ratingSelect.value = '0';
   if (inStockCheckbox) inStockCheckbox.checked = false;
   if (sortSelect) sortSelect.value = 'featured';
 
+  updateDynamicFilterOptions();
   renderCatalogPage();
-  window.ShopSmartUtils.showToast('Filters reset to default.', 'info');
+  if (window.ShopSmartUtils && window.ShopSmartUtils.showToast) {
+    window.ShopSmartUtils.showToast('Filters reset to default.', 'info');
+  }
 }
 
 /**
@@ -149,7 +206,9 @@ function resetFilters() {
 function startVoiceSearch(targetInputId = 'catalogSearchInput') {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SpeechRecognition) {
-    window.ShopSmartUtils.showToast('Voice Search is not supported in this browser. Please type your query.', 'warning');
+    if (window.ShopSmartUtils && window.ShopSmartUtils.showToast) {
+      window.ShopSmartUtils.showToast('Voice Search is not supported in this browser. Please type your query.', 'warning');
+    }
     return;
   }
 
@@ -158,75 +217,37 @@ function startVoiceSearch(targetInputId = 'catalogSearchInput') {
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
 
-  window.ShopSmartUtils.showToast('🎙️ Listening... Speak your search query now.', 'info');
+  if (window.ShopSmartUtils && window.ShopSmartUtils.showToast) {
+    window.ShopSmartUtils.showToast('🎙️ Listening... Speak your search query now.', 'info');
+  }
 
   recognition.onresult = (event) => {
     const transcript = event.results[0][0].transcript;
-    const input = document.getElementById(targetInputId) || document.querySelector('.header-search-input');
+    const input = document.getElementById(targetInputId) || document.querySelector('.header-search-input') || document.getElementById('globalSearchInput');
     if (input) {
       input.value = transcript;
       searchState.query = transcript;
       renderCatalogPage();
-      window.ShopSmartUtils.showToast(`Recognized: "${transcript}"`, 'success');
+      if (window.ShopSmartUtils && window.ShopSmartUtils.showToast) {
+        window.ShopSmartUtils.showToast(`Recognized: "${transcript}"`, 'success');
+      }
     }
   };
 
   recognition.onerror = (event) => {
-    window.ShopSmartUtils.showToast(`Voice Search Error: ${event.error}`, 'error');
+    if (window.ShopSmartUtils && window.ShopSmartUtils.showToast) {
+      window.ShopSmartUtils.showToast(`Voice Search Error: ${event.error}`, 'error');
+    }
   };
 
   recognition.start();
 }
 
-/**
- * Image Search Demonstration
- */
-function handleImageSearchUpload(file) {
-  if (!file) return;
-
-  if (!file.type.startsWith('image/')) {
-    window.ShopSmartUtils.showToast('Please upload a valid image file (JPG, PNG, WebP).', 'warning');
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const preview = document.getElementById('imageSearchPreview');
-    if (preview) {
-      preview.src = e.target.result;
-      preview.classList.remove('hidden');
-    }
-
-    // Demonstration matching algorithm: matches category based on dominant visual classification or tags
-    const demoMatches = PRODUCTS.filter(p => p.badge || p.stock > 10).slice(0, 4);
-    const resultsContainer = document.getElementById('imageSearchResults');
-    if (resultsContainer) {
-      resultsContainer.innerHTML = `
-        <div style="margin-top: 16px;">
-          <h4 style="font-size: 0.9375rem; font-weight: 600; margin-bottom: 8px;">Visually Similar Catalog Items (Demo):</h4>
-          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-            ${demoMatches.map(p => `
-              <div style="border: 1px solid var(--border-color); padding: 8px; border-radius: var(--radius-sm); text-align: center;">
-                <img src="${p.image}" alt="${p.name}" style="height: 70px; object-fit: contain; margin: 0 auto 4px;">
-                <div style="font-size: 0.75rem; font-weight: 600;">${p.name}</div>
-                <div style="font-size: 0.8125rem; color: var(--primary); font-weight: 700;">${window.ShopSmartUtils.formatINR(p.price)}</div>
-                <button class="btn btn-primary btn-sm btn-block" style="margin-top: 4px;" onclick="window.ShopSmartCart.addToCart('${p.id}')">Add</button>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-    }
-  };
-  reader.readAsDataURL(file);
-}
-
-// Global Export
 window.ShopSmartSearch = {
   searchState,
   getFilteredCatalog,
   renderCatalogPage,
   resetFilters,
   startVoiceSearch,
-  handleImageSearchUpload
+  updateDynamicFilterOptions
 };

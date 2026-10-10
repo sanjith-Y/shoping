@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Showroom — ShopSmart</title>
+  <meta name="description" content="Explore brand collections and product series on ShopSmart. Verified authentic catalog with fast Coimbatore and India delivery.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container announcement-content">
+      <span>📍 Delivering to <strong>Coimbatore, Tamil Nadu (641002)</strong> & across India | Standard Delivery: Free over ₹999</span>
+      <div class="announcement-links">
+        <a href="assistant.html"><i data-lucide="bot" style="width:14px;height:14px;display:inline;"></i> Shopping Assistant</a>
+        <a href="budget-shopping.html"><i data-lucide="calculator" style="width:14px;height:14px;display:inline;"></i> Budget Builder</a>
+        <a href="contact.html">Help & Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><i data-lucide="shopping-bag"></i></span>
+        <span class="logo-text">Shop<span>Smart</span></span>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <form action="products.html" method="GET" class="search-form">
+          <input type="text" name="q" placeholder="Search across 1,000+ verified products, brands, series..." class="search-input" id="globalSearchInput" autocomplete="off">
+          <button type="submit" class="search-btn" aria-label="Search">
+            <i data-lucide="search"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- User Action Controls -->
+      <div class="header-actions">
+        <div class="header-action-item" id="authNavContainer">
+          <a href="login.html" class="action-btn" id="loginBtn">
+            <i data-lucide="user"></i>
+            <span>Login</span>
+          </a>
+        </div>
+        <a href="wishlist.html" class="action-btn" title="Wishlist">
+          <div class="icon-badge-wrapper">
+            <i data-lucide="heart"></i>
+            <span class="badge" id="wishlistCount">0</span>
+          </div>
+          <span>Wishlist</span>
+        </a>
+        <a href="compare.html" class="action-btn" title="Compare Products">
+          <div class="icon-badge-wrapper">
+            <i data-lucide="repeat"></i>
+            <span class="badge" id="compareCount">0</span>
+          </div>
+          <span>Compare</span>
+        </a>
+        <a href="cart.html" class="action-btn cart-btn-action" title="Cart">
+          <div class="icon-badge-wrapper">
+            <i data-lucide="shopping-cart"></i>
+            <span class="badge" id="cartCount">0</span>
+          </div>
+          <span>Cart</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 15 Category Navigation Bar Strip -->
+    <div class="category-strip-container">
+      <div class="container category-strip" id="categoryNavStrip">
+        <!-- Rendered by js/category-navigation.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Body Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Breadcrumbs -->
+      <div id="brandBreadcrumbs" style="margin-top: 16px;"></div>
+
+      <!-- Brand Showroom View (When ?brand=... is present) -->
+      <section id="brandShowroomSection" style="margin-top: 20px;">
+        <!-- Brand Hero Card -->
+        <div id="brandHeaderContainer"></div>
+
+        <!-- Filter Pills Bar -->
+        <div class="brand-filters-bar">
+          <div id="brandSeriesFilters" class="filter-pill-group"></div>
+          <div id="brandTypeFilters" class="filter-pill-group" style="margin-top: 8px;"></div>
+          
+          <div class="brand-sorting-wrapper">
+            <span id="brandResultsCount" class="results-count-text">Loading products...</span>
+            <div class="sort-select-wrapper">
+              <label for="brandSortSelect">Sort:</label>
+              <select id="brandSortSelect" onchange="BrandNavigation.setSortBy(this.value)">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+                <option value="discount">Highest Discount</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand Products Grid -->
+        <div class="products-grid" id="brandProductsGrid">
+          <div class="loading-state" style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+            <p>Loading brand catalog...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Brand Directory Index (Fallback when no brand param) -->
+      <section id="brandDirectoryContainer" style="display: none; margin-top: 24px;">
+        <!-- Rendered by js/brand-navigation.js -->
+      </section>
+    </div>
+  </main>
+
+  <!-- Website Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <a href="index.html" class="logo footer-logo">
+          <span class="logo-mark"><i data-lucide="shopping-bag"></i></span>
+          <span class="logo-text">Shop<span>Smart</span></span>
+        </a>
+        <p class="footer-desc">
+          ShopSmart is an authentic multi-brand online shopping platform configured for Coimbatore, Tamil Nadu, and pan-India customers. Featuring over 1,000 verified catalog entries across 15 categories.
+        </p>
+        <div class="footer-coimbatore-badge">
+          📍 Coimbatore Hub: R.S. Puram, Coimbatore, Tamil Nadu 641002
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Top Categories</h4>
+        <ul class="footer-links">
+          <li><a href="products.html?category=Mobiles%20and%20Tablets">Mobiles & Tablets</a></li>
+          <li><a href="products.html?category=Laptops%20and%20Computers">Laptops & Computers</a></li>
+          <li><a href="products.html?category=Audio%20and%20Accessories">Audio & Accessories</a></li>
+          <li><a href="products.html?category=Men%E2%80%99s%20Fashion">Men’s Fashion</a></li>
+          <li><a href="products.html?category=Women%E2%80%99s%20Fashion">Women’s Fashion</a></li>
+          <li><a href="products.html?category=Footwear">Footwear</a></li>
+          <li><a href="products.html?category=Home%20Appliances">Home Appliances</a></li>
+          <li><a href="products.html?category=Gaming">Gaming Gear</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Customer Services</h4>
+        <ul class="footer-links">
+          <li><a href="orders.html">Track Order History</a></li>
+          <li><a href="cart.html">View Shopping Cart</a></li>
+          <li><a href="wishlist.html">Saved Wishlist</a></li>
+          <li><a href="compare.html">Compare Products</a></li>
+          <li><a href="budget-shopping.html">Budget Shopping Assistant</a></li>
+          <li><a href="assistant.html">Smart Search Assistant</a></li>
+          <li><a href="admin.html">Catalog Admin Console</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Store Policies</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About ShopSmart</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>&copy; 2025 ShopSmart Coimbatore. All rights reserved. Built using HTML5, CSS3, and Vanilla JavaScript.</p>
+        <div class="payment-badges">
+          <span class="pay-pill">UPI</span>
+          <span class="pay-pill">NetBanking</span>
+          <span class="pay-pill">Credit/Debit Cards</span>
+          <span class="pay-pill">Cash on Delivery</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/category-navigation.js"></script>
+  <script src="js/brand-navigation.js"></script>
+  <script src="js/product-renderer.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/comparison.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
