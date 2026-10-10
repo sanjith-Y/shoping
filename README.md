@@ -39,7 +39,7 @@ To ensure that the application works seamlessly under any environment:
 
 1. **Local Development HTTP Server Mode (Primary):**
    - Automatically loads `data/products.json` (1.4MB), `data/categories.json`, and `data/brands.json` via asynchronous `fetch()`.
-   - Start any local server (e.g. `python3 -m http.server 8085`) and navigate to `http://localhost:8085`.
+   - Start any local development server (or Live Server) and navigate to `http://localhost:8085`.
 
 2. **Zero-Server Direct File Mode (`file://` Protocol Fallback):**
    - Modern browsers restrict `fetch()` requests when opening `.html` files directly from disk due to CORS policies.
@@ -218,23 +218,13 @@ Shoping/
 
 ## 9. How to Run Locally
 
-### Option 1: Python Built-in HTTP Server (Recommended)
-Open a terminal in the project directory and run:
-```bash
-python3 -m http.server 8085
-```
-Then visit:
-```
-http://localhost:8085
-```
+### Option 1: Direct File Opening (Zero Configuration — Recommended)
+Simply double-click `index.html` or open it directly in any browser (Chrome, Edge, Safari, Firefox). 
+Due to the built-in `window.PRODUCTS` catalog engine in `js/products.js`, the entire 1,006-item store, categories, filters, cart, checkout, and assistant work 100% locally with pure HTML, CSS, and JavaScript.
 
-### Option 2: Node.js `npx serve`
-```bash
-npx serve -l 8085 .
-```
-
-### Option 3: Direct File Opening (Zero Configuration)
-Simply double-click `index.html` in Finder or File Explorer. Due to the built-in `window.PRODUCTS` fallback in `js/products.js`, the entire catalog and all features work without needing a server.
+### Option 2: Using Any Static Development Server
+You can also open the project using VS Code "Live Server" extension, or any standard local static file server.
+When run through an HTTP server, the site will also dynamically load `data/products.json`, `data/categories.json`, and `data/brands.json`.
 
 ---
 
