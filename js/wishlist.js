@@ -26,15 +26,6 @@ function saveWishlist() {
   try {
     const key = getWishlistStorageKey();
     localStorage.setItem(key, JSON.stringify(activeWishlist));
-
-    const fb = window.ShopSmartFirebase;
-    const user = window.ShopSmartAuth ? window.ShopSmartAuth.getCurrentUser() : null;
-    if (fb && fb.isConfigured && fb.db && user) {
-      fb.db.collection('user_wishlists').doc(user.uid).set({
-        items: activeWishlist,
-        updatedAt: new Date().toISOString()
-      }).catch(err => console.warn('Firestore wishlist sync error:', err));
-    }
   } catch (e) {
     console.warn('Wishlist persistence error:', e);
   }

@@ -602,9 +602,9 @@ const PRODUCTS = [
     "price": 129999,
     "originalPrice": 139999,
     "discount": 7,
-    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80",
+    "image": "assets/images/products/mobiles/samsung-galaxy-s24-ultra-5g.png",
     "images": [
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80"
+      "assets/images/products/mobiles/samsung-galaxy-s24-ultra-5g.png"
     ],
     "specifications": {
       "Display": "6.8\" QHD+ Dynamic AMOLED 2X 120Hz",
@@ -997,9 +997,9 @@ const PRODUCTS = [
     "price": 19999,
     "originalPrice": 24999,
     "discount": 20,
-    "image": "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&auto=format&fit=crop&q=80",
+    "image": "assets/images/products/mobiles/samsung-galaxy-m35-5g.png",
     "images": [
-      "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&auto=format&fit=crop&q=80"
+      "assets/images/products/mobiles/samsung-galaxy-m35-5g.png"
     ],
     "specifications": {
       "Battery": "6000mAh Monster Battery",
@@ -1823,9 +1823,9 @@ const PRODUCTS = [
     "price": 10499,
     "originalPrice": 13999,
     "discount": 25,
-    "image": "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&auto=format&fit=crop&q=80",
+    "image": "assets/images/products/mobiles/redmi-13c-5g.png",
     "images": [
-      "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&auto=format&fit=crop&q=80"
+      "assets/images/products/mobiles/redmi-13c-5g.png"
     ],
     "specifications": {
       "Processor": "Dimensity 6100+ 5G",
@@ -1915,9 +1915,10 @@ const PRODUCTS = [
     "price": 1999,
     "originalPrice": 2499,
     "discount": 20,
-    "image": "https://images.unsplash.com/photo-1609592426868-f90374026857?w=600&auto=format&fit=crop&q=80",
+    "image": "assets/images/products/mobiles/mi-20000mah-powerbank-white.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1609592426868-f90374026857?w=600&auto=format&fit=crop&q=80"
+      "assets/images/products/mobiles/mi-20000mah-powerbank-white.jpg",
+      "assets/images/products/mobiles/mi-20000mah-powerbank.jpg"
     ],
     "specifications": {
       "Capacity": "20000mAh High-Density Li-Polymer",
@@ -2974,9 +2975,9 @@ const PRODUCTS = [
     "price": 1499,
     "originalPrice": 1999,
     "discount": 25,
-    "image": "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&auto=format&fit=crop&q=80",
+    "image": "assets/images/products/mobiles/spigen-ultra-hybrid-iphone-16-pro.png",
     "images": [
-      "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&auto=format&fit=crop&q=80"
+      "assets/images/products/mobiles/spigen-ultra-hybrid-iphone-16-pro.png"
     ],
     "specifications": {
       "Material": "Polycarbonate Back + TPU Bumper",
@@ -3053,9 +3054,9 @@ const PRODUCTS = [
     "price": 2199,
     "originalPrice": 2999,
     "discount": 27,
-    "image": "https://images.unsplash.com/photo-1622445262464-84b14e32955e?w=600&auto=format&fit=crop&q=80",
+    "image": "assets/images/products/mobiles/boat-65w-gan-charger.png",
     "images": [
-      "https://images.unsplash.com/photo-1622445262464-84b14e32955e?w=600&auto=format&fit=crop&q=80"
+      "assets/images/products/mobiles/boat-65w-gan-charger.png"
     ],
     "specifications": {
       "Ports": "2x Type-C + 1x USB-A",

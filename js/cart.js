@@ -76,17 +76,6 @@ function saveCart() {
     } else {
       localStorage.removeItem('shopsmart_applied_coupon');
     }
-
-    // If authenticated and production Firebase Firestore is configured
-    const fb = window.ShopSmartFirebase;
-    const user = window.ShopSmartAuth ? window.ShopSmartAuth.getCurrentUser() : null;
-    if (fb && fb.isConfigured && fb.db && user) {
-      fb.db.collection('user_carts').doc(user.uid).set({
-        items: activeCart,
-        coupon: appliedCouponCode,
-        updatedAt: new Date().toISOString()
-      }).catch(err => console.warn('Firestore cart sync error:', err));
-    }
   } catch (e) {
     console.warn('Cart persistence error:', e);
   }

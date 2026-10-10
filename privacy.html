@@ -47,7 +47,7 @@
         <li><strong>Account Information:</strong> Full name, verified email address, and 10-digit Indian mobile contact number when registering.</li>
         <li><strong>Delivery Details:</strong> House/flat number, street, area, city (default Coimbatore), state (Tamil Nadu), and 6-digit PIN code.</li>
         <li><strong>Shopping Preferences:</strong> Cart items, wishlist records, recently viewed catalog products, and product comparisons.</li>
-        <li><strong>Authentication Data:</strong> When Firebase Authentication is connected, your encrypted identity tokens are managed directly by Google Firebase. In local development mode, session state is preserved locally on your client machine.</li>
+        <li><strong>Authentication Data:</strong> User credentials are secure using Web Crypto SHA-256 cryptographic password hashing. Session and profile states are preserved securely within client LocalStorage.</li>
       </ul>
     </div>
 
@@ -67,7 +67,7 @@
     <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 32px; margin-bottom: 24px; box-shadow: var(--shadow-sm);">
       <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 12px;">3. Storage and Data Security</h2>
       <p style="color: var(--text-muted); line-height: 1.7;">
-        ShopSmart does NOT store raw passwords or payment banking credentials (card numbers, CVVs, UPI PINs). When integrated with Firebase, data is governed by Firebase Firestore Security Rules where users can only view and mutate their own orders and profile documents. Client-side preferences use standard browser LocalStorage for guest cart persistence.
+        ShopSmart does NOT store raw passwords or payment banking credentials (card numbers, CVVs, UPI PINs). All demonstration user accounts use industry-standard Web Crypto SHA-256 password hashing. Shopping cart, wishlist, and simulated order records are persisted securely in your browser's LocalStorage.
       </p>
     </div>
 
