@@ -1,8 +1,7 @@
 /**
- * ShopEase — Complete Master Product Catalog Dataset
- * Contains 120 unique products across 12 distinct categories.
- * Each product has realistic Indian Rupee (₹) pricing, verified imagery,
- * authentic specifications, stock quantities, and ratings.
+ * ShopSmart — Master 150-Product Catalog Dataset
+ * 15 Distinct Categories with 10 Products Each.
+ * Realistic Indian Rupee (₹) pricing, verified imagery, specifications, stock, ratings.
  */
 
 'use strict';
@@ -11,7 +10,7 @@ const PRODUCTS = [
   {
     "id": "mob-01",
     "name": "Samsung Galaxy S23 5G (8GB RAM, 128GB)",
-    "category": "Mobiles & Tablets",
+    "category": "Mobiles and Tablets",
     "brand": "Samsung",
     "price": 54999,
     "originalPrice": 74999,
@@ -33,7 +32,7 @@ const PRODUCTS = [
   {
     "id": "mob-02",
     "name": "Apple iPhone 15 (128GB, Blue)",
-    "category": "Mobiles & Tablets",
+    "category": "Mobiles and Tablets",
     "brand": "Apple",
     "price": 69900,
     "originalPrice": 79900,
@@ -55,7 +54,7 @@ const PRODUCTS = [
   {
     "id": "mob-03",
     "name": "OnePlus 11R 5G (16GB RAM, 256GB Storage)",
-    "category": "Mobiles & Tablets",
+    "category": "Mobiles and Tablets",
     "brand": "OnePlus",
     "price": 37999,
     "originalPrice": 44999,
@@ -77,7 +76,7 @@ const PRODUCTS = [
   {
     "id": "mob-04",
     "name": "Apple iPad 10th Gen (10.9-inch Wi-Fi, 64GB)",
-    "category": "Mobiles & Tablets",
+    "category": "Mobiles and Tablets",
     "brand": "Apple",
     "price": 34900,
     "originalPrice": 39900,
@@ -99,7 +98,7 @@ const PRODUCTS = [
   {
     "id": "mob-05",
     "name": "Samsung Galaxy Tab S9 FE (10.9\" Wi-Fi, 128GB)",
-    "category": "Mobiles & Tablets",
+    "category": "Mobiles and Tablets",
     "brand": "Samsung",
     "price": 31999,
     "originalPrice": 44999,
@@ -121,7 +120,7 @@ const PRODUCTS = [
   {
     "id": "mob-06",
     "name": "Anker PowerCore 20,000mAh 20W Power Bank",
-    "category": "Mobiles & Tablets",
+    "category": "Mobiles and Tablets",
     "brand": "Anker",
     "price": 2499,
     "originalPrice": 3999,
@@ -143,7 +142,7 @@ const PRODUCTS = [
   {
     "id": "mob-07",
     "name": "Spigen Tough Armor Heavy Duty Phone Case",
-    "category": "Mobiles & Tablets",
+    "category": "Mobiles and Tablets",
     "brand": "Spigen",
     "price": 1299,
     "originalPrice": 1999,
@@ -165,7 +164,7 @@ const PRODUCTS = [
   {
     "id": "mob-08",
     "name": "Mi 67W SonicCharge Fast Charger & Type-C Cable",
-    "category": "Mobiles & Tablets",
+    "category": "Mobiles and Tablets",
     "brand": "Xiaomi",
     "price": 1499,
     "originalPrice": 1999,
@@ -187,7 +186,7 @@ const PRODUCTS = [
   {
     "id": "mob-09",
     "name": "ESR Edge-to-Edge Tempered Glass (2-Pack)",
-    "category": "Mobiles & Tablets",
+    "category": "Mobiles and Tablets",
     "brand": "ESR",
     "price": 499,
     "originalPrice": 999,
@@ -209,7 +208,7 @@ const PRODUCTS = [
   {
     "id": "mob-10",
     "name": "Portronics MODESK Universal Aluminum Phone Stand",
-    "category": "Mobiles & Tablets",
+    "category": "Mobiles and Tablets",
     "brand": "Portronics",
     "price": 349,
     "originalPrice": 699,
@@ -231,7 +230,7 @@ const PRODUCTS = [
   {
     "id": "lap-01",
     "name": "Apple MacBook Air M2 (13.6-inch, 8GB, 256GB SSD)",
-    "category": "Laptops & Computers",
+    "category": "Laptops and Computers",
     "brand": "Apple",
     "price": 89990,
     "originalPrice": 99900,
@@ -253,7 +252,7 @@ const PRODUCTS = [
   {
     "id": "lap-02",
     "name": "Dell Inspiron 15 Thin & Light Laptop (Core i5 12th Gen)",
-    "category": "Laptops & Computers",
+    "category": "Laptops and Computers",
     "brand": "Dell",
     "price": 47990,
     "originalPrice": 62000,
@@ -275,7 +274,7 @@ const PRODUCTS = [
   {
     "id": "lap-03",
     "name": "HP Pavilion 14 Laptop (AMD Ryzen 5, 16GB, 512GB)",
-    "category": "Laptops & Computers",
+    "category": "Laptops and Computers",
     "brand": "HP",
     "price": 52490,
     "originalPrice": 66500,
@@ -297,7 +296,7 @@ const PRODUCTS = [
   {
     "id": "lap-04",
     "name": "LG 27-inch 4K UHD IPS Monitor (HDR10, USB-C)",
-    "category": "Laptops & Computers",
+    "category": "Laptops and Computers",
     "brand": "LG",
     "price": 24999,
     "originalPrice": 34000,
@@ -319,7 +318,7 @@ const PRODUCTS = [
   {
     "id": "lap-05",
     "name": "Logitech MX Master 3S Wireless Performance Mouse",
-    "category": "Laptops & Computers",
+    "category": "Laptops and Computers",
     "brand": "Logitech",
     "price": 8995,
     "originalPrice": 10995,
@@ -341,7 +340,7 @@ const PRODUCTS = [
   {
     "id": "lap-06",
     "name": "Logitech K380 Multi-Device Bluetooth Keyboard",
-    "category": "Laptops & Computers",
+    "category": "Laptops and Computers",
     "brand": "Logitech",
     "price": 2495,
     "originalPrice": 3495,
@@ -363,7 +362,7 @@ const PRODUCTS = [
   {
     "id": "lap-07",
     "name": "Samsung T7 1TB Portable External SSD (1050MB/s)",
-    "category": "Laptops & Computers",
+    "category": "Laptops and Computers",
     "brand": "Samsung",
     "price": 8499,
     "originalPrice": 12999,
@@ -385,7 +384,7 @@ const PRODUCTS = [
   {
     "id": "lap-08",
     "name": "SanDisk Ultra Dual Drive Luxe 128GB Type-C Flash Drive",
-    "category": "Laptops & Computers",
+    "category": "Laptops and Computers",
     "brand": "SanDisk",
     "price": 1149,
     "originalPrice": 1800,
@@ -407,7 +406,7 @@ const PRODUCTS = [
   {
     "id": "lap-09",
     "name": "OMOTON Ergonomic Aluminum Laptop Riser Stand",
-    "category": "Laptops & Computers",
+    "category": "Laptops and Computers",
     "brand": "OMOTON",
     "price": 1399,
     "originalPrice": 2499,
@@ -429,7 +428,7 @@ const PRODUCTS = [
   {
     "id": "lap-10",
     "name": "TP-Link Archer AX55 Dual-Band WiFi 6 Gigabit Router",
-    "category": "Laptops & Computers",
+    "category": "Laptops and Computers",
     "brand": "TP-Link",
     "price": 4499,
     "originalPrice": 6999,
@@ -451,7 +450,7 @@ const PRODUCTS = [
   {
     "id": "aud-01",
     "name": "Sony WH-1000XM5 Wireless Noise Cancelling Headphones",
-    "category": "Audio & Accessories",
+    "category": "Audio and Accessories",
     "brand": "Sony",
     "price": 28990,
     "originalPrice": 34990,
@@ -473,7 +472,7 @@ const PRODUCTS = [
   {
     "id": "aud-02",
     "name": "Apple AirPods Pro (2nd Gen, MagSafe Case USB-C)",
-    "category": "Audio & Accessories",
+    "category": "Audio and Accessories",
     "brand": "Apple",
     "price": 20990,
     "originalPrice": 24900,
@@ -495,7 +494,7 @@ const PRODUCTS = [
   {
     "id": "aud-03",
     "name": "JBL Flip 6 Portable Waterproof Bluetooth Speaker",
-    "category": "Audio & Accessories",
+    "category": "Audio and Accessories",
     "brand": "JBL",
     "price": 9999,
     "originalPrice": 13999,
@@ -517,7 +516,7 @@ const PRODUCTS = [
   {
     "id": "aud-04",
     "name": "boAt Rockerz 450 Bluetooth On-Ear Headphones",
-    "category": "Audio & Accessories",
+    "category": "Audio and Accessories",
     "brand": "boAt",
     "price": 1499,
     "originalPrice": 3990,
@@ -539,7 +538,7 @@ const PRODUCTS = [
   {
     "id": "aud-05",
     "name": "Bose SoundLink Flex Bluetooth Outdoor Speaker",
-    "category": "Audio & Accessories",
+    "category": "Audio and Accessories",
     "brand": "Bose",
     "price": 14900,
     "originalPrice": 17900,
@@ -561,7 +560,7 @@ const PRODUCTS = [
   {
     "id": "aud-06",
     "name": "Rode VideoMicro Compact On-Camera Microphone",
-    "category": "Audio & Accessories",
+    "category": "Audio and Accessories",
     "brand": "Rode",
     "price": 5490,
     "originalPrice": 7000,
@@ -583,7 +582,7 @@ const PRODUCTS = [
   {
     "id": "aud-07",
     "name": "Sony HT-S20R 5.1ch Dolby Digital Soundbar (400W)",
-    "category": "Audio & Accessories",
+    "category": "Audio and Accessories",
     "brand": "Sony",
     "price": 16990,
     "originalPrice": 23990,
@@ -605,7 +604,7 @@ const PRODUCTS = [
   {
     "id": "aud-08",
     "name": "Sennheiser HD 450BT Wireless ANC Headphones",
-    "category": "Audio & Accessories",
+    "category": "Audio and Accessories",
     "brand": "Sennheiser",
     "price": 7990,
     "originalPrice": 14990,
@@ -627,7 +626,7 @@ const PRODUCTS = [
   {
     "id": "aud-09",
     "name": "Marshall Emberton II Portable Bluetooth Speaker",
-    "category": "Audio & Accessories",
+    "category": "Audio and Accessories",
     "brand": "Marshall",
     "price": 14999,
     "originalPrice": 19999,
@@ -649,7 +648,7 @@ const PRODUCTS = [
   {
     "id": "aud-10",
     "name": "OnePlus Nord Buds 2 TWS Earbuds with 25dB ANC",
-    "category": "Audio & Accessories",
+    "category": "Audio and Accessories",
     "brand": "OnePlus",
     "price": 2499,
     "originalPrice": 3299,
@@ -671,7 +670,7 @@ const PRODUCTS = [
   {
     "id": "fsm-01",
     "name": "Levi's Men's 511 Slim Fit Stretch Denim Jeans",
-    "category": "Fashion – Men",
+    "category": "Men’s Fashion",
     "brand": "Levi's",
     "price": 2499,
     "originalPrice": 4199,
@@ -693,7 +692,7 @@ const PRODUCTS = [
   {
     "id": "fsm-02",
     "name": "Allen Solly Men's Regular Fit Solid Polo T-Shirt",
-    "category": "Fashion – Men",
+    "category": "Men’s Fashion",
     "brand": "Allen Solly",
     "price": 899,
     "originalPrice": 1499,
@@ -715,7 +714,7 @@ const PRODUCTS = [
   {
     "id": "fsm-03",
     "name": "Tommy Hilfiger Men's Oxford Cotton Casual Shirt",
-    "category": "Fashion – Men",
+    "category": "Men’s Fashion",
     "brand": "Tommy Hilfiger",
     "price": 3299,
     "originalPrice": 5599,
@@ -737,7 +736,7 @@ const PRODUCTS = [
   {
     "id": "fsm-04",
     "name": "Puma Men's Classic Zip-Up Fleece Hoodie",
-    "category": "Fashion – Men",
+    "category": "Men’s Fashion",
     "brand": "Puma",
     "price": 2199,
     "originalPrice": 3999,
@@ -759,7 +758,7 @@ const PRODUCTS = [
   {
     "id": "fsm-05",
     "name": "Fossil Grant Chronograph Dark Brown Leather Watch",
-    "category": "Fashion – Men",
+    "category": "Men’s Fashion",
     "brand": "Fossil",
     "price": 8995,
     "originalPrice": 13495,
@@ -781,7 +780,7 @@ const PRODUCTS = [
   {
     "id": "fsm-06",
     "name": "Peter England Men's Slim Fit Formal Suit Blazer",
-    "category": "Fashion – Men",
+    "category": "Men’s Fashion",
     "brand": "Peter England",
     "price": 4499,
     "originalPrice": 7999,
@@ -803,7 +802,7 @@ const PRODUCTS = [
   {
     "id": "fsm-07",
     "name": "Van Heusen Men's Formal Dress Trousers",
-    "category": "Fashion – Men",
+    "category": "Men’s Fashion",
     "brand": "Van Heusen",
     "price": 1599,
     "originalPrice": 2499,
@@ -825,7 +824,7 @@ const PRODUCTS = [
   {
     "id": "fsm-08",
     "name": "U.S. Polo Assn. Quilted Winter Bomber Jacket",
-    "category": "Fashion – Men",
+    "category": "Men’s Fashion",
     "brand": "U.S. Polo Assn.",
     "price": 3799,
     "originalPrice": 6999,
@@ -847,7 +846,7 @@ const PRODUCTS = [
   {
     "id": "fsm-09",
     "name": "Casio Vintage Digital Stainless Steel Watch (A168WA)",
-    "category": "Fashion – Men",
+    "category": "Men’s Fashion",
     "brand": "Casio",
     "price": 2695,
     "originalPrice": 3495,
@@ -869,7 +868,7 @@ const PRODUCTS = [
   {
     "id": "fsm-10",
     "name": "Ray-Ban Classic Polarized Wayfarer Sunglasses",
-    "category": "Fashion – Men",
+    "category": "Men’s Fashion",
     "brand": "Ray-Ban",
     "price": 7490,
     "originalPrice": 9890,
@@ -891,7 +890,7 @@ const PRODUCTS = [
   {
     "id": "fsw-01",
     "name": "Biba Women's Printed Anarkali Kurta Set with Dupatta",
-    "category": "Fashion – Women",
+    "category": "Women’s Fashion",
     "brand": "Biba",
     "price": 2999,
     "originalPrice": 5999,
@@ -913,7 +912,7 @@ const PRODUCTS = [
   {
     "id": "fsw-02",
     "name": "Vero Moda Floral Wrap Midi Dress",
-    "category": "Fashion – Women",
+    "category": "Women’s Fashion",
     "brand": "Vero Moda",
     "price": 1899,
     "originalPrice": 3499,
@@ -935,7 +934,7 @@ const PRODUCTS = [
   {
     "id": "fsw-03",
     "name": "Levi's Women's 710 Super Skinny High-Rise Jeans",
-    "category": "Fashion – Women",
+    "category": "Women’s Fashion",
     "brand": "Levi's",
     "price": 2299,
     "originalPrice": 3999,
@@ -957,7 +956,7 @@ const PRODUCTS = [
   {
     "id": "fsw-04",
     "name": "Lavie Women's Betula Structured Tote Handbag",
-    "category": "Fashion – Women",
+    "category": "Women’s Fashion",
     "brand": "Lavie",
     "price": 1499,
     "originalPrice": 3990,
@@ -979,7 +978,7 @@ const PRODUCTS = [
   {
     "id": "fsw-05",
     "name": "Titan Raga Viva Rose Gold Analog Watch for Women",
-    "category": "Fashion – Women",
+    "category": "Women’s Fashion",
     "brand": "Titan",
     "price": 4795,
     "originalPrice": 6495,
@@ -1001,7 +1000,7 @@ const PRODUCTS = [
   {
     "id": "fsw-06",
     "name": "W for Woman Geometric Embroidered Straight Kurta",
-    "category": "Fashion – Women",
+    "category": "Women’s Fashion",
     "brand": "W",
     "price": 1299,
     "originalPrice": 2599,
@@ -1023,7 +1022,7 @@ const PRODUCTS = [
   {
     "id": "fsw-07",
     "name": "H&M Ribbed Knit Relaxed Fit Pullover Sweater",
-    "category": "Fashion – Women",
+    "category": "Women’s Fashion",
     "brand": "H&M",
     "price": 1499,
     "originalPrice": 2299,
@@ -1045,7 +1044,7 @@ const PRODUCTS = [
   {
     "id": "fsw-08",
     "name": "Caprese Faux Leather Women Satchel Bag",
-    "category": "Fashion – Women",
+    "category": "Women’s Fashion",
     "brand": "Caprese",
     "price": 2199,
     "originalPrice": 4699,
@@ -1067,7 +1066,7 @@ const PRODUCTS = [
   {
     "id": "fsw-09",
     "name": "Zaveri Pearls Traditional Gold Plated Kundan Choker",
-    "category": "Fashion – Women",
+    "category": "Women’s Fashion",
     "brand": "Zaveri Pearls",
     "price": 799,
     "originalPrice": 2495,
@@ -1089,7 +1088,7 @@ const PRODUCTS = [
   {
     "id": "fsw-10",
     "name": "Fastrack Ruffles Rose Gold Dial Analog Watch",
-    "category": "Fashion – Women",
+    "category": "Women’s Fashion",
     "brand": "Fastrack",
     "price": 1895,
     "originalPrice": 2750,
@@ -1331,7 +1330,7 @@ const PRODUCTS = [
   {
     "id": "kit-01",
     "name": "Prestige Iris 750 Watt Mixer Grinder with 4 Jars",
-    "category": "Home & Kitchen",
+    "category": "Home and Kitchen",
     "brand": "Prestige",
     "price": 3199,
     "originalPrice": 6295,
@@ -1353,7 +1352,7 @@ const PRODUCTS = [
   {
     "id": "kit-02",
     "name": "Pigeon 1.5L Stainless Steel Electric Kettle",
-    "category": "Home & Kitchen",
+    "category": "Home and Kitchen",
     "brand": "Pigeon",
     "price": 649,
     "originalPrice": 1245,
@@ -1375,7 +1374,7 @@ const PRODUCTS = [
   {
     "id": "kit-03",
     "name": "Hawkins Futura Hard Anodised Cookware Set (3-Piece)",
-    "category": "Home & Kitchen",
+    "category": "Home and Kitchen",
     "brand": "Hawkins",
     "price": 3690,
     "originalPrice": 4500,
@@ -1397,7 +1396,7 @@ const PRODUCTS = [
   {
     "id": "kit-04",
     "name": "Milton Executive Insulated Stainless Steel Lunch Box",
-    "category": "Home & Kitchen",
+    "category": "Home and Kitchen",
     "brand": "Milton",
     "price": 899,
     "originalPrice": 1365,
@@ -1419,7 +1418,7 @@ const PRODUCTS = [
   {
     "id": "kit-05",
     "name": "Borosil Glass Mixing Bowl & Storage Set (6-Piece)",
-    "category": "Home & Kitchen",
+    "category": "Home and Kitchen",
     "brand": "Borosil",
     "price": 1299,
     "originalPrice": 1890,
@@ -1441,7 +1440,7 @@ const PRODUCTS = [
   {
     "id": "kit-06",
     "name": "Philips Viva Collection 2100W Induction Cooktop",
-    "category": "Home & Kitchen",
+    "category": "Home and Kitchen",
     "brand": "Philips",
     "price": 2999,
     "originalPrice": 4995,
@@ -1463,7 +1462,7 @@ const PRODUCTS = [
   {
     "id": "kit-07",
     "name": "Wonderchef Nutri-Blend 400W Personal Blender",
-    "category": "Home & Kitchen",
+    "category": "Home and Kitchen",
     "brand": "Wonderchef",
     "price": 2499,
     "originalPrice": 5000,
@@ -1485,7 +1484,7 @@ const PRODUCTS = [
   {
     "id": "kit-08",
     "name": "Cello Checkers Airtight Kitchen Containers (18-Piece)",
-    "category": "Home & Kitchen",
+    "category": "Home and Kitchen",
     "brand": "Cello",
     "price": 999,
     "originalPrice": 1650,
@@ -1507,7 +1506,7 @@ const PRODUCTS = [
   {
     "id": "kit-09",
     "name": "Kent Gold 20-Litre Gravity-Based Water Purifier",
-    "category": "Home & Kitchen",
+    "category": "Home and Kitchen",
     "brand": "Kent",
     "price": 2799,
     "originalPrice": 3600,
@@ -1529,7 +1528,7 @@ const PRODUCTS = [
   {
     "id": "kit-10",
     "name": "Solimo Stainless Steel Knife Set with Block (6-Piece)",
-    "category": "Home & Kitchen",
+    "category": "Home and Kitchen",
     "brand": "Solimo",
     "price": 899,
     "originalPrice": 1600,
@@ -1771,7 +1770,7 @@ const PRODUCTS = [
   {
     "id": "bty-01",
     "name": "Minimalist 10% Niacinamide Face Serum with Zinc (30ml)",
-    "category": "Beauty & Personal Care",
+    "category": "Beauty and Personal Care",
     "brand": "Minimalist",
     "price": 569,
     "originalPrice": 599,
@@ -1793,7 +1792,7 @@ const PRODUCTS = [
   {
     "id": "bty-02",
     "name": "Cetaphil Gentle Skin Cleanser for Sensitive Skin (250ml)",
-    "category": "Beauty & Personal Care",
+    "category": "Beauty and Personal Care",
     "brand": "Cetaphil",
     "price": 599,
     "originalPrice": 699,
@@ -1815,7 +1814,7 @@ const PRODUCTS = [
   {
     "id": "bty-03",
     "name": "Neutrogena Ultra Sheer Dry-Touch Sunscreen SPF 50+",
-    "category": "Beauty & Personal Care",
+    "category": "Beauty and Personal Care",
     "brand": "Neutrogena",
     "price": 625,
     "originalPrice": 799,
@@ -1837,7 +1836,7 @@ const PRODUCTS = [
   {
     "id": "bty-04",
     "name": "Philips Series 3000 All-in-One Trimmer for Men (9 Tools)",
-    "category": "Beauty & Personal Care",
+    "category": "Beauty and Personal Care",
     "brand": "Philips",
     "price": 1799,
     "originalPrice": 2495,
@@ -1859,7 +1858,7 @@ const PRODUCTS = [
   {
     "id": "bty-05",
     "name": "L'Oreal Paris Total Repair 5 Restoring Shampoo (1 Litre)",
-    "category": "Beauty & Personal Care",
+    "category": "Beauty and Personal Care",
     "brand": "L'Oreal",
     "price": 649,
     "originalPrice": 999,
@@ -1881,7 +1880,7 @@ const PRODUCTS = [
   {
     "id": "bty-06",
     "name": "Plum Green Tea Oil-Free Moisturizer with Niacinamide",
-    "category": "Beauty & Personal Care",
+    "category": "Beauty and Personal Care",
     "brand": "Plum",
     "price": 425,
     "originalPrice": 470,
@@ -1903,7 +1902,7 @@ const PRODUCTS = [
   {
     "id": "bty-07",
     "name": "The Derma Co 1% Hyaluronic Sunscreen Aqua Gel (50g)",
-    "category": "Beauty & Personal Care",
+    "category": "Beauty and Personal Care",
     "brand": "The Derma Co",
     "price": 449,
     "originalPrice": 499,
@@ -1925,7 +1924,7 @@ const PRODUCTS = [
   {
     "id": "bty-08",
     "name": "Nivea Men Dark Spot Reduction Face Wash (150ml)",
-    "category": "Beauty & Personal Care",
+    "category": "Beauty and Personal Care",
     "brand": "Nivea",
     "price": 249,
     "originalPrice": 399,
@@ -1947,7 +1946,7 @@ const PRODUCTS = [
   {
     "id": "bty-09",
     "name": "Biotique Bio Bhringraj Therapeutic Hair Oil (200ml)",
-    "category": "Beauty & Personal Care",
+    "category": "Beauty and Personal Care",
     "brand": "Biotique",
     "price": 249,
     "originalPrice": 380,
@@ -1969,7 +1968,7 @@ const PRODUCTS = [
   {
     "id": "bty-10",
     "name": "Dyson Supersonic Hair Dryer with Magnetic Attachments",
-    "category": "Beauty & Personal Care",
+    "category": "Beauty and Personal Care",
     "brand": "Dyson",
     "price": 32900,
     "originalPrice": 37900,
@@ -1991,7 +1990,7 @@ const PRODUCTS = [
   {
     "id": "spt-01",
     "name": "Kobo Rubber Hex Dumbbell Set (Pair of 10kg)",
-    "category": "Sports & Fitness",
+    "category": "Sports and Fitness",
     "brand": "Kobo",
     "price": 3299,
     "originalPrice": 4999,
@@ -2013,7 +2012,7 @@ const PRODUCTS = [
   {
     "id": "spt-02",
     "name": "Boldfit Extra Thick 10mm Yoga Mat with Carry Strap",
-    "category": "Sports & Fitness",
+    "category": "Sports and Fitness",
     "brand": "Boldfit",
     "price": 899,
     "originalPrice": 1999,
@@ -2035,7 +2034,7 @@ const PRODUCTS = [
   {
     "id": "spt-03",
     "name": "Strauss Resistance Loop Exercise Bands (Set of 5)",
-    "category": "Sports & Fitness",
+    "category": "Sports and Fitness",
     "brand": "Strauss",
     "price": 499,
     "originalPrice": 999,
@@ -2057,7 +2056,7 @@ const PRODUCTS = [
   {
     "id": "spt-04",
     "name": "Nivia Storm Football (Size 5, Rubber Moulded)",
-    "category": "Sports & Fitness",
+    "category": "Sports and Fitness",
     "brand": "Nivia",
     "price": 449,
     "originalPrice": 650,
@@ -2079,7 +2078,7 @@ const PRODUCTS = [
   {
     "id": "spt-05",
     "name": "SG Phoenix Kashmir Willow Cricket Bat with Cover",
-    "category": "Sports & Fitness",
+    "category": "Sports and Fitness",
     "brand": "SG",
     "price": 1899,
     "originalPrice": 2899,
@@ -2101,7 +2100,7 @@ const PRODUCTS = [
   {
     "id": "spt-06",
     "name": "Yonex Nanoray 7000I Graphite Badminton Racquet",
-    "category": "Sports & Fitness",
+    "category": "Sports and Fitness",
     "brand": "Yonex",
     "price": 1890,
     "originalPrice": 2990,
@@ -2123,7 +2122,7 @@ const PRODUCTS = [
   {
     "id": "spt-07",
     "name": "Speedo Unisex Anti-Fog Silicone Swimming Goggles",
-    "category": "Sports & Fitness",
+    "category": "Sports and Fitness",
     "brand": "Speedo",
     "price": 999,
     "originalPrice": 1499,
@@ -2145,7 +2144,7 @@ const PRODUCTS = [
   {
     "id": "spt-08",
     "name": "Decathlon Domyos 500 Fitness Gym Duffel Bag (30L)",
-    "category": "Sports & Fitness",
+    "category": "Sports and Fitness",
     "brand": "Domyos",
     "price": 999,
     "originalPrice": 1499,
@@ -2167,7 +2166,7 @@ const PRODUCTS = [
   {
     "id": "spt-09",
     "name": "Cockatoo Adjustable Speed Skipping Rope with Bearings",
-    "category": "Sports & Fitness",
+    "category": "Sports and Fitness",
     "brand": "Cockatoo",
     "price": 299,
     "originalPrice": 699,
@@ -2189,7 +2188,7 @@ const PRODUCTS = [
   {
     "id": "spt-10",
     "name": "Kore PVC Home Gym 20kg Dumbbell & Barbell Kit",
-    "category": "Sports & Fitness",
+    "category": "Sports and Fitness",
     "brand": "Kore",
     "price": 1999,
     "originalPrice": 4500,
@@ -2211,7 +2210,7 @@ const PRODUCTS = [
   {
     "id": "bks-01",
     "name": "Clean Code: A Handbook of Agile Software Craftsmanship",
-    "category": "Books & Stationery",
+    "category": "Books and Stationery",
     "brand": "Pearson",
     "price": 799,
     "originalPrice": 1299,
@@ -2233,7 +2232,7 @@ const PRODUCTS = [
   {
     "id": "bks-02",
     "name": "Atomic Habits by James Clear (Hardcover Edition)",
-    "category": "Books & Stationery",
+    "category": "Books and Stationery",
     "brand": "Random House",
     "price": 549,
     "originalPrice": 899,
@@ -2255,7 +2254,7 @@ const PRODUCTS = [
   {
     "id": "bks-03",
     "name": "Designing Data-Intensive Applications by Martin Kleppmann",
-    "category": "Books & Stationery",
+    "category": "Books and Stationery",
     "brand": "O'Reilly",
     "price": 1299,
     "originalPrice": 1899,
@@ -2277,7 +2276,7 @@ const PRODUCTS = [
   {
     "id": "bks-04",
     "name": "Classmate Pulse Spiral Bound Notebook (Pack of 6)",
-    "category": "Books & Stationery",
+    "category": "Books and Stationery",
     "brand": "Classmate",
     "price": 499,
     "originalPrice": 720,
@@ -2299,7 +2298,7 @@ const PRODUCTS = [
   {
     "id": "bks-05",
     "name": "Parker Frontier Matte Black Gold Trim Rollerball Pen",
-    "category": "Books & Stationery",
+    "category": "Books and Stationery",
     "brand": "Parker",
     "price": 649,
     "originalPrice": 950,
@@ -2321,7 +2320,7 @@ const PRODUCTS = [
   {
     "id": "bks-06",
     "name": "American Tourister Valex 28L Water Resistant Backpack",
-    "category": "Books & Stationery",
+    "category": "Books and Stationery",
     "brand": "American Tourister",
     "price": 1499,
     "originalPrice": 3100,
@@ -2343,7 +2342,7 @@ const PRODUCTS = [
   {
     "id": "bks-07",
     "name": "Staedtler Triplus Fineliner Color Pens (Pack of 20)",
-    "category": "Books & Stationery",
+    "category": "Books and Stationery",
     "brand": "Staedtler",
     "price": 1199,
     "originalPrice": 1690,
@@ -2365,7 +2364,7 @@ const PRODUCTS = [
   {
     "id": "bks-08",
     "name": "Moleskine Classic Hardcover Dotted Journal / Planner",
-    "category": "Books & Stationery",
+    "category": "Books and Stationery",
     "brand": "Moleskine",
     "price": 1799,
     "originalPrice": 2400,
@@ -2387,7 +2386,7 @@ const PRODUCTS = [
   {
     "id": "bks-09",
     "name": "Post-it Sticky Notes Cube (Pastel Colors, 400 Sheets)",
-    "category": "Books & Stationery",
+    "category": "Books and Stationery",
     "brand": "3M Post-it",
     "price": 249,
     "originalPrice": 380,
@@ -2409,7 +2408,7 @@ const PRODUCTS = [
   {
     "id": "bks-10",
     "name": "Deflecto Mesh Metal Multi-Compartment Desk Organizer",
-    "category": "Books & Stationery",
+    "category": "Books and Stationery",
     "brand": "Deflecto",
     "price": 599,
     "originalPrice": 1100,
@@ -2647,20 +2646,860 @@ const PRODUCTS = [
       "Quiet responsive keys with detachable soft rubber wrist rest"
     ],
     "discountPercent": 30
+  },
+  {
+    "id": "bag-01",
+    "name": "American Tourister 32L Casual Travel Backpack",
+    "category": "Bags and Travel",
+    "brand": "American Tourister",
+    "price": 1499,
+    "originalPrice": 2800,
+    "discountPercent": 46,
+    "stock": 24,
+    "rating": 4.6,
+    "reviewCount": 780,
+    "badge": "Bestseller",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80",
+    "description": "Spacious multi-compartment water-resistant backpack with padded laptop sleeve, organizer pockets, and ergonomic mesh shoulder straps.",
+    "highlights": [
+      "32L Capacity with 3 main compartments",
+      "Fits laptops up to 15.6 inches",
+      "Durable water-repellent polyester fabric",
+      "Air-mesh padded back panel"
+    ],
+    "specs": {
+      "material": "Polyester",
+      "capacity": "32 Liters",
+      "compartments": "3",
+      "warranty": "1 Year"
+    }
+  },
+  {
+    "id": "bag-02",
+    "name": "Wildcraft Canvas Weekender Duffel Bag",
+    "category": "Bags and Travel",
+    "brand": "Wildcraft",
+    "price": 1899,
+    "originalPrice": 2999,
+    "discountPercent": 37,
+    "stock": 18,
+    "rating": 4.5,
+    "reviewCount": 420,
+    "badge": "Popular",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1546938576-6e6a64f317cc?w=600&auto=format&fit=crop&q=80",
+    "description": "Rugged canvas duffel bag designed for gym sessions and weekend getaways with reinforced handles and detachable shoulder strap.",
+    "highlights": [
+      "Heavy-duty tear-resistant canvas",
+      "Separate ventilated shoe compartment",
+      "Detachable adjustable padded strap",
+      "Quick-access zippered outer pockets"
+    ],
+    "specs": {
+      "material": "Cotton Canvas",
+      "capacity": "40 Liters",
+      "compartments": "2",
+      "warranty": "2 Years"
+    }
+  },
+  {
+    "id": "bag-03",
+    "name": "Safari Thorium 65cm Hard Luggage Trolley",
+    "category": "Bags and Travel",
+    "brand": "Safari",
+    "price": 2999,
+    "originalPrice": 6999,
+    "discountPercent": 57,
+    "stock": 15,
+    "rating": 4.7,
+    "reviewCount": 650,
+    "badge": "Top Rated",
+    "imageFit": "contain",
+    "image": "https://images.unsplash.com/photo-1581605405669-fcdf81165afa?w=600&auto=format&fit=crop&q=80",
+    "description": "Scratch-resistant polycarbonate check-in trolley with 360-degree silent spinner wheels and built-in TSA combination lock.",
+    "highlights": [
+      "Durable polycarbonate hard outer shell",
+      "Smooth 8-wheel dual spinner system",
+      "Integrated TSA combination lock",
+      "Telescopic push-button aluminum handle"
+    ],
+    "specs": {
+      "material": "Polycarbonate",
+      "size": "65 cm (Medium)",
+      "wheels": "8 Silent Spinners",
+      "lock": "TSA Approved"
+    }
+  },
+  {
+    "id": "bag-04",
+    "name": "Lavie Women Premium Vegan Leather Tote Bag",
+    "category": "Bags and Travel",
+    "brand": "Lavie",
+    "price": 1599,
+    "originalPrice": 3499,
+    "discountPercent": 54,
+    "stock": 20,
+    "rating": 4.6,
+    "reviewCount": 510,
+    "badge": "Trending",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1577733966973-d680bffd2e80?w=600&auto=format&fit=crop&q=80",
+    "description": "Sophisticated structured shoulder tote bag with gold-tone hardware, premium faux leather, and zip-top security closure.",
+    "highlights": [
+      "Premium textured vegan faux leather",
+      "Dual reinforced shoulder drop handles",
+      "Spacious central compartment with zip divider",
+      "Includes matching internal cosmetic pouch"
+    ],
+    "specs": {
+      "material": "Vegan Leather",
+      "style": "Tote Bag",
+      "closure": "Zipper",
+      "pockets": "4 Interior"
+    }
+  },
+  {
+    "id": "bag-05",
+    "name": "Fastrack Crossbody Sling Travel Bag",
+    "category": "Bags and Travel",
+    "brand": "Fastrack",
+    "price": 899,
+    "originalPrice": 1599,
+    "discountPercent": 44,
+    "stock": 30,
+    "rating": 4.4,
+    "reviewCount": 340,
+    "badge": "",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&auto=format&fit=crop&q=80",
+    "description": "Compact and stylish water-repellent crossbody sling bag for daily essentials, passports, wallet, and smartphone.",
+    "highlights": [
+      "Lightweight water-repellent nylon shell",
+      "Adjustable reversible shoulder strap",
+      "Front zippered quick-grab pocket",
+      "Internal RFID-safe pocket"
+    ],
+    "specs": {
+      "material": "Nylon",
+      "style": "Crossbody Sling",
+      "capacity": "5 Liters",
+      "warranty": "6 Months"
+    }
+  },
+  {
+    "id": "bag-06",
+    "name": "Targus CitySmart 15.6-inch Laptop Messenger",
+    "category": "Bags and Travel",
+    "brand": "Targus",
+    "price": 2499,
+    "originalPrice": 4200,
+    "discountPercent": 41,
+    "stock": 12,
+    "rating": 4.7,
+    "reviewCount": 390,
+    "badge": "Executive",
+    "imageFit": "contain",
+    "image": "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=600&auto=format&fit=crop&q=80",
+    "description": "Professional briefcase with shock-absorbing laptop suspension cradle, tablet sleeve, and trolley strap for business travel.",
+    "highlights": [
+      "Patented DOME protection shock absorbing cradle",
+      "Dedicated tablet and document sections",
+      "Luggage pass-through trolley strap",
+      "Padded contoured shoulder strap"
+    ],
+    "specs": {
+      "material": "Ballistic Polyester",
+      "laptopSize": "15.6 Inches",
+      "color": "Charcoal Grey",
+      "weight": "850g"
+    }
+  },
+  {
+    "id": "bag-07",
+    "name": "Titan RFID-Blocking Genuine Leather Travel Wallet",
+    "category": "Bags and Travel",
+    "brand": "Titan",
+    "price": 1199,
+    "originalPrice": 2195,
+    "discountPercent": 45,
+    "stock": 22,
+    "rating": 4.6,
+    "reviewCount": 480,
+    "badge": "",
+    "imageFit": "contain",
+    "image": "https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=600&auto=format&fit=crop&q=80",
+    "description": "Handcrafted top-grain leather passport wallet with built-in RFID blocking technology to safeguard digital personal cards.",
+    "highlights": [
+      "100% genuine vegetable-tanned leather",
+      "Military-grade RFID shielding fabric",
+      "Holds passport, 8 credit cards, and boarding pass",
+      "Slim zip pocket for travel currency"
+    ],
+    "specs": {
+      "material": "Genuine Leather",
+      "security": "RFID Protected",
+      "slots": "8 Cards + Passport",
+      "finish": "Vintage Brown"
+    }
+  },
+  {
+    "id": "bag-08",
+    "name": "Aristocrat Airpro 55cm Cabin Trolley Suitcase",
+    "category": "Bags and Travel",
+    "brand": "Aristocrat",
+    "price": 2199,
+    "originalPrice": 4999,
+    "discountPercent": 56,
+    "stock": 16,
+    "rating": 4.5,
+    "reviewCount": 520,
+    "badge": "Cabin Size",
+    "imageFit": "contain",
+    "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80",
+    "description": "Ultra-lightweight cabin luggage compliant with major domestic airline overhead dimensions, featuring 4 smooth wheels.",
+    "highlights": [
+      "Strict airline cabin luggage size compliant",
+      "Durable scratch-resistant ABS material",
+      "Smooth gliding 4-wheel system",
+      "Internal cross-straps and divider flap"
+    ],
+    "specs": {
+      "material": "ABS Hard Shell",
+      "size": "55 cm (Cabin)",
+      "capacity": "38 Liters",
+      "weight": "2.6 kg"
+    }
+  },
+  {
+    "id": "bag-09",
+    "name": "Woodland Vintage Leather Office Satchel",
+    "category": "Bags and Travel",
+    "brand": "Woodland",
+    "price": 3799,
+    "originalPrice": 6495,
+    "discountPercent": 42,
+    "stock": 9,
+    "rating": 4.8,
+    "reviewCount": 290,
+    "badge": "Premium",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80",
+    "description": "Distressed buff leather satchel featuring antique brass hardware, dual magnetic buckles, and padded interior device sleeve.",
+    "highlights": [
+      "Hand-buffed genuine full-grain leather",
+      "Antique brass hardware with magnetic clasps",
+      "Fits 14-inch laptops and notebooks",
+      "Timeless vintage artisan patina"
+    ],
+    "specs": {
+      "material": "Full-Grain Leather",
+      "closure": "Dual Magnetic Clasp",
+      "lining": "Cotton Drill",
+      "color": "Tan Brown"
+    }
+  },
+  {
+    "id": "bag-10",
+    "name": "Quechua 20L Lightweight Mountain Daypack",
+    "category": "Bags and Travel",
+    "brand": "Quechua",
+    "price": 799,
+    "originalPrice": 1299,
+    "discountPercent": 38,
+    "stock": 25,
+    "rating": 4.7,
+    "reviewCount": 890,
+    "badge": "Value Pick",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1509762774605-f07235a08f1f?w=600&auto=format&fit=crop&q=80",
+    "description": "Compact mountain hiking backpack designed for half-day treks, day trips, and cycling with thumb loops and padded back.",
+    "highlights": [
+      "Abrasion-resistant 10-year tested fabric",
+      "Padded back and ventilated shoulder straps",
+      "2 zipped pockets and 2 bottle holders",
+      "Ultra-lightweight empty weight of 470g"
+    ],
+    "specs": {
+      "material": "100% Polyester",
+      "capacity": "20 Liters",
+      "weight": "470 grams",
+      "warranty": "10 Years"
+    }
+  },
+  {
+    "id": "fur-01",
+    "name": "Wakefit 3-Seater Fabric Sofa (Forest Green)",
+    "category": "Furniture and Home Decor",
+    "brand": "Wakefit",
+    "price": 12999,
+    "originalPrice": 19999,
+    "discountPercent": 35,
+    "stock": 8,
+    "rating": 4.7,
+    "reviewCount": 410,
+    "badge": "Bestseller",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&auto=format&fit=crop&q=80",
+    "description": "Ergonomically engineered 3-seater sofa made with high-resilience foam, solid Neem wood frame, and breathable linen fabric.",
+    "highlights": [
+      "Solid kiln-dried Neem wood internal structure",
+      "High GSM breathable forest green upholstery",
+      "High-density foam with pocket spring support",
+      "Termite and pest-resistant construction"
+    ],
+    "specs": {
+      "frame": "Solid Neem Wood",
+      "seating": "3 Seater",
+      "fabric": "Premium Linen",
+      "warranty": "3 Years"
+    }
+  },
+  {
+    "id": "fur-02",
+    "name": "Solimo Velvet Accent Lounge Armchair",
+    "category": "Furniture and Home Decor",
+    "brand": "AmazonBasics",
+    "price": 6499,
+    "originalPrice": 10999,
+    "discountPercent": 41,
+    "stock": 11,
+    "rating": 4.6,
+    "reviewCount": 310,
+    "badge": "Trending",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&auto=format&fit=crop&q=80",
+    "description": "Comfortable accent armchair with plush velvet upholstery, gold-plated steel legs, and high-density supportive foam backrest.",
+    "highlights": [
+      "Plush stain-resistant velvet fabric",
+      "Tapered metal legs with gold finish",
+      "Generous padded seat for extended sitting",
+      "Supports up to 130kg comfortably"
+    ],
+    "specs": {
+      "material": "Velvet & Metal",
+      "height": "82 cm",
+      "maxWeight": "130 kg",
+      "assembly": "DIY Legs Assembly"
+    }
+  },
+  {
+    "id": "fur-03",
+    "name": "Wipro Smart LED Standing Corner Floor Lamp",
+    "category": "Furniture and Home Decor",
+    "brand": "Wipro",
+    "price": 2499,
+    "originalPrice": 4499,
+    "discountPercent": 44,
+    "stock": 19,
+    "rating": 4.5,
+    "reviewCount": 520,
+    "badge": "Smart Home",
+    "imageFit": "contain",
+    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&auto=format&fit=crop&q=80",
+    "description": "Modern minimalist Nordic floor lamp with 16 million colors, voice control compatibility, and step-less dimming brightness.",
+    "highlights": [
+      "16 Million RGB colors + tunable warm to cool white",
+      "Works with Alexa and Google Assistant",
+      "Heavy anti-tipping iron metal base",
+      "Energy-efficient 18W long-life LED strip"
+    ],
+    "specs": {
+      "power": "18 Watts",
+      "connectivity": "Wi-Fi & Bluetooth",
+      "height": "140 cm",
+      "control": "App & Touch"
+    }
+  },
+  {
+    "id": "fur-04",
+    "name": "DeckUp Giona Solid Engineered Wood Dining Table (4-Seater)",
+    "category": "Furniture and Home Decor",
+    "brand": "DeckUp",
+    "price": 7999,
+    "originalPrice": 13999,
+    "discountPercent": 43,
+    "stock": 7,
+    "rating": 4.6,
+    "reviewCount": 280,
+    "badge": "",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=600&auto=format&fit=crop&q=80",
+    "description": "Modern 4-seater dining table crafted from high-grade European engineered wood with dark walnut scratch-resistant lamination.",
+    "highlights": [
+      "High-grade particle board with melamine finish",
+      "Water and heat resistant tabletop surface",
+      "Sturdy box legs prevent wobbling",
+      "Accommodates 4 standard dining chairs"
+    ],
+    "specs": {
+      "material": "Engineered Wood",
+      "seating": "4 Seater",
+      "finish": "Dark Walnut",
+      "dimensions": "110 x 75 x 75 cm"
+    }
+  },
+  {
+    "id": "fur-05",
+    "name": "Urban Ladder Ceramic Tabletop Planters & Decor Set",
+    "category": "Furniture and Home Decor",
+    "brand": "Urban Ladder",
+    "price": 1199,
+    "originalPrice": 2299,
+    "discountPercent": 48,
+    "stock": 25,
+    "rating": 4.7,
+    "reviewCount": 390,
+    "badge": "Decor Favorite",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&auto=format&fit=crop&q=80",
+    "description": "Set of 3 glazed handcrafted ceramic planters with wooden stands to bring lively greenery into living rooms and workspaces.",
+    "highlights": [
+      "Glazed ceramic pots with drainage holes",
+      "Solid beech wood interlocking tripod stands",
+      "Perfect for succulents, indoor money plants, and snake plants",
+      "Scratch-resistant polished finish"
+    ],
+    "specs": {
+      "material": "Glazed Ceramic & Wood",
+      "count": "Set of 3",
+      "finish": "Matte White & Ochre",
+      "drainage": "Included"
+    }
+  },
+  {
+    "id": "fur-06",
+    "name": "Green Soul Seoul Ergonomic Study & Work Desk",
+    "category": "Furniture and Home Decor",
+    "brand": "Green Soul",
+    "price": 4999,
+    "originalPrice": 8999,
+    "discountPercent": 44,
+    "stock": 14,
+    "rating": 4.8,
+    "reviewCount": 460,
+    "badge": "Top Rated",
+    "imageFit": "contain",
+    "image": "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?w=600&auto=format&fit=crop&q=80",
+    "description": "Minimalist home office computer desk with heavy-duty steel frame, cable pass-through grommet, and built-in headphone hanger.",
+    "highlights": [
+      "Sturdy carbon steel K-frame supports up to 100kg",
+      "Spacious 48 x 24-inch waterproof desktop",
+      "Built-in headphone hanger and cup holder",
+      "Adjustable levelling feet protect floor tile"
+    ],
+    "specs": {
+      "dimensions": "120 x 60 x 75 cm",
+      "material": "Engineered Wood & Steel",
+      "maxWeight": "100 kg",
+      "warranty": "1 Year"
+    }
+  },
+  {
+    "id": "fur-07",
+    "name": "Home Centre Solid Wood 2-Drawer Bedside Nightstand",
+    "category": "Furniture and Home Decor",
+    "brand": "Home Centre",
+    "price": 3299,
+    "originalPrice": 5999,
+    "discountPercent": 45,
+    "stock": 16,
+    "rating": 4.5,
+    "reviewCount": 330,
+    "badge": "",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&auto=format&fit=crop&q=80",
+    "description": "Compact 2-drawer bedside table crafted with natural oak finish and smooth telescopic ball-bearing sliders for silent operation.",
+    "highlights": [
+      "Two smooth-gliding storage drawers",
+      "Compact footprint fits next to standard bed frames",
+      "Rounded safety corners and moisture-proof polish",
+      "Pre-assembled body with easy leg installation"
+    ],
+    "specs": {
+      "material": "Engineered Wood & Oak Veneer",
+      "drawers": "2 Drawers",
+      "dimensions": "45 x 40 x 50 cm",
+      "color": "Honey Oak"
+    }
+  },
+  {
+    "id": "fur-08",
+    "name": "Story@Home Floating Hexagonal Wall Shelves (Set of 3)",
+    "category": "Furniture and Home Decor",
+    "brand": "Story@Home",
+    "price": 999,
+    "originalPrice": 1999,
+    "discountPercent": 50,
+    "stock": 28,
+    "rating": 4.4,
+    "reviewCount": 410,
+    "badge": "Budget Decor",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&auto=format&fit=crop&q=80",
+    "description": "Geometric honey-comb wall shelves for displaying books, figurines, miniature succulents, and framed photos.",
+    "highlights": [
+      "Set of 3 nesting hexagonal wall brackets",
+      "Concealed mounting hardware included",
+      "Lightweight yet durable MDF composite construction",
+      "Adds modern visual symmetry to plain walls"
+    ],
+    "specs": {
+      "material": "MDF Composite",
+      "pieces": "Set of 3 (S, M, L)",
+      "mounting": "Concealed Keyhole",
+      "weightCapacity": "5 kg per shelf"
+    }
+  },
+  {
+    "id": "fur-09",
+    "name": "Saral Home Soft Microfiber Geometric Living Room Carpet",
+    "category": "Furniture and Home Decor",
+    "brand": "Saral Home",
+    "price": 1899,
+    "originalPrice": 3999,
+    "discountPercent": 53,
+    "stock": 17,
+    "rating": 4.6,
+    "reviewCount": 470,
+    "badge": "",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&auto=format&fit=crop&q=80",
+    "description": "Luxurious soft-touch microfiber floor rug (4x6 feet) with anti-slip rubber backing and modern Scandinavian geometric patterns.",
+    "highlights": [
+      "Ultra-soft micro-chenille pile comfort",
+      "Anti-skid latex backing prevents floor slips",
+      "Machine washable and colorfast dyes",
+      "Dimensions: 120 x 180 cm (4 x 6 ft)"
+    ],
+    "specs": {
+      "material": "Microfiber Polyester",
+      "size": "4 x 6 Feet",
+      "backing": "Anti-Skid TPR",
+      "care": "Machine Wash Cold"
+    }
+  },
+  {
+    "id": "fur-10",
+    "name": "Sleepyhead Solid Sheesham Wood King Size Platform Bed",
+    "category": "Furniture and Home Decor",
+    "brand": "Sleepyhead",
+    "price": 18999,
+    "originalPrice": 28999,
+    "discountPercent": 34,
+    "stock": 6,
+    "rating": 4.8,
+    "reviewCount": 380,
+    "badge": "Premium Wood",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&auto=format&fit=crop&q=80",
+    "description": "Solid Sheesham wood king bed with natural grain finish, headboard support, and reinforced center slat structure.",
+    "highlights": [
+      "100% Solid Indian Sheesham (Rosewood)",
+      "Termite-treated natural honey timber finish",
+      "Heavy center spine supports up to 400kg",
+      "Accommodates standard 78 x 72-inch king mattress"
+    ],
+    "specs": {
+      "timber": "Solid Sheesham Wood",
+      "size": "King Size (78x72 in)",
+      "finish": "Natural Honey",
+      "warranty": "5 Years"
+    }
+  },
+  {
+    "id": "toy-01",
+    "name": "Hot Wheels 10-Car Die-Cast Vehicle Gift Pack",
+    "category": "Toys and Accessories",
+    "brand": "Hot Wheels",
+    "price": 1299,
+    "originalPrice": 1699,
+    "discountPercent": 24,
+    "stock": 35,
+    "rating": 4.8,
+    "reviewCount": 1120,
+    "badge": "Bestseller",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&auto=format&fit=crop&q=80",
+    "description": "Collector pack of 10 genuine 1:64 scale die-cast sports and muscle cars with authentic graphics and free-wheeling action.",
+    "highlights": [
+      "10 Unique die-cast miniature vehicles",
+      "1:64 authentic scale detail and tampo prints",
+      "Durable metal body with smooth plastic chassis",
+      "Compatible with all standard Hot Wheels tracks"
+    ],
+    "specs": {
+      "age": "3 Years+",
+      "scale": "1:64",
+      "material": "Die-cast Metal & ABS",
+      "count": "10 Cars"
+    }
+  },
+  {
+    "id": "toy-02",
+    "name": "LEGO Classic Medium Creative Brick Box (484 Pieces)",
+    "category": "Toys and Accessories",
+    "brand": "LEGO",
+    "price": 2499,
+    "originalPrice": 3299,
+    "discountPercent": 24,
+    "stock": 20,
+    "rating": 4.9,
+    "reviewCount": 940,
+    "badge": "Must Have",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&auto=format&fit=crop&q=80",
+    "description": "Classic building set with 484 colorful bricks, windows, eyes, and wheels to inspire endless open-ended creative construction.",
+    "highlights": [
+      "484 High-precision interlocking LEGO bricks in 35 colors",
+      "Includes 18 tires and wheel rims, windows, and eyes",
+      "Comes in a sturdy plastic storage tub",
+      "Encourages spatial intelligence and STEM creativity"
+    ],
+    "specs": {
+      "age": "4 to 99 Years",
+      "pieces": "484 Pieces",
+      "storage": "Plastic Tub Included",
+      "theme": "Classic Creative"
+    }
+  },
+  {
+    "id": "toy-03",
+    "name": "Hamleys Supersoft Brown Cuddle Teddy Bear (40cm)",
+    "category": "Toys and Accessories",
+    "brand": "Hamleys",
+    "price": 999,
+    "originalPrice": 1799,
+    "discountPercent": 44,
+    "stock": 28,
+    "rating": 4.7,
+    "reviewCount": 610,
+    "badge": "Super Soft",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80",
+    "description": "Ultra-plush handcrafted plush teddy bear made with hypoallergenic fur, safety-lock eyes, and signature Hamleys ribbon.",
+    "highlights": [
+      "High-density hypoallergenic plush fabric",
+      "Lock-tight embroidered safety eyes",
+      "Machine washable gentle cycle",
+      "Height: 40 cm seated height"
+    ],
+    "specs": {
+      "age": "0 Months+",
+      "height": "40 cm",
+      "material": "Hypoallergenic Polyester",
+      "wash": "Machine Washable"
+    }
+  },
+  {
+    "id": "toy-04",
+    "name": "Hasbro Monopoly Classic Family Board Game",
+    "category": "Toys and Accessories",
+    "brand": "Hasbro",
+    "price": 999,
+    "originalPrice": 1499,
+    "discountPercent": 33,
+    "stock": 32,
+    "rating": 4.7,
+    "reviewCount": 820,
+    "badge": "Family Classic",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
+    "description": "The timeless fast-dealing property trading game for family game nights with classic tokens, paper cash, and chance cards.",
+    "highlights": [
+      "Includes game board, 8 tokens, title deed cards, and play money",
+      "Engages 2 to 6 players in strategic trading",
+      "Teaches financial planning and resource trade-offs",
+      "High-quality linen finish board and pewter tokens"
+    ],
+    "specs": {
+      "players": "2 to 6 Players",
+      "age": "8 Years+",
+      "playTime": "60-90 Mins",
+      "language": "English"
+    }
+  },
+  {
+    "id": "toy-05",
+    "name": "Funskool 1000-Piece World Map Educational Jigsaw Puzzle",
+    "category": "Toys and Accessories",
+    "brand": "Funskool",
+    "price": 699,
+    "originalPrice": 1199,
+    "discountPercent": 42,
+    "stock": 26,
+    "rating": 4.6,
+    "reviewCount": 430,
+    "badge": "",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&auto=format&fit=crop&q=80",
+    "description": "Challenging 1000-piece geography puzzle with vibrant country borders, ocean topography, and national flags border.",
+    "highlights": [
+      "1000 Precision-die-cut interlocking cardboard pieces",
+      "Glare-free matte finish illustration",
+      "Includes full-size reference poster (70 x 50 cm)",
+      "Enhances geographical awareness and memory"
+    ],
+    "specs": {
+      "pieces": "1000 Pieces",
+      "size": "70 x 50 cm",
+      "age": "10 Years+",
+      "material": "Recycled Cardboard"
+    }
+  },
+  {
+    "id": "toy-06",
+    "name": "Syma Foldable 1080P Wi-Fi Camera RC Drone",
+    "category": "Toys and Accessories",
+    "brand": "Syma",
+    "price": 3999,
+    "originalPrice": 6999,
+    "discountPercent": 43,
+    "stock": 14,
+    "rating": 4.5,
+    "reviewCount": 380,
+    "badge": "Tech Toy",
+    "imageFit": "contain",
+    "image": "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=600&auto=format&fit=crop&q=80",
+    "description": "Compact beginner-friendly quadcopter with altitude hold, one-key takeoff, 1080P real-time FPV video, and headless mode.",
+    "highlights": [
+      "Full HD 1080P FPV Wi-Fi real-time camera",
+      "Altitude hold and optical flow sensor for stable hovering",
+      "One-key takeoff and emergency landing",
+      "Dual modular batteries provide 24 mins flight time"
+    ],
+    "specs": {
+      "camera": "1080P HD",
+      "flightTime": "12 mins x 2 batteries",
+      "range": "100 Meters",
+      "controls": "Remote + Phone App"
+    }
+  },
+  {
+    "id": "toy-07",
+    "name": "Marvel Avengers Titan Hero Series Iron Man (30cm)",
+    "category": "Toys and Accessories",
+    "brand": "Marvel",
+    "price": 1199,
+    "originalPrice": 1899,
+    "discountPercent": 37,
+    "stock": 22,
+    "rating": 4.7,
+    "reviewCount": 560,
+    "badge": "Action Figure",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=600&auto=format&fit=crop&q=80",
+    "description": "Large 12-inch Iron Man action figure with articulated limbs, classic red-and-gold armor suit, and chest arc reactor detailing.",
+    "highlights": [
+      "Large 30 cm (12-inch) scale action figure",
+      "Articulated ball joints at neck, shoulders, and hips",
+      "Compatible with Titan Hero Blast Gear port",
+      "Official licensed Marvel collectible"
+    ],
+    "specs": {
+      "height": "30 cm (12 in)",
+      "age": "4 Years+",
+      "material": "PVC Plastic",
+      "brand": "Hasbro Marvel"
+    }
+  },
+  {
+    "id": "toy-08",
+    "name": "Smartivity DIY Hydraulic Crane STEM Mechanical Kit",
+    "category": "Toys and Accessories",
+    "brand": "Smartivity",
+    "price": 899,
+    "originalPrice": 1499,
+    "discountPercent": 40,
+    "stock": 30,
+    "rating": 4.8,
+    "reviewCount": 710,
+    "badge": "STEM Learning",
+    "imageFit": "contain",
+    "image": "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=600&auto=format&fit=crop&q=80",
+    "description": "Educational DIY science toy teaching Pascal's law and fluid mechanics using water syringes, engineered laser-cut wood, and no glue.",
+    "highlights": [
+      "Builds a 360-degree rotating hydraulic crane",
+      "100% eco-friendly laser-cut pine wood parts",
+      "No glue, tools, or batteries needed",
+      "Clear illustrated step-by-step instruction booklet"
+    ],
+    "specs": {
+      "age": "8 to 14 Years",
+      "material": "Engineered Pine Wood",
+      "theme": "Hydraulics STEM",
+      "buildTime": "90 Minutes"
+    }
+  },
+  {
+    "id": "toy-09",
+    "name": "Fisher-Price Baby Activity Walker & Sensory Toy",
+    "category": "Toys and Accessories",
+    "brand": "Fisher-Price",
+    "price": 2199,
+    "originalPrice": 3499,
+    "discountPercent": 37,
+    "stock": 15,
+    "rating": 4.7,
+    "reviewCount": 490,
+    "badge": "Baby Care",
+    "imageFit": "contain",
+    "image": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=600&auto=format&fit=crop&q=80",
+    "description": "2-in-1 sit-to-stand musical baby walker with piano keys, spinning rollers, flip book, and sturdy non-slip wheels for first steps.",
+    "highlights": [
+      "Sturdy triangular base with textured easy-grasp handle",
+      "Play panel includes musical piano keys and shape sorter",
+      "Helps baby develop balance and gross motor skills",
+      "BPA-free non-toxic certified baby materials"
+    ],
+    "specs": {
+      "age": "6 to 36 Months",
+      "battery": "2 x AA (Included)",
+      "safety": "EN71 / BIS Certified",
+      "weight": "2.1 kg"
+    }
+  },
+  {
+    "id": "toy-10",
+    "name": "Barbie Career Fashion Doll Set with Accessories",
+    "category": "Toys and Accessories",
+    "brand": "Barbie",
+    "price": 849,
+    "originalPrice": 1299,
+    "discountPercent": 35,
+    "stock": 25,
+    "rating": 4.6,
+    "reviewCount": 520,
+    "badge": "",
+    "imageFit": "cover",
+    "image": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80",
+    "description": "Classic Barbie doll styled in professional career attire with thematic accessories, brushable hair, and posable arms.",
+    "highlights": [
+      "Official Mattel Barbie doll with removable career outfit",
+      "Includes miniature career accessories and footwear",
+      "Silky brushable blonde hair",
+      "Inspires imaginative storytelling"
+    ],
+    "specs": {
+      "age": "3 Years+",
+      "height": "29 cm",
+      "brand": "Mattel Barbie",
+      "material": "Vinyl Plastic"
+    }
   }
 ];
 
-// Freeze catalog in runtime to prevent accidental mutations
+// Freeze catalog in runtime
 if (typeof Object.freeze === 'function') {
   Object.freeze(PRODUCTS);
 }
 
-// Expose on global window object for browser compatibility
+// Global browser window export
 if (typeof window !== 'undefined') {
   window.PRODUCTS = PRODUCTS;
 }
 
-// Expose for Node.js test scripts and automated validators
+// Module export for test scripts
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = PRODUCTS;
 }

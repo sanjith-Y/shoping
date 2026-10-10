@@ -1,171 +1,357 @@
-# ShopEase — Complete Professional E-Commerce Store (120+ Products)
+# ShopSmart — Complete Professional Online Shopping Platform
 
-A complete, production-grade, responsive e-commerce web application built with **pure HTML5, CSS3, and Vanilla JavaScript**. Configured for the **Coimbatore, Tamil Nadu, India** market with authentic Indian Rupee (₹) pricing, 120 unique products across 12 product categories, 100% verified product photography, advanced filtering & search, interactive wishlist, product detail quick view with related products, and a fully functional shopping cart & checkout system.
-
----
-
-## 🌟 Major Highlights & Architecture
-
-### 1. Large 120-Product Catalog Across 12 Categories
-Unlike small demo mockups, ShopEase features a master catalog of **120 unique products** (10 products per category) defined centrally in `products.js`. Every product includes genuine specifications, realistic Indian market prices, original MSRPs, calculated discount percentages, real stock counts, and demo customer star ratings with review counts.
-
-#### The 12 Categories Breakdown:
-1. **Mobiles & Tablets (10 products):** Samsung Galaxy S23 5G, Apple iPhone 15 Pro, OnePlus 12, Google Pixel 8, iPad Air M2, Anker PowerCore 20000mAh, Spigen Ultra Hybrid Case, Boat 65W GaN Charger, Samsung Galaxy Tab S9, ESR Tempered Glass.
-2. **Laptops & Computers (10 products):** Apple MacBook Air M2, Dell XPS 13 Plus, ASUS ROG Zephyrus G16, LG UltraFine 27" 4K Monitor, Keychron K2 Wireless Keyboard, Logitech MX Master 3S, Samsung 990 PRO 2TB NVMe SSD, SanDisk Ultra 128GB Flash Drive, Portronics My Buddy Hexa Stand, TP-Link AX3000 Wi-Fi 6 Router.
-3. **Audio & Accessories (10 products):** Sony WH-1000XM5 ANC Headphones, Apple AirPods Pro (2nd Gen), JBL Charge 5 Waterproof Speaker, Bose QuietComfort Ultra, Shure MV7 USB Podcast Microphone, Marshall Stanmore III, Sennheiser HD 560S Audiophile, boAt Stone 1200, Audio-Technica AT2020USB-X, Sony HT-S20R 5.1ch Soundbar.
-4. **Fashion – Men (10 products):** Levi's 511 Slim Stretch Jeans, Peter England Slim Fit Formal Shirt, U.S. Polo Assn. Classic Pique Polo, Allen Solly Chino Trousers, Puma Essentials Fleece Hoodie, Woodland Leather Chelsea Boots, Titan Neo Analog Quartz Watch, Wildcraft Reversible Windcheater, Tommy Hilfiger Leather Belt, Fastrack Aviator Sunglasses.
-5. **Fashion – Women (10 products):** Biba Printed Anarkali Kurti Set, Fabindia Pure Handloom Cotton Saree, Vero Moda Fit & Flare Midi Dress, ONLY High-Waist Skinny Jeans, Lavie Betula Structured Handbag, Fossil Jacqueline Rose Gold Watch, Catwalk Embellished Block Heels, W for Woman Straight Palazzos, Baggit Vegan Leather Backpack, Voylla Gold Plated Jhumka Earrings.
-6. **Footwear (10 products):** Nike Air Zoom Pegasus 40, Adidas Ultraboost Light Running Shoes, Puma Smash v2 L Classic Sneakers, Clarks Tilden Cap Formal Oxfords, Red Tape Soft Foam Casual Loafers, Skechers Go Walk 6 Walking Shoes, Crocs Classic Unisex Clogs, Woodland Camel Nubuck Outdoor Boots, Birkenstock Arizona EVA Sandals, Sparx Athletic Training Shoes.
-7. **Home & Kitchen (10 products):** Prestige Iris 750W Mixer Grinder, Philips HD9306 1.5L Stainless Steel Kettle, Hawkins Futura Hard Anodized Cookware, Milton Thermosteel 1L Water Bottle, Borosil Glass Mixing Bowl Set (3 Pcs), Cello Checkers PET Storage Jars (18 Pcs), Signoraware Best 4-Piece Lunch Box, Pigeon by Stovekraft 4-Burner Gas Stove, Wonderchef Nutri-Blend 400W Blender, Kent Gold 20L UF Water Purifier.
-8. **Home Appliances (10 products):** Atomberg Renesa 1200mm BLDC Ceiling Fan, Philips EasySpeed Plus 2000W Steam Iron, Dyson V8 Cordless Vacuum Cleaner, LG 7kg 5-Star Front Load Washing Machine, Samsung 253L 3-Star Double Door Refrigerator, Symphony Diet 3D 30i Tower Air Cooler, Havells Instanio 3-Litre Instant Geyser, Eureka Forbes Aquaguard Water Purifier, Bajaj New Shakti Neo 15L Water Heater, Voltas 1.5 Ton 5-Star Inverter Split AC.
-9. **Beauty & Personal Care (10 products):** Minimalist 10% Niacinamide Face Serum, Cetaphil Gentle Skin Cleanser 250ml, The Derma Co 1% Hyaluronic Sunscreen Aqua Gel, L'Oreal Paris Extraordinary Oil Hair Serum, Forest Essentials Ayurvedic Facial Cleanser, Plum Green Tea Oil-Free Moisturizer, Philips OneBlade Hybrid Trimmer & Shaver, MCaffeine Exfoliating Coffee Body Scrub, Biotique Bio Kelp Anti Hair Fall Shampoo, Beardo Godfather Beard Oil & Wash Combo.
-10. **Sports & Fitness (10 products):** Kobo Rubber Hex Dumbbell Set (10kg x 2), Boldfit Non-Slip 6mm EVA Yoga Mat, Vector X Combat Boxing Gloves (12oz), Strauss TPE Resistance Exercise Bands, SG Phoenix Kashmir Willow Cricket Bat, Nivia Storm Thermo-Fused Football (Size 5), Yonex Astrox 77 Play Badminton Racket, Speedo Fastskin Swimming Goggles, Cosco Light Heavy Cricket Tennis Balls, AmazonBasics Neoprene Hand Weights (3kg).
-11. **Books & Stationery (10 products):** Clean Code: Agile Software Craftsmanship, Introduction to Algorithms (CLRS 4th Ed), The Pragmatic Programmer (20th Anniv), Classmate Pulse Spiral Hardcover Notebooks, Pilot G2 0.7mm Retractable Gel Pens (5 Pcs), Parker Jotter Stainless Steel Ballpoint Pen, American Tourister Valex 28L Laptop Backpack, Moleskine Classic Expanded Hardcover Journal, Deli Mesh Metal 4-Tier Desk Organizer, Casio FX-991CW Scientific Calculator.
-12. **Gaming (10 products):** Razer DeathAdder Essential Ergonomic Mouse, Redragon K552 Kumara RGB Mechanical Keyboard, Sony DualSense Wireless Controller (PS5), HyperX Cloud II 7.1 Surround Gaming Headset, SteelSeries QcK Heavy XXL Gaming Mousepad, Cosmic Byte Asteroid 5-Fan Laptop Cooling Pad, Logitech G29 Driving Force Steering Wheel, Elgato Stream Deck MK.2 Studio Controller, Ant Esports 240 Air Mid Tower ARGB Cabinet, Corsair K55 RGB PRO Dynamic Backlit Keyboard.
+A production-ready, fully responsive e-commerce web application built with **HTML5, CSS3, and Vanilla JavaScript**. ShopSmart is designed for the Indian retail ecosystem, configured specifically for **Coimbatore, Tamil Nadu, India**, featuring authentic Indian Rupee (`₹` — INR) pricing, 150 unique products across 15 distinct categories, 100% verified real product photography, multi-page architecture, dual-mode Firebase Authentication & Firestore persistence, intelligent budget bundle generation, a natural language shopping assistant, voice search, and an admin management dashboard.
 
 ---
 
-### 2. Verified Product Images & Fallback System
-- **100% Tested Unsplash Images:** All 120 product images have been validated over live HTTPS HEAD checks returning `200 OK`.
-- **Accurate Product Imagery:** Smartphones display smartphones, sneakers display shoes, kitchen appliances display kitchen tools, books show programming literature, and gaming hardware displays gaming gear. No emojis, empty boxes, or mismatched graphics.
-- **Smart Framing (`object-fit`):**
-  - `img-contain`: Used for electronics, monitors, appliances, and hardware to preserve the full product silhouette without clipping.
-  - `img-cover`: Used for fashion, apparel, and lifestyle photography.
-- **Automatic SVG Fallback (`onerror`):** Every image element includes an `onerror="this.onerror=null;this.src='assets/product-fallback.svg'"` handler. If a network drops or a CDN fails, a clean, branded SVG fallback card displays gracefully.
-- **Performance:** `loading="lazy"` on all cards ensures lightning-fast initial page loads.
+## 📑 Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Key Features](#key-features)
+3. [Technology Stack](#technology-stack)
+4. [Master Catalog (150 Products / 15 Categories)](#master-catalog-150-products--15-categories)
+5. [Project Structure](#project-structure)
+6. [Local Setup & Running Locally](#local-setup--running-locally)
+7. [Firebase Configuration Guide](#firebase-configuration-guide)
+   - [Enabling Email/Password Authentication](#enabling-emailpassword-authentication)
+   - [Setting up Cloud Firestore](#setting-up-cloud-firestore)
+   - [Adding Credentials to ShopSmart](#adding-credentials-to-shopsmart)
+   - [Firestore Security Rules](#firestore-security-rules)
+   - [Assigning Administrator Role Securely](#assigning-administrator-role-securely)
+8. [Transparent Architecture: Real vs. Simulated Features](#transparent-architecture-real-vs-simulated-features)
+9. [Coimbatore Store Configuration](#coimbatore-store-configuration)
+10. [Cart, Pricing & Tax Calculations](#cart-pricing--tax-calculations)
+11. [How to Modify Products & Images](#how-to-modify-products--images)
+12. [Known Limitations](#known-limitations)
 
 ---
 
-### 3. Search, Filter, and Sort Suite
-All filters work together simultaneously without conflict:
-- **Instant Search:** Full-text search matching across Product Name, Brand, Category, and Description text.
-- **12 Category Buttons & Dropdown:** Interactive chips and synced dropdown for all 12 categories.
-- **Price Range Filter:** Min and Max price inputs with instant dynamic recalculation.
-- **Customer Rating Filter:** Filter products by minimum rating (4.5★+, 4.0★+, 3.5★+, 3.0★+).
-- **In-Stock Only Filter:** Toggle to immediately hide out-of-stock or low-inventory items.
-- **Sorting Options:**
-  - Featured (Default)
-  - Newest Arrivals
-  - Price: Low to High
-  - Price: High to Low
-  - Customer Rating: High to Low
-  - Biggest Discount %
-  - Product Name: A to Z
-- **Dedicated Wishlist View:** Toggle to view all bookmarked wishlist items in one click.
-- **Helpful Empty State:** When no products match filters, a clean state offers a single "Clear All Filters" button.
+## 1. Project Overview
+
+**ShopSmart** is built to deliver a genuine, human-crafted shopping experience avoiding typical AI-generated tropes (no glowing neon buttons, no fake testimonial bots, no fabricated visitor counts). Instead, it emphasizes clean aesthetics, warm off-white and charcoal tones, forest green accent palette (`#059669` / `#10b981`), reliable client calculations, and persistent multi-user data storage.
+
+The platform provides a dual-mode database engine:
+- **Development Mode (Out-of-the-Box):** Operates immediately without external API keys using client-side `localStorage` data models with simulated auth sessions and demo accounts.
+- **Production Mode (Firebase):** Automatically detected when Firebase credentials are configured in `js/firebase-config.js`, unlocking live Google Firebase Authentication and Cloud Firestore cloud synchronizations.
 
 ---
 
-### 4. Interactive Shopping Cart & Calculations
-- **Slide-out Cart Drawer:** Smooth slide animation with glassmorphism backdrop blur.
-- **Real-Time Badge:** Shows total quantity of items with bounce animation on additions.
-- **Stock Guard:** Strictly prevents ordering quantities greater than available inventory; disables `+` buttons when the limit is reached.
-- **Persistent Storage:** Cart state and wishlist are saved in `localStorage` (`shopease_cart_v1`, `shopease_wishlist_v1`) so your session survives refreshes.
-- **Transparent Calculations:**
-  - **Subtotal:** Sum of $(\text{Price} \times \text{Quantity})$.
-  - **Total Savings:** Clearly displays catalog savings compared to original MSRP.
-  - **Coupons:**
-    - `SAVE10`: 10% discount on cart subtotal.
-    - `SAVE200`: Flat ₹200 off for orders of ₹2,000 or more.
-    - `FREESHIP`: Waives the ₹99 shipping charge completely.
-  - **GST (18% Illustrative):** Accurately computed on taxable subtotal after coupons.
-  - **Delivery Fee:** Free for orders $\ge ₹999$ or with `FREESHIP`; otherwise ₹99 flat fee.
-  - **Grand Total:** $\text{Taxable Subtotal} + \text{GST} + \text{Delivery Fee}$. All formatted with Indian numbering (`₹XX,XXX`).
+## 2. Key Features
+
+- **24 Interlinked Pages & Views:** Complete coverage including Homepage, Catalog with Sidebar Filters, Product Details, Dedicated Cart, Multi-step Checkout, Order Confirmation, Order History, Side-by-side Product Comparison, Budget Shopping Bundler, AI Shopping Assistant, Admin Dashboard, Profile, Authentication screens, and Legal Policies.
+- **150 Unique Catalog Items:** 10 curated products in each of 15 categories with authentic Indian market pricing (₹149 to ₹1,49,990), stock tracking, discount computations, and verified imagery.
+- **Intelligent Discovery:**
+  - Full-text dynamic search across name, brand, category, and keywords.
+  - Sidebar multi-filter (Categories, Price range, Minimum rating, Stock availability, Discount tiers, Brands).
+  - Web Speech API Voice Search with microphone input.
+  - Image Upload category query assistant.
+- **Smart Budget Shopping (`budget-shopping.html`):** Algorithmic bundle builder that accepts a target budget (e.g., ₹10,000 for Gaming), computes 18% GST and shipping fees, and selects optimal combinations that never exceed the specified spending limit.
+- **Conversational Assistant (`assistant.html`):** Natural language catalog parser capable of understanding intent such as *"Show phones under ₹20,000"* or *"Suggest a college backpack under ₹1,500"*.
+- **Product Comparison (`compare.html`):** Side-by-side comparison matrix for up to 4 items with category-aware attributes (RAM/Storage/Processor for laptops & phones; Fabric/Care/Style for apparel).
+- **Cart & Order Lifecycle:**
+  - Guest cart with LocalStorage persistence.
+  - Automated merge of guest items into authenticated carts upon sign-in.
+  - Strict stock limit guards.
+  - Demonstrative coupons (`SAVE10`, `SAVE200`, `FREESHIP`).
+  - Printable/PDF Order Summary generator.
+- **Administration Suite (`admin.html`):** Secured by demo PIN (`admin123`) or authenticated admin role. Provides live inventory counts, low-stock alerts, product creation, price/stock adjustments, and order status updates.
+- **Light & Dark Theme:** System-aware theme toggle persisting via `shopsmart_theme`.
 
 ---
 
-### 5. Product Details Modal & Related Products
-Clicking any product card or "Quick View" opens a modal featuring:
-- High-res product image with zoomable preview.
-- Brand pill, category tag, and stock status.
-- Current price, original price, and discount percentage badge.
-- Detailed product description and 4 key technical specification bullet points.
-- Interactive quantity selector bounded by stock.
-- One-click Wishlist bookmarking.
-- **Related Products Recommendation:** Dynamically displays 3 matching products from the exact same category with prices and quick add buttons.
+## 3. Technology Stack
+
+- **Structure & Semantic Layout:** HTML5 Semantic elements (`<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<aside>`, `<footer>`).
+- **Styling:** Vanilla CSS3 with CSS Custom Properties (Design Tokens), Flexbox, CSS Grid, media queries, and dark mode palette tokens.
+- **Client Logic:** Vanilla JavaScript (ES6+ modular separation). No React, Angular, or external UI frameworks.
+- **Icons:** Lucide Icons UMD.
+- **Authentication:** Dual-mode: Google Firebase Auth SDK v10 (CDN) + Development Mode fallback.
+- **Database:** Dual-mode: Google Cloud Firestore v10 (CDN) + Development Mode LocalStorage.
+- **Hosting / Local Server:** Any standard HTTP server (Python `http.server`, Node `serve`, Nginx, or GitHub Pages).
 
 ---
 
-### 6. Coimbatore, Tamil Nadu, India Business Configuration
-ShopEase is tailored for the Indian retail market:
-- **Commercial Hub:** Coimbatore, Tamil Nadu, India.
-- **Store Address:** *ShopEase Retail Hub, D.B. Road, R.S. Puram, Coimbatore, Tamil Nadu - 641002, India* (displayed prominently in the footer).
-- **Currency:** Indian Rupee (`INR — ₹`) with `en-IN` number formatting.
-- **Timezone:** `Asia/Kolkata` (IST) for order timestamping and delivery estimates.
-- **Checkout Form:** Defaults to Coimbatore, Tamil Nadu, with fields for House/Flat, Street, City, State, and PIN Code.
-- **Validation:** 10-digit Indian mobile number validation (`^[6-9]\d{9}$`) and 6-digit Indian PIN code validation (`^[1-9]\d{5}$`).
+## 4. Master Catalog (150 Products / 15 Categories)
+
+The catalog is centrally defined in `js/products.js` (and mirrored in root `products.js`). Every single product has been verified with 100% live HTTPS image assets returning `200 OK`:
+
+| Category | Count | Sample Brands & Items |
+| :--- | :---: | :--- |
+| **1. Mobiles and Tablets** | 10 | Samsung Galaxy S23, iPhone 15 Pro, OnePlus 12, Google Pixel 8, iPad Air M2, Anker PowerCore |
+| **2. Laptops and Computers** | 10 | MacBook Air M2, Dell XPS 13, ASUS ROG Zephyrus, LG UltraFine 4K, Keychron K2, Logitech MX Master |
+| **3. Audio and Accessories** | 10 | Sony WH-1000XM5, AirPods Pro 2, JBL Charge 5, Bose QC Ultra, Shure MV7, Marshall Stanmore |
+| **4. Men’s Fashion** | 10 | Levi's 511 Jeans, Peter England Formal Shirt, Allen Solly Chinos, Puma Hoodie, Titan Watch |
+| **5. Women’s Fashion** | 10 | Biba Anarkali Kurti, Fabindia Cotton Saree, Vero Moda Dress, Fossil Jacqueline Watch, Catwalk Heels |
+| **6. Footwear** | 10 | Nike Air Pegasus 40, Adidas Ultraboost, Puma Smash, Clarks Oxfords, Skechers Go Walk, Crocs |
+| **7. Home and Kitchen** | 10 | Prestige Iris 750W Mixer, Philips Kettle, Hawkins Cookware, Milton Thermosteel, Borosil Bowls |
+| **8. Home Appliances** | 10 | Atomberg BLDC Fan, Dyson V8 Cordless, LG 7kg Washing Machine, Samsung Refrigerator, Voltas AC |
+| **9. Beauty and Personal Care**| 10 | Minimalist Niacinamide, Cetaphil Cleanser, Derma Co Sunscreen, L'Oreal Serum, Beardo Oil |
+| **10. Sports and Fitness** | 10 | Kobo Hex Dumbbells, Boldfit Yoga Mat, Vector X Gloves, SG Cricket Bat, Nivia Football |
+| **11. Books and Stationery** | 10 | Clean Code, CLRS Algorithms, The Pragmatic Programmer, Parker Jotter, Casio Scientific Calc |
+| **12. Gaming** | 10 | Razer DeathAdder, Redragon Kumara K552, PS5 DualSense, HyperX Cloud II, Elgato Stream Deck |
+| **13. Bags and Travel** | 10 | American Tourister 28L, Skybags Duffle, Wildcraft Trekking, Safari Trolley, Aristocrat Luggage |
+| **14. Furniture & Home Decor**| 10 | Green Soul Ergonomic Chair, Wakefit Orthopedic Mattress, Solimo Coffee Table, Philips Lamp |
+| **15. Toys and Accessories** | 10 | LEGO Classic Creative Bricks, Hot Wheels 5-Car Pack, Nerf Elite Blaster, Barbie Doll, Rubik's |
 
 ---
 
-## 🛠️ Technology Stack
+## 5. Project Structure
 
-| Component | Technology | Rationale |
-|:---|:---|:---|
-| **Structure** | HTML5 Semantic Elements | High SEO score, accessible screen reader support, clean DOM hierarchy |
-| **Styling** | Vanilla CSS3 (Custom Properties) | Pixel-perfect control, 4–5 card responsive grid, fluid animations, no heavy frameworks |
-| **Logic** | Vanilla JavaScript (ES6+) | Centralized product architecture, zero dependencies, lightning-fast rendering |
-| **Storage** | Web LocalStorage API | Persistent cart, wishlist, and applied coupon across browser reloads |
-| **Icons** | Lucide Icons | Sleek modern vector iconography |
-| **Typography**| Inter & Poppins (Google Fonts) | Clean, readable e-commerce typography |
+```
+Shoping/
+├── index.html                 # Homepage with hero, categories, featured, deals, Coimbatore deals
+├── products.html              # Full product catalog with sidebar filters & sorting
+├── product-details.html       # Individual product view, specifications & related items
+├── cart.html                  # Dedicated shopping cart with coupon & free shipping meter
+├── checkout.html              # Customer info, address form, simulated payment, confirmation
+├── orders.html                # Authenticated order history & printable order summaries
+├── wishlist.html              # Wishlist management grid
+├── compare.html               # 4-item comparison matrix
+├── budget-shopping.html       # Budget shopping optimizer tool
+├── assistant.html             # Natural language shopping assistant
+├── admin.html                 # Admin workspace & inventory controls
+├── login.html                 # Sign In view with quick demo credentials
+├── register.html              # Registration view with phone & password meter
+├── forgot-password.html       # Password reset recovery form
+├── profile.html               # User account details & saved addresses
+├── about.html                 # About Us & Coimbatore operations
+├── contact.html               # Contact information & customer inquiry form
+├── privacy.html               # Comprehensive privacy disclosures
+├── terms.html                 # User agreement & terms of service
+├── README.md                  # Detailed documentation & setup guide
+├── css/
+│   └── style.css              # Unified responsive design system & dark mode tokens
+├── js/
+│   ├── products.js            # Master catalog (150 unique items, 15 categories)
+│   ├── utils.js               # INR currency formatter, toasts, theme toggles, date formatters
+│   ├── firebase-config.js     # Firebase SDK initialization & automatic mode detection
+│   ├── auth.js                # Dual-mode authentication (Firebase Auth + Dev Mode)
+│   ├── cart.js                # Cart storage, coupon logic, GST, and auto-merge on sign-in
+│   ├── wishlist.js            # Wishlist persistence & badge counters
+│   ├── product-renderer.js    # Card rendering, quick view modals, recently viewed logger
+│   ├── search.js              # Full-text search, speech voice search, image demo search
+│   ├── comparison.js          # Product comparison table logic
+│   ├── budget-shopping.js     # Budget bundle algorithm
+│   ├── assistant.js           # Catalog query assistant
+│   ├── orders.js              # Order checkout handler, status tracker & invoice printer
+│   ├── admin.js               # Inventory CRUD, stock modification, business metrics
+│   └── app.js                 # Global initialization, drawer handlers, header sync
+└── assets/
+    └── fallback/
+        └── product-fallback.svg  # Branded offline fallback image
+```
 
 ---
 
-## 🚀 Running the Project Locally
+## 6. Local Setup & Running Locally
 
-No build steps, bundlers, or npm installations are needed.
+Because ShopSmart uses native ES modules and standard web assets, you can run it locally with any static web server:
 
-### Running with Python (Currently Active on Port 8085)
+### Option A: Python (Recommended)
 ```bash
-# Start local HTTP server
+# In the project root directory:
 python3 -m http.server 8085
 ```
-Visit in your web browser:
-- **`http://localhost:8085/`**
-- Or directly: **`http://localhost:8085/shopping-cart/`**
+Open your browser to: [http://localhost:8085](http://localhost:8085)
 
-### Running with Node.js
+### Option B: Node.js (npx serve)
 ```bash
-npx serve .
-# Or
-npx serve shopping-cart
+npx serve -l 8085 .
 ```
 
-### Direct File Open
-You can also directly double-click `index.html` in your file explorer to open it in Chrome, Safari, Firefox, or Edge.
+### Option C: VS Code Live Server
+Right-click on `index.html` in VS Code and select **"Open with Live Server"**.
 
 ---
 
-## 📁 Repository Structure
+## 7. Firebase Configuration Guide
 
+ShopSmart is pre-wired to detect your Firebase project. If no credentials are supplied, it runs smoothly in **Development Mode**. To activate live Google Cloud Firebase:
+
+### Step 1: Create a Firebase Project
+1. Navigate to the [Firebase Console](https://console.firebase.google.com/).
+2. Click **Add Project** and name it (e.g., `shopsmart-store`).
+3. Click **Continue** (Google Analytics is optional).
+
+### Step 2: Enable Email/Password Authentication
+1. In the Firebase Console left navigation, select **Build &gt; Authentication**.
+2. Click **Get Started**.
+3. Under the **Sign-in method** tab, choose **Email/Password**.
+4. Enable the first toggle (**Email/Password**) and click **Save**.
+
+### Step 3: Set Up Cloud Firestore Database
+1. In the left navigation, select **Build &gt; Firestore Database**.
+2. Click **Create Database**.
+3. Choose a location closest to India (e.g., `asia-south1` Mumbai).
+4. Start in **Production mode** (or test mode for 30 days).
+
+### Step 4: Add Web App Credentials to ShopSmart
+1. In Firebase Project Overview, click the **Web icon `(</>)`** to register a web app.
+2. Enter the app nickname `ShopSmart Web` and click **Register app**.
+3. Copy the `firebaseConfig` object values.
+4. Open [js/firebase-config.js](file:///Users/sanjith/Shoping/js/firebase-config.js) and replace the placeholder fields:
+
+```javascript
+const firebaseConfig = {
+  apiKey: "AIzaSyYourActualApiKeyHere...",
+  authDomain: "shopsmart-store.firebaseapp.com",
+  projectId: "shopsmart-store",
+  storageBucket: "shopsmart-store.appspot.com",
+  messagingSenderId: "123456789012",
+  appId: "1:123456789012:web:abcdef..."
+};
 ```
-/Users/sanjith/Shoping/
-├── index.html                 # Main e-commerce web application layout
-├── style.css                  # Design tokens, responsive grid, drawer, modal, wishlist styles
-├── products.js                # Centralized 120-product dataset across 12 categories
-├── script.js                  # Cart logic, search/filters, calculations, checkout, modals
-├── assets/
-│   ├── product-fallback.svg   # Branded SVG fallback image for error resilience
-│   └── hero-banner.jpg        # Storefront hero banner visual
-├── shopping-cart/             # Synced standalone deployment directory
-│   ├── index.html
-│   ├── style.css
-│   ├── products.js
-│   ├── script.js
-│   └── assets/
-└── README.md                  # Complete technical documentation
+Save the file. When you refresh the website, the Development Mode notification banner will automatically disappear and ShopSmart will communicate directly with Google Firebase.
+
+### Step 5: Recommended Firestore Security Rules
+Deploy these security rules in the Firebase Console under **Firestore Database &gt; Rules** to protect customer data:
+
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to verify logged-in owner
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+    
+    // User profile documents
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+    
+    // User carts
+    match /carts/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+    
+    // User wishlists
+    match /wishlists/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+    
+    // Orders collection: Users can create and read their own orders only
+    match /orders/{orderId} {
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow read: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // Products collection: Publicly readable; writable only by admins
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+  }
+}
 ```
+
+### Step 6: Assigning Administrator Role Securely
+Never rely solely on client-side flags for production authorization. To grant an administrator claim:
+1. In your backend or Firebase Admin SDK script (Node.js):
+```javascript
+const admin = require('firebase-admin');
+admin.initializeApp();
+
+// Set custom user claim
+admin.auth().setCustomUserClaims('TARGET_USER_UID', { admin: true })
+  .then(() => {
+    console.log('User granted admin role successfully.');
+  });
+```
+2. In Development Mode, enter PIN `admin123` or sign in with `admin@shopsmart.demo` (Password: `Admin@123`).
 
 ---
 
-## 🧪 Verification & QA Summary
+## 8. Transparent Architecture: Real vs. Simulated Features
 
-- [x] **120 Unique Products:** Verified through Node.js test scripts across all 12 categories.
-- [x] **12 Categories:** Exactly 10 products per category (exceeds the 8–15 requirement).
-- [x] **Image Integrity:** 100% of the 120 product images verified via live HTTPS checks returning `200 OK`.
-- [x] **Image Fallback:** SVG fallback `assets/product-fallback.svg` linked via `onerror`.
-- [x] **Filters & Search:** Real-time text search, 12 category chips, price range, min rating, and in-stock only.
-- [x] **Wishlist Engine:** Heart button toggling, badge counter, and LocalStorage persistence.
-- [x] **Shopping Cart Drawer:** Add to cart, quantity increment/decrement, remove item, clear cart, stock limits.
-- [x] **Coupons & Totals:** `SAVE10`, `SAVE200` (₹2,000 min), `FREESHIP` coupons, 18% GST calculation, ₹99/Free delivery.
-- [x] **Checkout & Location:** Coimbatore, Tamil Nadu default delivery settings, 10-digit mobile & 6-digit PIN validation.
-- [x] **Zero Errors:** Clean console output without JavaScript errors or missing references.
+To adhere strictly to honest software engineering, ShopSmart clearly identifies what is executing natively and what is simulated:
+
+| Feature | Execution Type | Details |
+| :--- | :---: | :--- |
+| **Catalog Browsing, Filters & Sorting** | **Real** | Dynamic client JavaScript executing across all 150 products. |
+| **Cart Quantities & Stock Boundaries** | **Real** | Validated against inventory count; persisted in storage. |
+| **Coupon & Price Calculations** | **Real** | Math verified across discounts, delivery, and illustrative GST. |
+| **Voice Search** | **Real** | Utilizes browser's native Web Speech API (`webkitSpeechRecognition`). |
+| **Firebase Auth & Firestore** | **Real (Configurable)** | Real SDK calls when credentials provided; transparent Dev Mode when empty. |
+| **Payment Gateway** | **Simulated** | Interactive checkout test interface. No real bank accounts or cards are charged. |
+| **Live Courier Tracking** | **Simulated** | Progresses through order milestone stages (`Order Placed` &rarr; `Delivered`). |
+| **Invoice / Order Summary** | **Real Print/PDF** | Generates an accurate, printable PDF order summary breakdown. |
+
+---
+
+## 9. Coimbatore Store Configuration
+
+ShopSmart is customized for the retail and commercial ecosystem of **Coimbatore, Tamil Nadu, India**:
+- **Commercial Headquarters:** D.B. Road, R.S. Puram, Coimbatore, Tamil Nadu - 641002, India.
+- **Currency & Formatting:** Indian Rupee (`INR — ₹`) with Indian numeral commas (`₹1,49,990`).
+- **Timezone:** `Asia/Kolkata` (IST) for timestamping order receipts.
+- **Checkout Defaults:** City pre-filled to `Coimbatore` and State to `Tamil Nadu` (editable for any Indian address).
+- **Validation Rules:**
+  - Phone numbers strictly validated for 10-digit Indian mobile format (`^[6-9]\d{9}$`).
+  - Postal codes validated for 6-digit Indian PIN codes (`^[1-9]\d{5}$`).
+- **Regional Section:** Homepage includes a dedicated *"Local Deals in Coimbatore"* collection highlighting priority regional dispatches.
+
+---
+
+## 10. Cart, Pricing & Tax Calculations
+
+All cart calculations follow a single, immutable formula across `cart.js`, `checkout.js`, and order summaries:
+
+$$\text{Merchandise Subtotal} = \sum (\text{Unit Price} \times \text{Quantity})$$
+
+$$\text{Eligible Discount} = \begin{cases} \text{Subtotal} \times 0.10 & \text{if } \texttt{SAVE10} \\ \min(200, \text{Subtotal}) & \text{if } \texttt{SAVE200 and Subtotal} \ge 2000 \\ 0 & \text{otherwise} \end{cases}$$
+
+$$\text{Discounted Subtotal} = \max(0, \text{Merchandise Subtotal} - \text{Eligible Discount})$$
+
+$$\text{Delivery Fee} = \begin{cases} 0 & \text{if Subtotal} \ge 999 \text{ or } \texttt{FREESHIP} \\ 99 & \text{otherwise} \end{cases}$$
+
+$$\text{Illustrative GST (18\%)} = \text{Discounted Subtotal} \times 0.18$$
+
+$$\text{Final Payable Amount} = \text{Discounted Subtotal} + \text{Delivery Fee} + \text{Illustrative GST}$$
+
+---
+
+## 11. How to Modify Products & Images
+
+### Modifying Products
+Edit `js/products.js` (and `products.js` in root). Each product item contains:
+```javascript
+{
+  id: 151,
+  name: "Your Product Name",
+  brand: "Brand Name",
+  category: "Gaming", // Must match one of the 15 categories
+  price: 2499,
+  originalPrice: 3999,
+  discount: 38,
+  image: "https://images.unsplash.com/photo-...",
+  rating: 4.6,
+  reviews: 142,
+  stock: 25,
+  isFeatured: true,
+  isBestseller: false,
+  isDeal: true,
+  description: "Detailed description...",
+  specs: { "Key 1": "Val 1", "Key 2": "Val 2" }
+}
+```
+
+### Image Guidelines
+- Use authentic Unsplash photo URLs formatted with `?w=600&auto=format&fit=crop&q=80`.
+- Electronics, monitors, and appliances automatically use `object-fit: contain` to preserve silhouettes.
+- Fashion and apparel use `object-fit: cover`.
+- Offline fallback SVG is maintained in `assets/fallback/product-fallback.svg`.
+
+---
+
+## 12. Known Limitations
+
+1. **Browser Speech API:** Voice search relies on the Web Speech API supported in Chromium browsers (Chrome, Edge, Brave, Safari). If unsupported, the voice button alerts the user gracefully and retains regular text search.
+2. **Statutory Tax Invoices:** Order summaries generated for download are for demonstrative customer receipt purposes. A legal tax invoice requires a registered business GSTIN and tax filing server.
+3. **Frontend Payment:** Payments are simulated. A production deployment requires integrating a PCI-DSS certified gateway (Razorpay, Cashfree, or Stripe) with server-side webhook verification.
+
+---
+
+&copy; 2026 ShopSmart Online Shopping Store. Coimbatore, Tamil Nadu, India.

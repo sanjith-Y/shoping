@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products — ShopSmart Catalog</title>
+  <meta name="description" content="Browse our complete collection of 150+ authentic products across 15 categories. Filter by price, rating, brand, and stock with instant search.">
+  <link rel="icon" type="image/svg+xml" href="assets/fallback/product-fallback.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="announcement-bar" aria-label="Store Announcement">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div class="left">
+        <span class="badge">Coimbatore Hub</span>
+        <span>Free Shipping on Orders of ₹999 or more</span>
+      </div>
+      <div class="right">
+        <span>📍 Coimbatore, Tamil Nadu</span>
+        <a href="contact.html">📞 1800-456-7890</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        <span>ShopSmart<span class="logo-dot">.</span></span>
+      </a>
+
+      <div class="header-search-wrapper">
+        <i data-lucide="search" class="header-search-icon"></i>
+        <input type="search" id="catalogSearchInput" class="header-search-input" placeholder="Search by name, brand, or category...">
+        <div class="search-action-btns">
+          <button type="button" class="btn-search-tool" id="catalogVoiceBtn" title="Voice Search"><i data-lucide="mic"></i></button>
+          <button type="button" class="btn-search-tool" id="catalogImgSearchBtn" title="Search by Image"><i data-lucide="camera"></i></button>
+        </div>
+      </div>
+
+      <nav class="desktop-nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html" class="active">All Products</a>
+        <a href="budget-shopping.html">Budget Shopping</a>
+        <a href="assistant.html">AI Assistant</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="themeToggleBtn" title="Toggle Theme"><i data-lucide="moon"></i></button>
+        <a href="compare.html" class="icon-btn" title="Compare"><i data-lucide="columns-3"></i><span class="badge-count compare-badge-count hidden">0</span></a>
+        <a href="wishlist.html" class="icon-btn" title="Wishlist"><i data-lucide="heart"></i><span class="badge-count wishlist-badge-count hidden">0</span></a>
+        <button type="button" class="icon-btn" id="openCartDrawerBtn" title="Cart"><i data-lucide="shopping-cart"></i><span class="badge-count cart-badge-count hidden">0</span></button>
+
+        <div class="user-menu-wrapper">
+          <div id="navGuestGroup">
+            <a href="login.html" class="btn btn-secondary btn-sm" style="margin-right: 6px;">Sign In</a>
+            <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+          </div>
+          <div id="navUserGroup" class="hidden">
+            <button type="button" class="icon-btn" id="navUserMenuTrigger"><i data-lucide="user"></i></button>
+            <div class="user-profile-menu">
+              <div class="user-menu-header">
+                <div class="user-menu-name" id="navUserName">My Account</div>
+                <div class="user-menu-email" id="navUserEmail">user@example.com</div>
+              </div>
+              <a href="profile.html" class="user-menu-link"><i data-lucide="user" style="width: 16px; height: 16px;"></i> My Profile</a>
+              <a href="orders.html" class="user-menu-link"><i data-lucide="package" style="width: 16px; height: 16px;"></i> Order History</a>
+              <a href="wishlist.html" class="user-menu-link"><i data-lucide="heart" style="width: 16px; height: 16px;"></i> Wishlist</a>
+              <a href="admin.html" class="user-menu-link"><i data-lucide="shield" style="width: 16px; height: 16px;"></i> Admin Console</a>
+              <button type="button" class="user-menu-link text-danger" id="navLogoutBtn" style="width: 100%; text-align: left;"><i data-lucide="log-out" style="width: 16px; height: 16px;"></i> Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Catalog Content -->
+  <main class="container">
+    
+    <!-- Breadcrumb & Title -->
+    <div style="padding: 24px 0 12px 0;">
+      <div style="font-size: 0.8125rem; color: var(--text-subtle); margin-bottom: 6px;">
+        <a href="index.html">Home</a> &gt; <span>All Products</span>
+      </div>
+      <h1 style="font-size: 1.875rem; font-weight: 700;">Explore Full Product Catalog</h1>
+    </div>
+
+    <!-- Catalog Layout (Sidebar Filters + Products Grid) -->
+    <div class="catalog-layout">
+      
+      <!-- Filter Sidebar -->
+      <aside class="filter-sidebar">
+        <div class="filter-sidebar-header">
+          <div style="font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 6px;">
+            <i data-lucide="sliders-horizontal" style="width: 18px; height: 18px; color: var(--primary);"></i> Filters
+          </div>
+          <button type="button" class="text-primary font-semibold" style="font-size: 0.8125rem;" onclick="window.ShopSmartSearch.resetFilters()">Reset All</button>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-group">
+          <label class="filter-group-title" for="catalogCategorySelect">Category</label>
+          <select id="catalogCategorySelect">
+            <option value="All">All 15 Categories</option>
+            <option value="Mobiles and Tablets">Mobiles and Tablets</option>
+            <option value="Laptops and Computers">Laptops and Computers</option>
+            <option value="Audio and Accessories">Audio and Accessories</option>
+            <option value="Men’s Fashion">Men’s Fashion</option>
+            <option value="Women’s Fashion">Women’s Fashion</option>
+            <option value="Footwear">Footwear</option>
+            <option value="Home and Kitchen">Home and Kitchen</option>
+            <option value="Home Appliances">Home Appliances</option>
+            <option value="Beauty and Personal Care">Beauty and Personal Care</option>
+            <option value="Sports and Fitness">Sports and Fitness</option>
+            <option value="Books and Stationery">Books and Stationery</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Bags and Travel">Bags and Travel</option>
+            <option value="Furniture and Home Decor">Furniture and Home Decor</option>
+            <option value="Toys and Accessories">Toys and Accessories</option>
+          </select>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-group">
+          <div class="filter-group-title">Price Range (₹)</div>
+          <div class="price-inputs-grid">
+            <input type="number" id="catalogMinPrice" placeholder="Min ₹" min="0">
+            <input type="number" id="catalogMaxPrice" placeholder="Max ₹" min="0">
+          </div>
+        </div>
+
+        <!-- Rating Filter -->
+        <div class="filter-group">
+          <label class="filter-group-title" for="catalogRatingSelect">Minimum Rating</label>
+          <select id="catalogRatingSelect">
+            <option value="0">All Ratings</option>
+            <option value="4.5">4.5★ &amp; Above</option>
+            <option value="4.0">4.0★ &amp; Above</option>
+            <option value="3.5">3.5★ &amp; Above</option>
+          </select>
+        </div>
+
+        <!-- Stock Availability -->
+        <div class="filter-group">
+          <label class="filter-checkbox-label">
+            <input type="checkbox" id="catalogInStockOnly">
+            <span>In Stock Only</span>
+          </label>
+        </div>
+
+      </aside>
+
+      <!-- Products Display Pane -->
+      <section>
+        
+        <!-- Toolbar (Sort & Count) -->
+        <div class="catalog-toolbar">
+          <div id="catalogResultsCount" style="font-size: 0.875rem; font-weight: 500; color: var(--text-muted);">
+            Showing products...
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <label for="catalogSortSelect" style="font-size: 0.875rem; font-weight: 500;">Sort By:</label>
+            <select id="catalogSortSelect" style="width: auto;">
+              <option value="featured">Featured / Default</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="discount">Biggest Discount</option>
+              <option value="newest">Newest Additions</option>
+              <option value="name-asc">Name: A to Z</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="catalogProductsGrid"></div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Slide-Out Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <i data-lucide="shopping-cart" style="color: var(--primary);"></i>
+        <h3 style="font-weight: 700; font-size: 1.125rem;">Shopping Cart</h3>
+      </div>
+      <button type="button" class="icon-btn" id="closeCartDrawerBtn"><i data-lucide="x"></i></button>
+    </div>
+    <div id="drawerShippingMeter" style="padding: 12px 24px 0 24px;"></div>
+    <div class="cart-drawer-body" id="cartDrawerItems"></div>
+    <div class="cart-drawer-footer hidden" id="cartDrawerFooter">
+      <div class="cart-breakdown-row"><span>Subtotal:</span><strong id="drawerSubtotal">₹0</strong></div>
+      <div class="cart-breakdown-row"><span>Delivery:</span><strong id="drawerDelivery">FREE</strong></div>
+      <div class="cart-breakdown-row"><span>GST (18% Illustrative):</span><strong id="drawerGst">₹0</strong></div>
+      <div class="cart-breakdown-row total"><span>Payable Total:</span><span class="text-primary font-bold" id="drawerGrandTotal">₹0</span></div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px;">
+        <a href="cart.html" class="btn btn-secondary">View Cart</a>
+        <a href="checkout.html" class="btn btn-primary">Checkout</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay hidden" id="quickViewModal">
+    <div class="modal-container" style="max-width: 800px;">
+      <button type="button" class="modal-close-btn" onclick="window.ShopSmartUtils.closeModal('quickViewModal')"><i data-lucide="x"></i></button>
+      <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center;">
+        <div style="background-color: var(--bg-subtle); padding: 16px; border-radius: var(--radius-lg); text-align: center;">
+          <img id="qvImage" src="" alt="" style="max-height: 280px; margin: 0 auto; object-fit: contain;">
+        </div>
+        <div>
+          <div id="qvCategory" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-subtle); font-weight: 600;"></div>
+          <h2 id="qvTitle" style="font-size: 1.25rem; font-weight: 700; margin: 4px 0 8px;"></h2>
+          <div id="qvRating" style="font-size: 0.875rem; margin-bottom: 12px;"></div>
+          <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px;">
+            <span id="qvPrice" style="font-size: 1.5rem; font-weight: 700; color: var(--primary);"></span>
+            <span id="qvOriginalPrice" style="font-size: 0.9375rem; color: var(--text-subtle); text-decoration: line-through;"></span>
+            <span id="qvDiscount" class="card-badge-discount" style="position: static;"></span>
+          </div>
+          <div id="qvStock" style="font-size: 0.875rem; margin-bottom: 12px;"></div>
+          <p id="qvDesc" class="text-muted" style="font-size: 0.875rem; line-height: 1.4; margin-bottom: 16px;"></p>
+          <ul id="qvHighlights" style="list-style: disc; padding-left: 18px; font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 20px;"></ul>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <input type="number" id="qvQuantity" value="1" min="1" max="99" style="width: 70px; text-align: center;">
+            <button type="button" class="btn btn-primary" id="qvAddToCartBtn">Add to Cart</button>
+            <a href="#" id="qvViewFullLink" class="btn btn-secondary">Full Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ShopSmart Online Shopping Store. Coimbatore, Tamil Nadu, India.</div>
+      <div style="display:flex; gap: 16px; flex-wrap: wrap;">
+        <a href="about.html" style="color: var(--text-muted); text-decoration: underline;">About Us</a>
+        <a href="contact.html" style="color: var(--text-muted); text-decoration: underline;">Contact</a>
+        <a href="privacy.html" style="color: var(--text-muted); text-decoration: underline;">Privacy</a>
+        <a href="terms.html" style="color: var(--text-muted); text-decoration: underline;">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/comparison.js"></script>
+  <script src="js/product-renderer.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Parse URL parameters (e.g. ?category=... or ?search=...)
+      const params = new URLSearchParams(window.location.search);
+      const urlCat = params.get('category');
+      const urlSearch = params.get('search');
+      const urlSort = params.get('sort');
+
+      if (urlCat) {
+        window.ShopSmartSearch.searchState.category = urlCat;
+        const sel = document.getElementById('catalogCategorySelect');
+        if (sel) sel.value = urlCat;
+      }
+      if (urlSearch) {
+        window.ShopSmartSearch.searchState.query = urlSearch;
+        const inp = document.getElementById('catalogSearchInput');
+        if (inp) inp.value = urlSearch;
+      }
+      if (urlSort) {
+        window.ShopSmartSearch.searchState.sort = urlSort;
+        const sortSel = document.getElementById('catalogSortSelect');
+        if (sortSel) sortSel.value = urlSort;
+      }
+
+      window.ShopSmartSearch.renderCatalogPage();
+
+      // Bind filter controls
+      const searchInput = document.getElementById('catalogSearchInput');
+      const catSelect = document.getElementById('catalogCategorySelect');
+      const minPrice = document.getElementById('catalogMinPrice');
+      const maxPrice = document.getElementById('catalogMaxPrice');
+      const ratingSelect = document.getElementById('catalogRatingSelect');
+      const inStockCheckbox = document.getElementById('catalogInStockOnly');
+      const sortSelect = document.getElementById('catalogSortSelect');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          window.ShopSmartSearch.searchState.query = e.target.value;
+          window.ShopSmartSearch.renderCatalogPage();
+        });
+      }
+      if (catSelect) {
+        catSelect.addEventListener('change', (e) => {
+          window.ShopSmartSearch.searchState.category = e.target.value;
+          window.ShopSmartSearch.renderCatalogPage();
+        });
+      }
+      if (minPrice) {
+        minPrice.addEventListener('input', (e) => {
+          window.ShopSmartSearch.searchState.minPrice = e.target.value ? parseFloat(e.target.value) : null;
+          window.ShopSmartSearch.renderCatalogPage();
+        });
+      }
+      if (maxPrice) {
+        maxPrice.addEventListener('input', (e) => {
+          window.ShopSmartSearch.searchState.maxPrice = e.target.value ? parseFloat(e.target.value) : null;
+          window.ShopSmartSearch.renderCatalogPage();
+        });
+      }
+      if (ratingSelect) {
+        ratingSelect.addEventListener('change', (e) => {
+          window.ShopSmartSearch.searchState.minRating = parseFloat(e.target.value) || 0;
+          window.ShopSmartSearch.renderCatalogPage();
+        });
+      }
+      if (inStockCheckbox) {
+        inStockCheckbox.addEventListener('change', (e) => {
+          window.ShopSmartSearch.searchState.inStockOnly = e.target.checked;
+          window.ShopSmartSearch.renderCatalogPage();
+        });
+      }
+      if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+          window.ShopSmartSearch.searchState.sort = e.target.value;
+          window.ShopSmartSearch.renderCatalogPage();
+        });
+      }
+
+      // Voice search button
+      const voiceBtn = document.getElementById('catalogVoiceBtn');
+      if (voiceBtn) {
+        voiceBtn.addEventListener('click', () => {
+          window.ShopSmartSearch.startVoiceSearch('catalogSearchInput');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

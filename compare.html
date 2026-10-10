@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Comparison — ShopSmart</title>
+  <link rel="icon" type="image/svg+xml" href="assets/fallback/product-fallback.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div><span>Compare up to 4 products side-by-side • ShopSmart Coimbatore Hub</span></div>
+      <div><span>150+ Curated Products</span></div>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        <span>ShopSmart<span class="logo-dot">.</span></span>
+      </a>
+
+      <nav class="desktop-nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="budget-shopping.html">Budget Shopping</a>
+        <a href="assistant.html">AI Assistant</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="themeToggleBtn"><i data-lucide="moon"></i></button>
+        <a href="wishlist.html" class="icon-btn" title="Wishlist"><i data-lucide="heart"></i><span class="badge-count wishlist-badge-count hidden">0</span></a>
+        <button type="button" class="icon-btn" id="openCartDrawerBtn" title="Cart"><i data-lucide="shopping-cart"></i><span class="badge-count cart-badge-count hidden">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Compare Main -->
+  <main class="container" style="padding: 32px 0 60px 0;">
+    <div style="margin-bottom: 24px;">
+      <div style="font-size: 0.8125rem; color: var(--text-subtle); margin-bottom: 4px;">
+        <a href="index.html">Home</a> &gt; <span>Comparison</span>
+      </div>
+      <h1 style="font-size: 1.875rem; font-weight: 700;">Side-by-Side Product Comparison</h1>
+      <p class="text-muted" style="margin-top: 4px;">Evaluate key specifications, ratings, discounts, and real-time stock across up to 4 selected catalog items.</p>
+    </div>
+
+    <!-- Table Container -->
+    <div id="compareContainer"></div>
+
+  </main>
+
+  <!-- Slide-Out Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 8px;"><i data-lucide="shopping-cart" style="color: var(--primary);"></i><h3 style="font-weight: 700;">Shopping Cart</h3></div>
+      <button type="button" class="icon-btn" id="closeCartDrawerBtn"><i data-lucide="x"></i></button>
+    </div>
+    <div id="drawerShippingMeter" style="padding: 12px 24px 0 24px;"></div>
+    <div class="cart-drawer-body" id="cartDrawerItems"></div>
+    <div class="cart-drawer-footer hidden" id="cartDrawerFooter">
+      <div class="cart-breakdown-row"><span>Subtotal:</span><strong id="drawerSubtotal">₹0</strong></div>
+      <div class="cart-breakdown-row"><span>Delivery:</span><strong id="drawerDelivery">FREE</strong></div>
+      <div class="cart-breakdown-row"><span>GST (18%):</span><strong id="drawerGst">₹0</strong></div>
+      <div class="cart-breakdown-row total"><span>Total:</span><span class="text-primary font-bold" id="drawerGrandTotal">₹0</span></div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px;">
+        <a href="cart.html" class="btn btn-secondary">View Cart</a>
+        <a href="checkout.html" class="btn btn-primary">Checkout</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ShopSmart Online Shopping Store. Coimbatore, Tamil Nadu, India.</div>
+      <div style="display:flex; gap: 16px; flex-wrap: wrap;">
+        <a href="about.html" style="color: var(--text-muted); text-decoration: underline;">About Us</a>
+        <a href="contact.html" style="color: var(--text-muted); text-decoration: underline;">Contact</a>
+        <a href="privacy.html" style="color: var(--text-muted); text-decoration: underline;">Privacy</a>
+        <a href="terms.html" style="color: var(--text-muted); text-decoration: underline;">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/comparison.js"></script>
+  <script src="js/product-renderer.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.ShopSmartCompare.renderCompareTable();
+    });
+  </script>
+</body>
+</html>

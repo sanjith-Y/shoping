@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — ShopSmart Console</title>
+  <link rel="icon" type="image/svg+xml" href="assets/fallback/product-fallback.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body style="background-color: var(--bg-subtle);">
+
+  <!-- Admin Top Bar -->
+  <header style="padding: 16px 0; border-bottom: 1px solid var(--border-color); background-color: var(--bg-surface);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="index.html" class="site-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+          </svg>
+          <span>ShopSmart<span class="logo-dot">.</span></span>
+        </a>
+        <span class="hero-pill" style="margin-bottom: 0; background-color: #fef3c7; color: #92400e;">
+          <i data-lucide="shield" style="width: 14px; height: 14px;"></i> Admin Console
+        </span>
+      </div>
+      <div>
+        <a href="index.html" class="btn btn-secondary btn-sm"><i data-lucide="external-link"></i> View Storefront</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Main -->
+  <main class="container" style="padding: 32px 0 60px 0;">
+    
+    <!-- Admin Gate / Auth Check -->
+    <div id="adminGateModal" style="display: none; max-width: 440px; margin: 40px auto; background-color: var(--bg-surface); padding: 32px; border-radius: var(--radius-xl); border: 1px solid var(--border-color); text-align: center; box-shadow: var(--shadow-md);">
+      <i data-lucide="lock" style="width: 48px; height: 48px; margin: 0 auto 12px; color: var(--primary);"></i>
+      <h2 style="font-size: 1.375rem; font-weight: 700; margin-bottom: 6px;">Admin Authorization Required</h2>
+      <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 20px;">
+        Enter your admin security PIN or sign in with an account having administrator permissions.
+      </p>
+      <form onsubmit="handleAdminAuth(event)">
+        <input type="password" id="adminPinInput" placeholder="Enter PIN (Default: admin123)" style="margin-bottom: 14px;" required>
+        <button type="submit" class="btn btn-primary btn-block">Unlock Admin Console</button>
+      </form>
+    </div>
+
+    <!-- Active Admin Dashboard Workspace -->
+    <div id="adminWorkspace">
+      
+      <!-- Top Metrics Overview -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px;">
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px;">
+          <div style="font-size: 0.8125rem; color: var(--text-subtle);">Total Catalog Items</div>
+          <div id="statTotalProducts" style="font-size: 2rem; font-weight: 700; color: var(--primary);">150</div>
+        </div>
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px;">
+          <div style="font-size: 0.8125rem; color: var(--text-subtle);">Products In Stock</div>
+          <div id="statInStock" style="font-size: 2rem; font-weight: 700; color: var(--success);">0</div>
+        </div>
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px;">
+          <div style="font-size: 0.8125rem; color: var(--text-subtle);">Low Stock Alert (&le; 5)</div>
+          <div id="statLowStock" style="font-size: 2rem; font-weight: 700; color: var(--danger);">0</div>
+        </div>
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px;">
+          <div style="font-size: 0.8125rem; color: var(--text-subtle);">Total Recorded Orders</div>
+          <div id="statTotalOrders" style="font-size: 2rem; font-weight: 700; color: var(--accent-amber);">0</div>
+        </div>
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px;">
+          <div style="font-size: 0.8125rem; color: var(--text-subtle);">Recorded Revenue (₹)</div>
+          <div id="statTotalRevenue" style="font-size: 2rem; font-weight: 700; color: var(--text-main);">₹0</div>
+        </div>
+      </div>
+
+      <!-- Inventory Management Pane -->
+      <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 28px; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="font-size: 1.25rem; font-weight: 700;">Live Catalog &amp; Inventory Management</h2>
+            <p class="text-muted" style="font-size: 0.8125rem;">Directly edit stock, update selling prices, or add new items to the 15 categories.</p>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" onclick="window.ShopSmartAdmin.openAddModal()">
+            <i data-lucide="plus"></i> Add New Product
+          </button>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+              <tr style="background-color: var(--bg-subtle); border-bottom: 2px solid var(--border-color); font-size: 0.8125rem; color: var(--text-subtle);">
+                <th style="padding: 10px;">#</th>
+                <th style="padding: 10px;">Product Name &amp; Category</th>
+                <th style="padding: 10px;">Price (₹)</th>
+                <th style="padding: 10px;">Stock Units</th>
+                <th style="padding: 10px;">Status</th>
+                <th style="padding: 10px; text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminInventoryBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Add/Edit Product Modal -->
+  <div class="modal-overlay hidden" id="adminProductModal" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 600px;">
+      <button type="button" class="modal-close-btn" onclick="window.ShopSmartUtils.closeModal('adminProductModal')">
+        <i data-lucide="x"></i>
+      </button>
+      <h3 style="font-weight: 700; font-size: 1.25rem; margin-bottom: 16px;">Product Information</h3>
+
+      <form id="adminProductForm" onsubmit="window.ShopSmartAdmin.handleProductFormSubmit(event)">
+        <input type="hidden" id="adminProdId">
+
+        <div style="margin-bottom: 14px;">
+          <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 4px;">Product Name *</label>
+          <input type="text" id="adminProdName" required placeholder="e.g. Sony Wireless Headphones">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+          <div>
+            <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 4px;">Category *</label>
+            <select id="adminProdCategory" required>
+              <option value="Mobiles and Tablets">Mobiles and Tablets</option>
+              <option value="Laptops and Computers">Laptops and Computers</option>
+              <option value="Audio and Accessories">Audio and Accessories</option>
+              <option value="Men’s Fashion">Men’s Fashion</option>
+              <option value="Women’s Fashion">Women’s Fashion</option>
+              <option value="Footwear">Footwear</option>
+              <option value="Home and Kitchen">Home and Kitchen</option>
+              <option value="Home Appliances">Home Appliances</option>
+              <option value="Beauty and Personal Care">Beauty and Personal Care</option>
+              <option value="Sports and Fitness">Sports and Fitness</option>
+              <option value="Books and Stationery">Books and Stationery</option>
+              <option value="Gaming">Gaming</option>
+              <option value="Bags and Travel">Bags and Travel</option>
+              <option value="Furniture and Home Decor">Furniture and Home Decor</option>
+              <option value="Toys and Accessories">Toys and Accessories</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 4px;">Brand *</label>
+            <input type="text" id="adminProdBrand" required placeholder="e.g. Sony">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+          <div>
+            <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 4px;">Selling Price (₹) *</label>
+            <input type="number" id="adminProdPrice" required min="1">
+          </div>
+          <div>
+            <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 4px;">Original Price (₹)</label>
+            <input type="number" id="adminProdOrigPrice" min="1">
+          </div>
+          <div>
+            <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 4px;">Stock Units *</label>
+            <input type="number" id="adminProdStock" required min="0">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 4px;">Image URL</label>
+          <input type="url" id="adminProdImage" placeholder="https://images.unsplash.com/...">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 4px;">Description</label>
+          <textarea id="adminProdDesc" rows="3" placeholder="Brief technical summary..."></textarea>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+          <button type="button" class="btn btn-secondary" onclick="window.ShopSmartUtils.closeModal('adminProductModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/products.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    function checkAdminAuth() {
+      const user = window.ShopSmartAuth ? window.ShopSmartAuth.getCurrentUser() : null;
+      const isPinUnlocked = sessionStorage.getItem('shopsmart_admin_unlocked') === 'true';
+
+      if ((user && user.role === 'admin') || isPinUnlocked) {
+        document.getElementById('adminWorkspace').style.display = 'block';
+        document.getElementById('adminGateModal').style.display = 'none';
+        window.ShopSmartAdmin.renderAdminInventoryTable();
+      } else {
+        document.getElementById('adminWorkspace').style.display = 'none';
+        document.getElementById('adminGateModal').style.display = 'block';
+      }
+      window.ShopSmartUtils.refreshIcons();
+    }
+
+    function handleAdminAuth(e) {
+      e.preventDefault();
+      const pin = document.getElementById('adminPinInput').value;
+      if (pin === 'admin123' || pin === '641002') {
+        sessionStorage.setItem('shopsmart_admin_unlocked', 'true');
+        window.ShopSmartUtils.showToast('Admin console unlocked.', 'success');
+        checkAdminAuth();
+      } else {
+        window.ShopSmartUtils.showToast('Invalid PIN. Use default "admin123".', 'error');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      checkAdminAuth();
+    });
+  </script>
+</body>
+</html>

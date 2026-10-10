@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile — ShopSmart</title>
+  <link rel="icon" type="image/svg+xml" href="assets/fallback/product-fallback.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div><span>User Profile &amp; Preferences • ShopSmart Coimbatore</span></div>
+      <div><span>📍 Coimbatore, Tamil Nadu</span></div>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        <span>ShopSmart<span class="logo-dot">.</span></span>
+      </a>
+      <nav class="desktop-nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="orders.html">Orders</a>
+        <a href="wishlist.html">Wishlist</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="themeToggleBtn"><i data-lucide="moon"></i></button>
+        <button type="button" class="btn btn-secondary btn-sm text-danger" onclick="window.ShopSmartAuth.logoutUser(); window.location.href='index.html';">
+          <i data-lucide="log-out"></i> Logout
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Profile Main -->
+  <main class="container" style="padding: 36px 0 60px 0; max-width: 800px;">
+    
+    <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 36px; box-shadow: var(--shadow-sm); margin-bottom: 28px;">
+      
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+        <div style="width: 64px; height: 64px; border-radius: var(--radius-full); background-color: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700;">
+          <span id="profileAvatarChar">U</span>
+        </div>
+        <div>
+          <h1 id="profileDisplayName" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2px;">User Account</h1>
+          <div id="profileDisplayEmail" class="text-muted" style="font-size: 0.875rem;">user@example.com</div>
+        </div>
+      </div>
+
+      <!-- Edit Profile Form -->
+      <form id="profileForm" onsubmit="handleProfileUpdate(event)">
+        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color);">
+          Personal Details
+        </h3>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div>
+            <label for="profName" style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Full Name</label>
+            <input type="text" id="profName" required>
+          </div>
+          <div>
+            <label for="profPhone" style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Indian Mobile Number</label>
+            <input type="tel" id="profPhone" pattern="[6-9][0-9]{9}" required>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Email (Registered)</label>
+          <input type="email" id="profEmail" disabled style="background-color: var(--bg-subtle); color: var(--text-subtle);">
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="saveProfileBtn">Save Profile Changes</button>
+      </form>
+
+    </div>
+
+    <!-- Quick Navigation Tiles -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+      <a href="orders.html" style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px; text-align: center; display: block;">
+        <i data-lucide="package" style="width: 28px; height: 28px; margin: 0 auto 8px; color: var(--primary);"></i>
+        <div style="font-weight: 600;">My Orders</div>
+        <div class="text-muted" style="font-size: 0.75rem;">View order tracking &amp; invoices</div>
+      </a>
+      <a href="wishlist.html" style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px; text-align: center; display: block;">
+        <i data-lucide="heart" style="width: 28px; height: 28px; margin: 0 auto 8px; color: var(--accent-rose);"></i>
+        <div style="font-weight: 600;">Saved Wishlist</div>
+        <div class="text-muted" style="font-size: 0.75rem;">Manage bookmarked items</div>
+      </a>
+      <a href="cart.html" style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px; text-align: center; display: block;">
+        <i data-lucide="shopping-cart" style="width: 28px; height: 28px; margin: 0 auto 8px; color: var(--accent-amber);"></i>
+        <div style="font-weight: 600;">Shopping Cart</div>
+        <div class="text-muted" style="font-size: 0.75rem;">Inspect active bag</div>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ShopSmart Online Shopping Store. Coimbatore, Tamil Nadu, India.</div>
+      <div style="display:flex; gap: 16px; flex-wrap: wrap;">
+        <a href="about.html" style="color: var(--text-muted); text-decoration: underline;">About Us</a>
+        <a href="contact.html" style="color: var(--text-muted); text-decoration: underline;">Contact</a>
+        <a href="privacy.html" style="color: var(--text-muted); text-decoration: underline;">Privacy</a>
+        <a href="terms.html" style="color: var(--text-muted); text-decoration: underline;">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = window.ShopSmartAuth ? window.ShopSmartAuth.getCurrentUser() : null;
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      document.getElementById('profileDisplayName').textContent = user.fullName || 'User Account';
+      document.getElementById('profileDisplayEmail').textContent = user.email || '';
+      document.getElementById('profileAvatarChar').textContent = (user.fullName || 'U').charAt(0).toUpperCase();
+
+      document.getElementById('profName').value = user.fullName || '';
+      document.getElementById('profPhone').value = user.phone || '';
+      document.getElementById('profEmail').value = user.email || '';
+
+      window.ShopSmartUtils.refreshIcons();
+    });
+
+    async function handleProfileUpdate(e) {
+      e.preventDefault();
+      const btn = document.getElementById('saveProfileBtn');
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+
+      const fullName = document.getElementById('profName').value.trim();
+      const phone = document.getElementById('profPhone').value.trim();
+
+      try {
+        await window.ShopSmartAuth.updateUserProfile({ fullName, phone });
+        window.ShopSmartUtils.showToast('Profile updated successfully!', 'success');
+        document.getElementById('profileDisplayName').textContent = fullName;
+        document.getElementById('profileAvatarChar').textContent = fullName.charAt(0).toUpperCase();
+      } catch (err) {
+        window.ShopSmartUtils.showToast(err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Save Profile Changes';
+      }
+    }
+  </script>
+</body>
+</html>

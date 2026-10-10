@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Budget Shopping — ShopSmart</title>
+  <link rel="icon" type="image/svg+xml" href="assets/fallback/product-fallback.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div><span>Smart Budget Shopping Tool • Get the Most Value Out of Every Rupee</span></div>
+      <div><span>📍 Coimbatore Store Center</span></div>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        <span>ShopSmart<span class="logo-dot">.</span></span>
+      </a>
+
+      <nav class="desktop-nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="budget-shopping.html" class="active">Budget Shopping</a>
+        <a href="assistant.html">AI Assistant</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="themeToggleBtn"><i data-lucide="moon"></i></button>
+        <a href="wishlist.html" class="icon-btn" title="Wishlist"><i data-lucide="heart"></i><span class="badge-count wishlist-badge-count hidden">0</span></a>
+        <button type="button" class="icon-btn" id="openCartDrawerBtn" title="Cart"><i data-lucide="shopping-cart"></i><span class="badge-count cart-badge-count hidden">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Budget Shopping Main -->
+  <main class="container" style="padding: 32px 0 60px 0;">
+    <div style="max-width: 800px; margin-bottom: 32px;">
+      <span class="hero-pill">Algorithmic Bundle Optimizer</span>
+      <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 8px;">Smart Budget Shopping</h1>
+      <p class="text-muted" style="font-size: 1rem; line-height: 1.5;">
+        Specify your total spending ceiling in Indian Rupees, pick preferred categories, and our algorithm will assemble a curated bundle of actual in-stock catalog products guaranteed not to exceed your budget—inclusive of estimated 18% GST and delivery fees.
+      </p>
+    </div>
+
+    <!-- Budget Input Card -->
+    <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 32px; box-shadow: var(--shadow-sm); max-width: 800px; margin-bottom: 32px;">
+      <form id="budgetForm" onsubmit="handleBudgetSubmit(event)">
+        
+        <div style="margin-bottom: 24px;">
+          <label for="budgetAmountInput" style="font-size: 0.9375rem; font-weight: 600; display: block; margin-bottom: 8px;">
+            Your Total Budget in Indian Rupees (₹) *
+          </label>
+          <div style="position: relative; max-width: 340px;">
+            <span style="position: absolute; left: 14px; top: 12px; font-weight: 700; color: var(--primary);">₹</span>
+            <input type="number" id="budgetAmountInput" value="10000" min="500" step="500" style="padding-left: 32px; font-size: 1.125rem; font-weight: 700;" required>
+          </div>
+          <div style="display: flex; gap: 8px; margin-top: 10px;">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('budgetAmountInput').value = 3000">₹3,000</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('budgetAmountInput').value = 5000">₹5,000</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('budgetAmountInput').value = 10000">₹10,000</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('budgetAmountInput').value = 25000">₹25,000</button>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <label style="font-size: 0.9375rem; font-weight: 600; display: block; margin-bottom: 8px;">
+            Target Product Categories (Select one or more)
+          </label>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;" id="budgetCategoryCheckboxes"></div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <label for="budgetGoalInput" style="font-size: 0.9375rem; font-weight: 600; display: block; margin-bottom: 8px;">
+            Optional Shopping Goal or Theme
+          </label>
+          <input type="text" id="budgetGoalInput" placeholder="e.g. College essentials, work from home, gaming setup, festival gift">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">
+          <i data-lucide="sparkles"></i> Generate Optimized Bundle
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Results Container -->
+    <div id="budgetBundleResults"></div>
+
+  </main>
+
+  <!-- Slide-Out Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 8px;"><i data-lucide="shopping-cart" style="color: var(--primary);"></i><h3 style="font-weight: 700;">Shopping Cart</h3></div>
+      <button type="button" class="icon-btn" id="closeCartDrawerBtn"><i data-lucide="x"></i></button>
+    </div>
+    <div id="drawerShippingMeter" style="padding: 12px 24px 0 24px;"></div>
+    <div class="cart-drawer-body" id="cartDrawerItems"></div>
+    <div class="cart-drawer-footer hidden" id="cartDrawerFooter">
+      <div class="cart-breakdown-row"><span>Subtotal:</span><strong id="drawerSubtotal">₹0</strong></div>
+      <div class="cart-breakdown-row"><span>Delivery:</span><strong id="drawerDelivery">FREE</strong></div>
+      <div class="cart-breakdown-row"><span>GST (18%):</span><strong id="drawerGst">₹0</strong></div>
+      <div class="cart-breakdown-row total"><span>Total:</span><span class="text-primary font-bold" id="drawerGrandTotal">₹0</span></div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px;">
+        <a href="cart.html" class="btn btn-secondary">View Cart</a>
+        <a href="checkout.html" class="btn btn-primary">Checkout</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ShopSmart Online Shopping Store. Coimbatore, Tamil Nadu, India.</div>
+      <div style="display:flex; gap: 16px; flex-wrap: wrap;">
+        <a href="about.html" style="color: var(--text-muted); text-decoration: underline;">About Us</a>
+        <a href="contact.html" style="color: var(--text-muted); text-decoration: underline;">Contact</a>
+        <a href="privacy.html" style="color: var(--text-muted); text-decoration: underline;">Privacy</a>
+        <a href="terms.html" style="color: var(--text-muted); text-decoration: underline;">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/comparison.js"></script>
+  <script src="js/budget-shopping.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Populate category checkboxes
+      const cats = [
+        'Mobiles and Tablets', 'Laptops and Computers', 'Audio and Accessories',
+        'Men’s Fashion', 'Women’s Fashion', 'Footwear', 'Home and Kitchen',
+        'Home Appliances', 'Beauty and Personal Care', 'Sports and Fitness',
+        'Books and Stationery', 'Gaming', 'Bags and Travel', 'Furniture and Home Decor',
+        'Toys and Accessories'
+      ];
+      const boxContainer = document.getElementById('budgetCategoryCheckboxes');
+      if (boxContainer) {
+        boxContainer.innerHTML = cats.map(c => `
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="bcat" value="${c}">
+            <span>${c}</span>
+          </label>
+        `).join('');
+      }
+
+      // Pre-run default calculation
+      window.ShopSmartBudget.generateBudgetBundle(10000, [], '');
+    });
+
+    function handleBudgetSubmit(e) {
+      e.preventDefault();
+      const budget = parseFloat(document.getElementById('budgetAmountInput').value);
+      const selectedCats = Array.from(document.querySelectorAll('input[name="bcat"]:checked')).map(cb => cb.value);
+      const goal = document.getElementById('budgetGoalInput').value.trim();
+      window.ShopSmartBudget.generateBudgetBundle(budget, selectedCats, goal);
+    }
+  </script>
+</body>
+</html>

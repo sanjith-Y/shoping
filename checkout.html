@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — ShopSmart</title>
+  <link rel="icon" type="image/svg+xml" href="assets/fallback/product-fallback.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Top Announcement -->
+  <aside class="announcement-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div><span>🔒 Secure 256-bit Simulated Checkout • Coimbatore Regional Store</span></div>
+      <div><span>Fast Delivery Across Tamil Nadu &amp; India</span></div>
+    </div>
+  </aside>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        <span>ShopSmart<span class="logo-dot">.</span></span>
+      </a>
+      <div style="font-weight: 600; font-size: 0.9375rem; color: var(--text-muted);">Checkout &amp; Order Finalization</div>
+      <a href="cart.html" class="btn btn-secondary btn-sm"><i data-lucide="arrow-left"></i> Back to Cart</a>
+    </div>
+  </header>
+
+  <!-- Main Checkout Form & Summary -->
+  <main class="container" style="padding: 32px 0 60px 0;">
+    
+    <div id="checkoutSuccessState" class="hidden" style="max-width: 650px; margin: 40px auto; background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 40px; text-align: center; box-shadow: var(--shadow-md);">
+      <div style="width: 64px; height: 64px; border-radius: var(--radius-full); background-color: var(--success-light); color: var(--success); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+        <i data-lucide="check" style="width: 36px; height: 36px;"></i>
+      </div>
+      <h1 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 8px;">Order Placed Successfully!</h1>
+      <p class="text-muted" style="margin-bottom: 24px;">Thank you for your order. We have received your purchase and prioritized it for dispatch from our Coimbatore center.</p>
+
+      <div style="background-color: var(--bg-subtle); padding: 20px; border-radius: var(--radius-lg); text-align: left; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span class="text-muted">Order ID:</span>
+          <strong id="confOrderId" class="text-primary"></strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span class="text-muted">Estimated Delivery:</span>
+          <strong id="confDeliveryDate"></strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span class="text-muted">Payment Mode:</span>
+          <strong id="confPaymentMode"></strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span class="text-muted">Amount Paid/Payable:</span>
+          <strong id="confTotalAmount" class="font-bold"></strong>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: center;">
+        <button type="button" class="btn btn-primary" id="confPrintBtn"><i data-lucide="printer"></i> Download Order Summary</button>
+        <a href="orders.html" class="btn btn-secondary">View Order History</a>
+      </div>
+    </div>
+
+    <!-- Active Checkout Form Grid -->
+    <div id="checkoutFormGrid" style="display: grid; grid-template-columns: 1fr 420px; gap: 36px; align-items: flex-start;">
+      
+      <!-- Left: Delivery Address & Payment Method -->
+      <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)">
+        
+        <!-- Customer Info -->
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 24px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 18px;">1. Contact Information</h2>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div>
+              <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Full Name *</label>
+              <input type="text" id="custName" required placeholder="Sanjith Y">
+            </div>
+            <div>
+              <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Email Address *</label>
+              <input type="email" id="custEmail" required placeholder="sanjith@example.com">
+            </div>
+          </div>
+          <div>
+            <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Mobile Number (Indian 10-Digit) *</label>
+            <input type="tel" id="custPhone" required placeholder="9876543210" pattern="[6-9][0-9]{9}">
+            <span style="font-size: 0.75rem; color: var(--text-subtle);">Must be a valid 10-digit Indian phone number starting with 6-9.</span>
+          </div>
+        </div>
+
+        <!-- Delivery Address -->
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 24px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 18px;">2. Shipping Address</h2>
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Flat / House No. / Building *</label>
+            <input type="text" id="addrHouse" required placeholder="Flat 4B, Sunrise Residency">
+          </div>
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Street / Area / Locality *</label>
+            <input type="text" id="addrStreet" required placeholder="D.B. Road, R.S. Puram">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;">
+            <div>
+              <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">City *</label>
+              <input type="text" id="addrCity" value="Coimbatore" required>
+            </div>
+            <div>
+              <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">State *</label>
+              <input type="text" id="addrState" value="Tamil Nadu" required>
+            </div>
+            <div>
+              <label style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">PIN Code *</label>
+              <input type="text" id="addrPin" value="641002" required pattern="[1-9][0-9]{5}">
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method Simulation -->
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 24px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 18px;">3. Simulated Payment Method</h2>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <label style="display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+              <input type="radio" name="payMethod" value="Cash on Delivery" checked>
+              <div>
+                <strong>Cash on Delivery (COD)</strong>
+                <div style="font-size: 0.75rem; color: var(--text-subtle);">Pay in cash or UPI QR upon delivery in Coimbatore &amp; across India</div>
+              </div>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+              <input type="radio" name="payMethod" value="Demo UPI (GPay/PhonePe)">
+              <div>
+                <strong>UPI Simulation (GPay / PhonePe / Paytm)</strong>
+                <div style="font-size: 0.75rem; color: var(--text-subtle);">Instant payment verification simulation</div>
+              </div>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+              <input type="radio" name="payMethod" value="Demo Credit/Debit Card">
+              <div>
+                <strong>Debit / Credit Card Simulation</strong>
+                <div style="font-size: 0.75rem; color: var(--text-subtle);">Simulated card gateway authorization (No real charges)</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="checkoutSubmitBtn">
+          Place Demo Order
+        </button>
+
+      </form>
+
+      <!-- Right: Order Breakdown -->
+      <aside style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 28px; box-shadow: var(--shadow-sm); position: sticky; top: calc(var(--header-height) + 16px);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color);">
+          Your Items &amp; Calculations
+        </h3>
+
+        <!-- Mini items list -->
+        <div id="checkoutItemsList" style="max-height: 220px; overflow-y: auto; margin-bottom: 16px; display: flex; flex-direction: column; gap: 10px;"></div>
+
+        <!-- Breakdown -->
+        <div class="cart-breakdown-row"><span>Merchandise Subtotal:</span><strong id="coSubtotal">₹0</strong></div>
+        <div class="cart-breakdown-row hidden" id="coDiscountRow" style="color: var(--primary);"><span>Discount:</span><strong id="coDiscount">– ₹0</strong></div>
+        <div class="cart-breakdown-row"><span>Delivery Fee:</span><strong id="coDelivery">FREE</strong></div>
+        <div class="cart-breakdown-row"><span>GST (18% Illustrative):</span><strong id="coGst">₹0</strong></div>
+        <div class="cart-breakdown-row total"><span>Total Payable:</span><span class="text-primary font-bold" id="coGrandTotal" style="font-size: 1.375rem;">₹0</span></div>
+
+        <div style="font-size: 0.75rem; color: var(--text-subtle); margin-top: 16px; line-height: 1.4;">
+          * Store Settings: Currency formatted in INR (₹) en-IN. Default regional dispatch center: Coimbatore, Tamil Nadu.
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ShopSmart Online Shopping Store. Coimbatore, Tamil Nadu, India.</div>
+      <div style="display:flex; gap: 16px; flex-wrap: wrap;">
+        <a href="about.html" style="color: var(--text-muted); text-decoration: underline;">About Us</a>
+        <a href="contact.html" style="color: var(--text-muted); text-decoration: underline;">Contact</a>
+        <a href="privacy.html" style="color: var(--text-muted); text-decoration: underline;">Privacy</a>
+        <a href="terms.html" style="color: var(--text-muted); text-decoration: underline;">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/comparison.js"></script>
+  <script src="js/product-renderer.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let activeTotals = null;
+    let placedOrderRecord = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.ShopSmartCart.loadCart();
+      const totals = window.ShopSmartCart.calculateTotals();
+      activeTotals = totals;
+
+      if (totals.totalItemsCount === 0) {
+        window.location.href = 'cart.html';
+        return;
+      }
+
+      // Pre-fill user data if logged in
+      const user = window.ShopSmartAuth ? window.ShopSmartAuth.getCurrentUser() : null;
+      if (user) {
+        if (user.fullName) document.getElementById('custName').value = user.fullName;
+        if (user.email) document.getElementById('custEmail').value = user.email;
+        if (user.phone) document.getElementById('custPhone').value = user.phone;
+        if (user.addresses && user.addresses.length > 0) {
+          const a = user.addresses[0];
+          document.getElementById('addrHouse').value = a.house || '';
+          document.getElementById('addrStreet').value = a.street || '';
+          document.getElementById('addrCity').value = a.city || 'Coimbatore';
+          document.getElementById('addrState').value = a.state || 'Tamil Nadu';
+          document.getElementById('addrPin').value = a.pin || '641002';
+        }
+      }
+
+      // Render mini items list
+      const listEl = document.getElementById('checkoutItemsList');
+      const cart = JSON.parse(localStorage.getItem(window.ShopSmartCart.getCartStorageKey ? window.ShopSmartCart.getCartStorageKey() : 'shopsmart_cart_guest') || '[]');
+      if (listEl) {
+        listEl.innerHTML = cart.map(item => {
+          const p = PRODUCTS.find(x => x.id === item.productId);
+          if (!p) return '';
+          return `
+            <div style="display: flex; justify-content: space-between; font-size: 0.8125rem;">
+              <span>${p.name.substring(0, 32)}... × <strong>${item.quantity}</strong></span>
+              <strong>${window.ShopSmartUtils.formatINR(p.price * item.quantity)}</strong>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Render summary numbers
+      document.getElementById('coSubtotal').textContent = window.ShopSmartUtils.formatINR(totals.merchandiseSubtotal);
+      if (totals.couponDiscount > 0) {
+        document.getElementById('coDiscountRow').classList.remove('hidden');
+        document.getElementById('coDiscount').textContent = `– ${window.ShopSmartUtils.formatINR(totals.couponDiscount)}`;
+      }
+      document.getElementById('coDelivery').textContent = totals.deliveryFee === 0 ? 'FREE' : window.ShopSmartUtils.formatINR(totals.deliveryFee);
+      document.getElementById('coGst').textContent = window.ShopSmartUtils.formatINR(totals.gstAmount);
+      document.getElementById('coGrandTotal').textContent = window.ShopSmartUtils.formatINR(totals.grandTotal);
+      document.getElementById('checkoutSubmitBtn').textContent = `Place Demo Order (${window.ShopSmartUtils.formatINR(totals.grandTotal)})`;
+    });
+
+    async function handleCheckoutSubmit(e) {
+      e.preventDefault();
+
+      const btn = document.getElementById('checkoutSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Processing Order...';
+
+      const cartRaw = localStorage.getItem(window.ShopSmartCart.getCartStorageKey ? window.ShopSmartCart.getCartStorageKey() : 'shopsmart_cart_guest') || '[]';
+      const items = JSON.parse(cartRaw);
+
+      const payMethod = document.querySelector('input[name="payMethod"]:checked').value;
+
+      const orderData = {
+        name: document.getElementById('custName').value.trim(),
+        email: document.getElementById('custEmail').value.trim(),
+        phone: document.getElementById('custPhone').value.trim(),
+        house: document.getElementById('addrHouse').value.trim(),
+        street: document.getElementById('addrStreet').value.trim(),
+        city: document.getElementById('addrCity').value.trim(),
+        state: document.getElementById('addrState').value.trim(),
+        pin: document.getElementById('addrPin').value.trim(),
+        paymentMethod: payMethod,
+        items,
+        breakdown: activeTotals
+      };
+
+      try {
+        const order = await window.ShopSmartOrders.createOrder(orderData);
+        placedOrderRecord = order;
+
+        // Clear Cart
+        window.ShopSmartCart.clearCart();
+
+        // Switch to Confirmation Screen
+        document.getElementById('checkoutFormGrid').classList.add('hidden');
+        const successState = document.getElementById('checkoutSuccessState');
+        successState.classList.remove('hidden');
+
+        document.getElementById('confOrderId').textContent = order.orderId;
+        document.getElementById('confPaymentMode').textContent = order.paymentMethod;
+        document.getElementById('confTotalAmount').textContent = window.ShopSmartUtils.formatINR(order.breakdown.grandTotal);
+
+        const d = new Date();
+        d.setDate(d.getDate() + 4);
+        document.getElementById('confDeliveryDate').textContent = window.ShopSmartUtils.formatDateIST(d);
+
+        document.getElementById('confPrintBtn').onclick = () => {
+          window.ShopSmartOrders.printInvoice(order.orderId);
+        };
+
+        window.ShopSmartUtils.showToast('Order confirmed! A confirmation summary has been saved.', 'success');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (err) {
+        window.ShopSmartUtils.showToast(err.message, 'error');
+        btn.disabled = false;
+        btn.textContent = 'Place Demo Order';
+      }
+    }
+  </script>
+</body>
+</html>

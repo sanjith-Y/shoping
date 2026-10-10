@@ -1,1164 +1,556 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShopEase — Modern Online Shopping Cart</title>
-  <meta name="description" content="ShopEase is a premier online shopping destination offering electronics, fashion, home essentials, and lifestyle products with instant discounts and fast delivery.">
-  <meta name="theme-color" content="#2563eb">
-
-  <!-- Google Fonts: Inter & Poppins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-
+  <title>ShopSmart — Complete Online Shopping Cart Website</title>
+  <meta name="description" content="ShopSmart is a premier online shopping destination based in Coimbatore, Tamil Nadu, offering 150+ authentic products across 15 categories with transparent pricing and instant delivery.">
+  <link rel="icon" type="image/svg+xml" href="assets/fallback/product-fallback.svg">
+  <link rel="stylesheet" href="css/style.css">
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
 
-  <!-- Top Announcement Notification Banner -->
-  <div class="top-announcement-bar" role="banner">
-    <div class="container announcement-content">
-      <div class="announcement-left">
-        <span class="badge-pill">SALE</span>
-        <span>🎉 Special Offer: Use code <strong>SAVE10</strong> for 10% off &bull; Free delivery on orders over ₹999</span>
+  <!-- Top Announcement Bar -->
+  <aside class="announcement-bar" aria-label="Store Announcement">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div class="left">
+        <span class="badge">Coimbatore Store</span>
+        <span>Fast Delivery Across Tamil Nadu &amp; All India | Use code <strong>SAVE10</strong> for 10% off</span>
       </div>
-      <div class="announcement-right">
-        <span>📍 Coimbatore Hub</span>
-        <span class="divider">|</span>
-        <span>🇮🇳 India Delivery</span>
-        <span class="divider">|</span>
-        <span>📞 Support: 1800-123-4567</span>
+      <div class="right">
+        <span>📍 Coimbatore, Tamil Nadu - 641002</span>
+        <a href="contact.html">📞 1800-456-7890</a>
       </div>
     </div>
+  </aside>
+
+  <!-- Development Mode Notification Banner -->
+  <div class="dev-mode-banner" id="devModeBanner">
+    <i data-lucide="info" style="width: 16px; height: 16px;"></i>
+    <span>Running in <strong>Development Mode</strong> (Local Simulated Auth &amp; Storage). To connect live Firebase, see <code>README.md</code>.</span>
   </div>
 
-  <!-- Sticky Main Navigation Bar -->
-  <header class="main-header" id="mainHeader">
-    <div class="container navbar-container">
+  <!-- Main Sticky Header -->
+  <header class="site-header">
+    <div class="container header-inner">
       
       <!-- Brand Logo -->
-      <a href="#home" class="brand-logo" id="brandLogo" aria-label="ShopEase Home">
-        <div class="logo-icon-box">
-          <i data-lucide="shopping-bag"></i>
-        </div>
-        <span class="logo-text">Shop<span class="logo-accent">Ease</span></span>
+      <a href="index.html" class="site-logo" aria-label="ShopSmart Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1"/>
+          <circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        <span>ShopSmart<span class="logo-dot">.</span></span>
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="nav-links" id="desktopNav" aria-label="Primary Navigation">
-        <a href="#home" class="nav-link active" id="navHome">Home</a>
-        <a href="#catalog" class="nav-link" id="navCatalog">All Products</a>
-        <a href="#categories" class="nav-link" id="navCategories">Categories</a>
-        <a href="#deals" class="nav-link" id="navDeals">Deals</a>
-      </nav>
-
-      <!-- Search Input in Header -->
-      <div class="nav-search-container" role="search">
-        <div class="search-input-wrapper">
-          <i data-lucide="search" class="search-icon"></i>
-          <input 
-            type="text" 
-            id="globalSearchInput" 
-            placeholder="Search headphones, shoes, watches..." 
-            aria-label="Search products"
-            autocomplete="off"
-          >
-          <button type="button" id="clearSearchBtn" class="clear-search-btn hidden" aria-label="Clear search">
-            <i data-lucide="x"></i>
+      <!-- Search Bar -->
+      <div class="header-search-wrapper">
+        <i data-lucide="search" class="header-search-icon"></i>
+        <input 
+          type="search" 
+          id="headerSearchInput" 
+          class="header-search-input" 
+          placeholder="Search 150+ products, brands, or categories..." 
+          aria-label="Search catalog"
+        >
+        <div class="search-action-btns">
+          <button type="button" class="btn-search-tool" id="headerVoiceSearchBtn" title="Voice Search" aria-label="Voice Search">
+            <i data-lucide="mic" style="width: 16px; height: 16px;"></i>
+          </button>
+          <button type="button" class="btn-search-tool" id="headerImageSearchBtn" title="Search by Image" aria-label="Search by Image">
+            <i data-lucide="camera" style="width: 16px; height: 16px;"></i>
           </button>
         </div>
       </div>
 
-      <!-- Header Action Items: Wishlist, Cart & Mobile Menu Toggle -->
-      <div class="nav-actions">
-        <!-- Live Wishlist Trigger Button -->
-        <button type="button" class="wishlist-trigger-btn" id="openWishlistBtn" aria-label="View Wishlist">
-          <div class="wishlist-icon-wrapper">
-            <i data-lucide="heart"></i>
-            <span class="wishlist-badge" id="wishlistBadge">0</span>
+      <!-- Navigation Links -->
+      <nav class="desktop-nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="products.html">All Products</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-trigger">
+            <span>Categories</span>
+            <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
           </div>
-          <span class="wishlist-label">Wishlist</span>
+          <div class="nav-dropdown-menu" id="headerCategoriesDropdown">
+            <!-- Dynamically populated or linked -->
+            <a href="products.html?category=Mobiles%20and%20Tablets" class="nav-dropdown-item">Mobiles and Tablets</a>
+            <a href="products.html?category=Laptops%20and%20Computers" class="nav-dropdown-item">Laptops and Computers</a>
+            <a href="products.html?category=Audio%20and%20Accessories" class="nav-dropdown-item">Audio and Accessories</a>
+            <a href="products.html?category=Men%E2%80%99s%20Fashion" class="nav-dropdown-item">Men’s Fashion</a>
+            <a href="products.html?category=Women%E2%80%99s%20Fashion" class="nav-dropdown-item">Women’s Fashion</a>
+            <a href="products.html?category=Footwear" class="nav-dropdown-item">Footwear</a>
+            <a href="products.html?category=Home%20and%20Kitchen" class="nav-dropdown-item">Home and Kitchen</a>
+            <a href="products.html?category=Home%20Appliances" class="nav-dropdown-item">Home Appliances</a>
+            <a href="products.html?category=Beauty%20and%20Personal%20Care" class="nav-dropdown-item">Beauty and Personal Care</a>
+            <a href="products.html?category=Sports%20and%20Fitness" class="nav-dropdown-item">Sports and Fitness</a>
+            <a href="products.html?category=Books%20and%20Stationery" class="nav-dropdown-item">Books and Stationery</a>
+            <a href="products.html?category=Gaming" class="nav-dropdown-item">Gaming</a>
+            <a href="products.html?category=Bags%20and%20Travel" class="nav-dropdown-item">Bags and Travel</a>
+            <a href="products.html?category=Furniture%20and%20Home%20Decor" class="nav-dropdown-item">Furniture and Home Decor</a>
+            <a href="products.html?category=Toys%20and%20Accessories" class="nav-dropdown-item">Toys and Accessories</a>
+          </div>
+        </div>
+        <a href="budget-shopping.html">Budget Shopping</a>
+        <a href="assistant.html">AI Assistant</a>
+      </nav>
+
+      <!-- Action Icons (Theme, Compare, Wishlist, Cart, Auth) -->
+      <div class="header-actions">
+        
+        <!-- Theme Toggle -->
+        <button type="button" class="icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+          <i data-lucide="moon"></i>
         </button>
 
-        <!-- Live Shopping Cart Trigger Button -->
-        <button type="button" class="cart-trigger-btn" id="openCartBtn" aria-label="Open Shopping Cart">
-          <div class="cart-icon-wrapper">
-            <i data-lucide="shopping-cart"></i>
-            <span class="cart-badge" id="cartBadge">0</span>
-          </div>
-          <span class="cart-label">Cart</span>
+        <!-- Compare Link -->
+        <a href="compare.html" class="icon-btn" title="Compare Products" aria-label="Compare Products">
+          <i data-lucide="columns-3"></i>
+          <span class="badge-count compare-badge-count hidden">0</span>
+        </a>
+
+        <!-- Wishlist Link -->
+        <a href="wishlist.html" class="icon-btn" title="My Wishlist" aria-label="My Wishlist">
+          <i data-lucide="heart"></i>
+          <span class="badge-count wishlist-badge-count hidden">0</span>
+        </a>
+
+        <!-- Cart Trigger Button -->
+        <button type="button" class="icon-btn" id="openCartDrawerBtn" title="Shopping Cart" aria-label="Open Cart Drawer">
+          <i data-lucide="shopping-cart"></i>
+          <span class="badge-count cart-badge-count hidden">0</span>
         </button>
 
-        <!-- Mobile Hamburger Menu Button -->
-        <button type="button" class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false">
-          <i data-lucide="menu" id="menuOpenIcon"></i>
-          <i data-lucide="x" id="menuCloseIcon" class="hidden"></i>
+        <!-- User Authentication Menu -->
+        <div class="user-menu-wrapper">
+          <div id="navGuestGroup">
+            <a href="login.html" class="btn btn-secondary btn-sm" style="margin-right: 6px;">Sign In</a>
+            <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+          </div>
+          <div id="navUserGroup" class="hidden">
+            <button type="button" class="icon-btn" id="navUserMenuTrigger" title="User Menu" aria-label="User Account">
+              <i data-lucide="user"></i>
+            </button>
+            <div class="user-profile-menu">
+              <div class="user-menu-header">
+                <div class="user-menu-name" id="navUserName">My Account</div>
+                <div class="user-menu-email" id="navUserEmail">user@example.com</div>
+              </div>
+              <a href="profile.html" class="user-menu-link"><i data-lucide="user" style="width: 16px; height: 16px;"></i> My Profile</a>
+              <a href="orders.html" class="user-menu-link"><i data-lucide="package" style="width: 16px; height: 16px;"></i> Order History</a>
+              <a href="wishlist.html" class="user-menu-link"><i data-lucide="heart" style="width: 16px; height: 16px;"></i> Saved Wishlist</a>
+              <a href="admin.html" class="user-menu-link"><i data-lucide="shield" style="width: 16px; height: 16px;"></i> Admin Console</a>
+              <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 4px 0;">
+              <button type="button" class="user-menu-link text-danger" id="navLogoutBtn" style="width: 100%; text-align: left;">
+                <i data-lucide="log-out" style="width: 16px; height: 16px;"></i> Logout
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button type="button" class="mobile-toggle-btn" id="mobileMenuToggle" aria-label="Toggle Navigation">
+          <i data-lucide="menu"></i>
         </button>
+
       </div>
-
     </div>
 
-    <!-- Collapsible Mobile Navigation Drawer -->
-    <div class="mobile-nav-drawer hidden" id="mobileNavDrawer" aria-label="Mobile Navigation">
-      <div class="mobile-search-wrapper">
-        <i data-lucide="search" class="search-icon"></i>
-        <input 
-          type="text" 
-          id="mobileSearchInput" 
-          placeholder="Search products..." 
-          aria-label="Search products on mobile"
-        >
-      </div>
-      <div class="mobile-links">
-        <a href="#home" class="mobile-nav-link" data-target="home">Home</a>
-        <a href="#catalog" class="mobile-nav-link" data-target="catalog">All Products</a>
-        <a href="#categories" class="mobile-nav-link" data-target="categories">Categories</a>
-        <a href="#deals" class="mobile-nav-link" data-target="deals">Deals</a>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileNavDrawer" class="hidden" style="background-color: var(--bg-surface); border-bottom: 1px solid var(--border-color); padding: 16px 24px;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <input type="search" placeholder="Search products..." onkeydown="if(event.key==='Enter') window.location.href='products.html?search='+encodeURIComponent(this.value)">
+        <a href="index.html" style="font-weight: 600;">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="budget-shopping.html">Budget Shopping</a>
+        <a href="assistant.html">Smart Shopping Assistant</a>
+        <a href="compare.html">Product Comparison</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="cart.html">View Cart</a>
+        <a href="orders.html">My Orders</a>
+        <a href="login.html">Sign In / Register</a>
       </div>
     </div>
   </header>
 
-  <!-- Main Content Wrapper -->
-  <main id="mainContent">
+  <!-- Main Content -->
+  <main>
 
     <!-- Hero Section -->
-    <section class="hero-section" id="home">
-      <div class="container hero-container">
-        
-        <!-- Left Column: Copy & CTAs -->
-        <div class="hero-content">
-          <div class="hero-tag-pill">
-            <i data-lucide="sparkles" class="icon-small"></i>
-            <span>Curated Lifestyle &amp; Tech Essentials</span>
-          </div>
-
-          <h1 class="hero-title">
-            Discover Products <br>
-            <span class="hero-gradient-text">You’ll Love</span>
-          </h1>
-
-          <p class="hero-description">
-            Experience handpicked electronics, premium fashion, home living, and wellness accessories. 
-            Enjoy authentic quality, verified reviews, and transparent pricing in Indian Rupees.
-          </p>
-
-          <div class="hero-cta-group">
-            <a href="#catalog" class="btn btn-primary btn-large" id="heroShopNowBtn">
-              <span>Shop Now</span>
-              <i data-lucide="arrow-right"></i>
-            </a>
-            <button type="button" class="btn btn-secondary btn-large" id="heroDealsBtn">
-              <i data-lucide="tag"></i>
-              <span>View Deals</span>
-            </button>
-          </div>
-
-          <!-- Promotional Discount Banner Tag -->
-          <div class="hero-coupon-chip">
-            <div class="coupon-chip-icon">
-              <i data-lucide="percent"></i>
-            </div>
-            <div class="coupon-chip-text">
-              <strong>Save Extra ₹200:</strong> Use code <code class="coupon-code-badge">SAVE200</code> on orders over ₹2,000!
+    <section class="hero-banner-section">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-text-pane">
+            <span class="hero-pill">
+              <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+              Curated 150+ Products Across 15 Categories
+            </span>
+            <h1 class="hero-heading">Smart Shopping. Honest Pricing.</h1>
+            <p class="hero-subtitle">
+              Discover genuine electronics, fashion, home essentials, and lifestyle products curated for Coimbatore and delivered with speed across India.
+            </p>
+            <div class="hero-cta-group">
+              <a href="products.html" class="btn btn-primary btn-lg">Shop All Products</a>
+              <a href="budget-shopping.html" class="btn btn-secondary btn-lg">Build Budget Bundle</a>
             </div>
           </div>
-
-          <!-- Trust Badges -->
-          <div class="hero-trust-badges">
-            <div class="trust-badge-item">
-              <i data-lucide="truck"></i>
-              <span>Free Delivery ₹999+</span>
-            </div>
-            <div class="trust-badge-item">
-              <i data-lucide="shield-check"></i>
-              <span>100% Genuine</span>
-            </div>
-            <div class="trust-badge-item">
-              <i data-lucide="refresh-cw"></i>
-              <span>7-Day Easy Returns</span>
-            </div>
+          <div class="hero-image-pane">
+            <img src="assets/banners/hero-banner.jpg" alt="ShopSmart Online Shopping Storefront" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&auto=format&fit=crop&q=80';">
           </div>
         </div>
-
-        <!-- Right Column: Visual Banner -->
-        <div class="hero-media">
-          <div class="hero-card-frame">
-            <img 
-              src="assets/hero-banner.jpg" 
-              alt="ShopEase Curated Lifestyle, Audio, Footwear and Smart Gadgets" 
-              class="hero-banner-image"
-              loading="eager"
-            >
-            <!-- Floating Overlay Badges -->
-            <div class="hero-float-badge float-top-right">
-              <i data-lucide="zap" class="badge-icon-lightning"></i>
-              <div>
-                <strong>Flash Deals</strong>
-                <small>Up to 52% OFF</small>
-              </div>
-            </div>
-            <div class="hero-float-badge float-bottom-left">
-              <div class="rating-stars-inline">
-                <i data-lucide="star" class="star-filled"></i>
-                <i data-lucide="star" class="star-filled"></i>
-                <i data-lucide="star" class="star-filled"></i>
-                <i data-lucide="star" class="star-filled"></i>
-                <i data-lucide="star" class="star-filled"></i>
-              </div>
-              <div class="rating-text-inline">
-                <strong>4.8 / 5.0 Rating</strong>
-                <small>15,000+ Happy Shoppers</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- Product Categories Section -->
-    <section class="categories-section" id="categories">
+    <!-- 15 Product Categories Strip -->
+    <section class="categories-section">
       <div class="container">
-        
         <div class="section-header">
-          <div class="section-subtitle">Browse By Collection</div>
-          <h2 class="section-title">Product Categories</h2>
-          <p class="section-description">Select a category to quickly filter our catalog of premium lifestyle items.</p>
+          <div>
+            <h2 class="section-title">Explore by Category</h2>
+            <p class="section-subtitle">15 carefully curated product collections</p>
+          </div>
+          <a href="products.html" class="text-primary font-semibold" style="font-size: 0.875rem;">View All &rarr;</a>
         </div>
 
-        <!-- Category Grid (12 Categories) -->
-        <div class="categories-grid" id="categoriesGrid">
-          
-          <button type="button" class="category-card active" data-category="All" id="catAllBtn">
-            <div class="category-icon-box">
-              <i data-lucide="layout-grid"></i>
-            </div>
-            <span class="category-name">All Products</span>
-            <span class="category-count" id="countAll">120 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Mobiles & Tablets">
-            <div class="category-icon-box">
-              <i data-lucide="smartphone"></i>
-            </div>
-            <span class="category-name">Mobiles &amp; Tablets</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Laptops & Computers">
-            <div class="category-icon-box">
-              <i data-lucide="laptop"></i>
-            </div>
-            <span class="category-name">Laptops &amp; Computers</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Audio & Accessories">
-            <div class="category-icon-box">
-              <i data-lucide="headphones"></i>
-            </div>
-            <span class="category-name">Audio &amp; Accessories</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Fashion – Men">
-            <div class="category-icon-box">
-              <i data-lucide="shirt"></i>
-            </div>
-            <span class="category-name">Fashion – Men</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Fashion – Women">
-            <div class="category-icon-box">
-              <i data-lucide="sparkles"></i>
-            </div>
-            <span class="category-name">Fashion – Women</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Footwear">
-            <div class="category-icon-box">
-              <i data-lucide="footprints"></i>
-            </div>
-            <span class="category-name">Footwear</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Home & Kitchen">
-            <div class="category-icon-box">
-              <i data-lucide="utensils"></i>
-            </div>
-            <span class="category-name">Home &amp; Kitchen</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Home Appliances">
-            <div class="category-icon-box">
-              <i data-lucide="tv"></i>
-            </div>
-            <span class="category-name">Home Appliances</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Beauty & Personal Care">
-            <div class="category-icon-box">
-              <i data-lucide="heart"></i>
-            </div>
-            <span class="category-name">Beauty &amp; Care</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Sports & Fitness">
-            <div class="category-icon-box">
-              <i data-lucide="dumbbell"></i>
-            </div>
-            <span class="category-name">Sports &amp; Fitness</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Books & Stationery">
-            <div class="category-icon-box">
-              <i data-lucide="book-open"></i>
-            </div>
-            <span class="category-name">Books &amp; Stationery</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
-          <button type="button" class="category-card" data-category="Gaming">
-            <div class="category-icon-box">
-              <i data-lucide="gamepad-2"></i>
-            </div>
-            <span class="category-name">Gaming</span>
-            <span class="category-count">10 Items</span>
-          </button>
-
+        <div class="categories-grid" id="homeCategoriesGrid">
+          <!-- Dynamically populated via JS for all 15 categories -->
         </div>
-
       </div>
     </section>
 
-    <!-- Product Catalog Section (Search, Filtering, Sorting & Cards) -->
-    <section class="catalog-section" id="catalog">
+    <!-- Featured Products -->
+    <section class="products-section">
       <div class="container">
-        
-        <div class="section-header-row">
+        <div class="section-header">
           <div>
-            <div class="section-subtitle">Handpicked For You</div>
-            <h2 class="section-title" id="catalogHeading">Explore Our Products</h2>
+            <h2 class="section-title">Featured Collections</h2>
+            <p class="section-subtitle">Handpicked top performers with outstanding customer satisfaction</p>
           </div>
-          <div class="catalog-results-badge" id="resultsCountBadge">
-            Showing 120 products
+          <a href="products.html" class="text-primary font-semibold" style="font-size: 0.875rem;">See More &rarr;</a>
+        </div>
+        <div class="products-grid" id="homeFeaturedGrid"></div>
+      </div>
+    </section>
+
+    <!-- Today's Deals (Only products with high discounts) -->
+    <section class="products-section" style="background-color: var(--bg-subtle); padding: 48px 0;">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="hero-pill" style="background-color: var(--accent-rose-light); color: var(--accent-rose); margin-bottom: 6px;">
+              🔥 Limited Time
+            </span>
+            <h2 class="section-title">Today's Best Deals &amp; Discounts</h2>
+            <p class="section-subtitle">Verified savings on smartphones, laptops, clothing, and home gear</p>
+          </div>
+          <a href="products.html?sort=discount" class="text-primary font-semibold" style="font-size: 0.875rem;">All Deals &rarr;</a>
+        </div>
+        <div class="products-grid" id="homeDealsGrid"></div>
+      </div>
+    </section>
+
+    <!-- Local Deals in Coimbatore -->
+    <section class="products-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="hero-pill" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 6px;">
+              📍 Coimbatore Special
+            </span>
+            <h2 class="section-title">Local Deals in Coimbatore</h2>
+            <p class="section-subtitle">Exclusive pricing and prioritized dispatch from our Coimbatore regional center</p>
+          </div>
+          <a href="products.html" class="text-primary font-semibold" style="font-size: 0.875rem;">Explore Hub &rarr;</a>
+        </div>
+        <div class="products-grid" id="homeCoimbatoreGrid"></div>
+      </div>
+    </section>
+
+    <!-- Bestsellers Section -->
+    <section class="products-section" style="background-color: var(--bg-subtle); padding: 48px 0;">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Customer Bestsellers</h2>
+            <p class="section-subtitle">Top rated products loved by our shoppers</p>
+          </div>
+          <a href="products.html" class="text-primary font-semibold" style="font-size: 0.875rem;">Browse &rarr;</a>
+        </div>
+        <div class="products-grid" id="homeBestsellersGrid"></div>
+      </div>
+    </section>
+
+    <!-- Recently Viewed & Recommended Section (Dynamic) -->
+    <section class="products-section" id="homeRecentSection" style="display: none;">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Recently Viewed Items</h2>
+            <p class="section-subtitle">Products you've inspected during your session</p>
           </div>
         </div>
-
-        <!-- Filter & Sorting Control Bar -->
-        <div class="controls-toolbar" id="deals">
-          
-          <!-- Category Quick Dropdown -->
-          <div class="control-group">
-            <label for="categoryFilterSelect" class="control-label">Category</label>
-            <select id="categoryFilterSelect" class="form-select">
-              <option value="All">All Categories (120)</option>
-              <option value="Mobiles & Tablets">Mobiles &amp; Tablets</option>
-              <option value="Laptops & Computers">Laptops &amp; Computers</option>
-              <option value="Audio & Accessories">Audio &amp; Accessories</option>
-              <option value="Fashion – Men">Fashion – Men</option>
-              <option value="Fashion – Women">Fashion – Women</option>
-              <option value="Footwear">Footwear</option>
-              <option value="Home & Kitchen">Home &amp; Kitchen</option>
-              <option value="Home Appliances">Home Appliances</option>
-              <option value="Beauty & Personal Care">Beauty &amp; Personal Care</option>
-              <option value="Sports & Fitness">Sports &amp; Fitness</option>
-              <option value="Books & Stationery">Books &amp; Stationery</option>
-              <option value="Gaming">Gaming</option>
-            </select>
-          </div>
-
-          <!-- Price Range Filter -->
-          <div class="control-group price-filter-group">
-            <label class="control-label">Price Range (₹)</label>
-            <div class="price-inputs-row">
-              <input 
-                type="number" 
-                id="minPriceInput" 
-                class="form-input price-input" 
-                placeholder="Min ₹" 
-                min="0"
-                aria-label="Minimum price in Rupees"
-              >
-              <span class="price-separator">–</span>
-              <input 
-                type="number" 
-                id="maxPriceInput" 
-                class="form-input price-input" 
-                placeholder="Max ₹" 
-                min="0"
-                aria-label="Maximum price in Rupees"
-              >
-              <button type="button" id="applyPriceFilterBtn" class="btn btn-secondary btn-compact" title="Apply price filter">
-                Apply
-              </button>
-            </div>
-          </div>
-
-          <!-- Rating Filter Dropdown -->
-          <div class="control-group rating-group">
-            <label for="ratingFilterSelect" class="control-label">Min Rating</label>
-            <select id="ratingFilterSelect" class="form-select">
-              <option value="0">All Ratings</option>
-              <option value="4.5">4.5★ &amp; Above</option>
-              <option value="4.0">4.0★ &amp; Above</option>
-              <option value="3.5">3.5★ &amp; Above</option>
-            </select>
-          </div>
-
-          <!-- In-Stock Filter Toggle -->
-          <div class="control-group stock-toggle-group">
-            <label class="control-label">Availability</label>
-            <label class="checkbox-label" for="inStockOnlyCheckbox">
-              <input type="checkbox" id="inStockOnlyCheckbox">
-              <span>In-Stock Only</span>
-            </label>
-          </div>
-
-          <!-- Sorting Options Dropdown -->
-          <div class="control-group sort-group">
-            <label for="sortSelect" class="control-label">Sort By</label>
-            <select id="sortSelect" class="form-select">
-              <option value="featured">Featured / Default</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="rating">Highest Rated</option>
-              <option value="discount">Biggest Discount</option>
-              <option value="newest">Newest First</option>
-              <option value="name-asc">Name: A to Z</option>
-            </select>
-          </div>
-
-          <!-- Reset Filter Button -->
-          <div class="control-group reset-group">
-            <label class="control-label">&nbsp;</label>
-            <button type="button" id="resetFiltersBtn" class="btn btn-outline btn-compact" title="Reset all filters">
-              <i data-lucide="rotate-ccw"></i>
-              <span>Reset</span>
-            </button>
-          </div>
-
-        </div>
-
-        <!-- Dynamic Product Grid (Injected via JS) -->
-        <div class="products-grid" id="productsGrid" aria-live="polite">
-          <!-- Dynamically generated product cards go here -->
-        </div>
-
-        <!-- Empty Results Message State -->
-        <div class="empty-results-state hidden" id="emptyCatalogState" role="status">
-          <div class="empty-icon-box">
-            <i data-lucide="package-search"></i>
-          </div>
-          <h3>No matching products found</h3>
-          <p id="emptyCatalogMessage">We couldn't find any items matching your selected search or filter criteria.</p>
-          <button type="button" class="btn btn-primary" id="emptyResetBtn">
-            <i data-lucide="refresh-cw"></i>
-            <span>Clear Filters &amp; View All</span>
-          </button>
-        </div>
-
+        <div class="products-grid" id="homeRecentGrid"></div>
       </div>
     </section>
 
   </main>
 
-  <!-- Product Details Modal Window -->
-  <div class="modal-backdrop hidden" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalProductTitle">
-    <div class="modal-card">
-      <button type="button" class="modal-close-btn" id="closeProductModalBtn" aria-label="Close product details">
+  <!-- Slide-Out Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <i data-lucide="shopping-cart" style="color: var(--primary);"></i>
+        <h3 style="font-weight: 700; font-size: 1.125rem;">Shopping Cart</h3>
+      </div>
+      <button type="button" class="icon-btn" id="closeCartDrawerBtn" aria-label="Close cart drawer">
         <i data-lucide="x"></i>
       </button>
-
-      <div class="modal-body-grid">
-        <!-- Modal Left: Product Image & Badges -->
-        <div class="modal-image-col">
-          <div class="modal-image-wrapper">
-            <img id="modalProductImage" src="" alt="Product Image">
-            <span class="discount-badge" id="modalProductBadge">40% OFF</span>
-          </div>
-        </div>
-
-        <!-- Modal Right: Product Info & Actions -->
-        <div class="modal-details-col">
-          <div class="modal-category-row">
-            <span class="modal-category-tag" id="modalProductCategory">Electronics</span>
-            <span class="modal-brand-tag" id="modalProductBrand">Brand</span>
-          </div>
-          <h2 class="modal-product-title" id="modalProductTitle">Product Title</h2>
-
-          <!-- Rating Row -->
-          <div class="modal-rating-row">
-            <div class="rating-stars" id="modalProductStars"></div>
-            <span class="rating-score" id="modalProductScore">4.8</span>
-            <span class="rating-count" id="modalProductReviews">(240 reviews)</span>
-          </div>
-
-          <!-- Price Row -->
-          <div class="modal-price-box">
-            <span class="selling-price" id="modalProductPrice">₹2,499</span>
-            <span class="original-price" id="modalProductOriginalPrice">₹4,999</span>
-            <span class="savings-tag" id="modalProductSavings">You Save ₹2,500</span>
-          </div>
-
-          <!-- Stock Pill -->
-          <div class="modal-stock-status" id="modalProductStock">
-            <i data-lucide="check-circle-2"></i>
-            <span>In Stock (15 units left)</span>
-          </div>
-
-          <!-- Description -->
-          <p class="modal-description" id="modalProductDescription">
-            Product detailed description goes here.
-          </p>
-
-          <!-- Key Highlights / Specs -->
-          <div class="modal-specs-box">
-            <h4>Key Highlights:</h4>
-            <ul id="modalProductHighlights">
-              <!-- Dynamically populated -->
-            </ul>
-          </div>
-
-          <!-- Modal Quantity & Add to Cart -->
-          <div class="modal-actions-row">
-            <div class="quantity-controller">
-              <button type="button" class="qty-btn" id="modalQtyMinusBtn" aria-label="Decrease quantity">
-                <i data-lucide="minus"></i>
-              </button>
-              <input type="number" id="modalQtyInput" class="qty-display-input" value="1" min="1" max="99" readonly>
-              <button type="button" class="qty-btn" id="modalQtyPlusBtn" aria-label="Increase quantity">
-                <i data-lucide="plus"></i>
-              </button>
-            </div>
-
-            <button type="button" class="btn btn-primary btn-large flex-grow" id="modalAddToCartBtn">
-              <i data-lucide="shopping-cart"></i>
-              <span id="modalAddToCartBtnText">Add to Cart</span>
-            </button>
-
-            <button type="button" class="btn btn-secondary btn-large modal-wishlist-btn" id="modalWishlistBtn" aria-label="Toggle wishlist">
-              <i data-lucide="heart" id="modalWishlistIcon"></i>
-            </button>
-          </div>
-
-          <!-- Related Products from Same Category -->
-          <div class="modal-related-container">
-            <h4 class="modal-related-title">Related Products from this Category</h4>
-            <div class="modal-related-grid" id="modalRelatedGrid">
-              <!-- Dynamically populated via script -->
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Shopping Cart Slide-out Drawer -->
-  <div class="cart-backdrop hidden" id="cartOverlay"></div>
-  
-  <aside class="cart-drawer hidden" id="cartDrawer" aria-label="Shopping Cart Drawer" role="dialog" aria-modal="true">
-    
-    <!-- Drawer Header -->
-    <div class="cart-drawer-header">
-      <div class="cart-drawer-title-group">
-        <i data-lucide="shopping-bag"></i>
-        <h3>Shopping Cart</h3>
-        <span class="cart-count-pill" id="cartHeaderCount">0</span>
-      </div>
-      <div class="cart-header-actions">
-        <button type="button" class="btn-icon text-danger" id="clearCartBtn" title="Clear all items in cart" aria-label="Clear all items in cart">
-          <i data-lucide="trash-2"></i>
-        </button>
-        <button type="button" class="cart-drawer-close-btn" id="closeCartBtn" aria-label="Close cart">
-          <i data-lucide="x"></i>
-        </button>
-      </div>
     </div>
 
-    <!-- Free Delivery Progress Meter -->
-    <div class="delivery-threshold-bar" id="deliveryThresholdBar">
-      <div class="delivery-threshold-text" id="deliveryThresholdText">
-        Add ₹999 more for <strong>FREE Delivery</strong>!
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="deliveryProgressFill" style="width: 0%;"></div>
-      </div>
+    <div id="drawerShippingMeter" style="padding: 12px 24px 0 24px;"></div>
+
+    <div class="cart-drawer-body" id="cartDrawerItems">
+      <!-- Items dynamically rendered -->
     </div>
 
-    <!-- Cart Items Scrollable Container -->
-    <div class="cart-items-container" id="cartItemsContainer">
-      <!-- Items dynamically populated via renderCart() -->
+    <div class="cart-drawer-footer hidden" id="cartDrawerFooter">
+      <div class="cart-breakdown-row">
+        <span>Subtotal:</span>
+        <strong id="drawerSubtotal">₹0</strong>
+      </div>
+      <div class="cart-breakdown-row">
+        <span>Delivery:</span>
+        <strong id="drawerDelivery">FREE</strong>
+      </div>
+      <div class="cart-breakdown-row">
+        <span>GST (18% Illustrative):</span>
+        <strong id="drawerGst">₹0</strong>
+      </div>
+      <div class="cart-breakdown-row total">
+        <span>Payable Total:</span>
+        <span class="text-primary font-bold" id="drawerGrandTotal">₹0</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px;">
+        <a href="cart.html" class="btn btn-secondary">View Cart</a>
+        <a href="checkout.html" class="btn btn-primary">Checkout</a>
+      </div>
     </div>
-
-    <!-- Empty Cart State -->
-    <div class="cart-empty-state hidden" id="cartEmptyState">
-      <div class="empty-cart-icon">
-        <i data-lucide="shopping-cart"></i>
-      </div>
-      <h4>Your Cart is Empty</h4>
-      <p>Looks like you haven’t added anything to your cart yet. Explore our top-rated collections today!</p>
-      <button type="button" class="btn btn-primary" id="continueShoppingEmptyBtn">
-        <i data-lucide="arrow-left"></i>
-        <span>Start Shopping</span>
-      </button>
-    </div>
-
-    <!-- Cart Footer & Summary -->
-    <div class="cart-drawer-footer" id="cartDrawerFooter">
-      
-      <!-- Coupon Application Section -->
-      <div class="coupon-box">
-        <div class="coupon-input-group">
-          <input 
-            type="text" 
-            id="couponInput" 
-            placeholder="Enter promo code (SAVE10, SAVE200, FREESHIP)" 
-            autocomplete="off"
-            aria-label="Coupon promo code"
-          >
-          <button type="button" class="btn btn-secondary" id="applyCouponBtn">Apply</button>
-        </div>
-
-        <!-- Applied Coupon Pill (Hidden by default) -->
-        <div class="applied-coupon-pill hidden" id="appliedCouponPill">
-          <div class="applied-coupon-info">
-            <i data-lucide="ticket" class="ticket-icon"></i>
-            <span id="appliedCouponCode">SAVE10</span>
-            <span class="coupon-success-text" id="appliedCouponDesc">– 10% Discount applied</span>
-          </div>
-          <button type="button" class="remove-coupon-btn" id="removeCouponBtn" title="Remove applied coupon" aria-label="Remove coupon">
-            <i data-lucide="x"></i>
-          </button>
-        </div>
-
-        <div class="coupon-feedback-message hidden" id="couponFeedbackMessage"></div>
-      </div>
-
-      <!-- Price Breakdown Calculations -->
-      <div class="cart-calculations-table">
-        <div class="calc-row">
-          <span>Product Subtotal</span>
-          <span class="calc-value" id="calcSubtotal">₹0</span>
-        </div>
-        <div class="calc-row text-success" id="calcProductDiscountRow">
-          <span>Total Catalog Savings</span>
-          <span class="calc-value" id="calcProductDiscount">– ₹0</span>
-        </div>
-        <div class="calc-row text-success hidden" id="calcCouponRow">
-          <span>Coupon Discount (<span id="calcCouponLabel">CODE</span>)</span>
-          <span class="calc-value" id="calcCouponDiscount">– ₹0</span>
-        </div>
-        <div class="calc-row">
-          <span>Taxable Amount</span>
-          <span class="calc-value" id="calcTaxableAmount">₹0</span>
-        </div>
-        <div class="calc-row">
-          <span>GST (18% illustrative)</span>
-          <span class="calc-value" id="calcGST">₹0</span>
-        </div>
-        <div class="calc-row">
-          <span>Delivery Charge</span>
-          <span class="calc-value" id="calcDelivery">₹0</span>
-        </div>
-        <div class="calc-row calc-total-row">
-          <span>Final Total</span>
-          <span class="calc-total-value" id="calcGrandTotal">₹0</span>
-        </div>
-      </div>
-
-      <p class="tax-disclaimer-note">
-        * GST &amp; delivery charges are illustrative for this demonstration portfolio application.
-      </p>
-
-      <!-- Cart Actions -->
-      <div class="cart-footer-buttons">
-        <button type="button" class="btn btn-primary btn-large btn-block" id="proceedToCheckoutBtn">
-          <span>Proceed to Checkout</span>
-          <i data-lucide="arrow-right"></i>
-        </button>
-        <button type="button" class="btn btn-ghost btn-block" id="continueShoppingBtn">
-          Continue Shopping
-        </button>
-      </div>
-
-    </div>
-
   </aside>
 
-  <!-- Checkout Modal / View -->
-  <div class="checkout-backdrop hidden" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutHeading">
-    <div class="checkout-card">
-      
-      <!-- Checkout Header -->
-      <div class="checkout-header">
-        <div class="checkout-title-row">
-          <button type="button" class="btn-back" id="backToCartBtn" aria-label="Back to cart">
-            <i data-lucide="arrow-left"></i>
-            <span>Return to Cart</span>
-          </button>
-          <h2 id="checkoutHeading">Secure Checkout</h2>
-          <button type="button" class="modal-close-btn" id="closeCheckoutBtn" aria-label="Close checkout">
-            <i data-lucide="x"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Checkout Body Grid -->
-      <div class="checkout-grid">
-        
-        <!-- Left: Checkout Input Form -->
-        <div class="checkout-form-container">
-          <form id="checkoutForm" novalidate>
-
-            <!-- Customer Details -->
-            <div class="form-section">
-              <h3 class="form-section-title">
-                <i data-lucide="user"></i>
-                <span>1. Customer Information</span>
-              </h3>
-
-              <div class="form-group">
-                <label for="custName" class="form-label">Full Name <span class="required">*</span></label>
-                <input type="text" id="custName" class="form-input" placeholder="e.g. Rahul Sharma" required autocomplete="name">
-                <span class="field-error-msg hidden" id="errCustName">Please enter a valid full name (minimum 3 characters).</span>
-              </div>
-
-              <div class="form-row-2">
-                <div class="form-group">
-                  <label for="custEmail" class="form-label">Email Address <span class="required">*</span></label>
-                  <input type="email" id="custEmail" class="form-input" placeholder="e.g. rahul@example.com" required autocomplete="email">
-                  <span class="field-error-msg hidden" id="errCustEmail">Please enter a valid email address.</span>
-                </div>
-
-                <div class="form-group">
-                  <label for="custPhone" class="form-label">Phone Number (India) <span class="required">*</span></label>
-                  <div class="phone-input-group">
-                    <span class="phone-prefix">+91</span>
-                    <input type="tel" id="custPhone" class="form-input phone-field" placeholder="9876543210" maxlength="10" required autocomplete="tel">
-                  </div>
-                  <span class="field-error-msg hidden" id="errCustPhone">Enter a valid 10-digit Indian mobile number (starts with 6-9).</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Delivery Address -->
-            <div class="form-section">
-              <h3 class="form-section-title">
-                <i data-lucide="map-pin"></i>
-                <span>2. Delivery Address</span>
-              </h3>
-
-              <div class="form-group">
-                <label for="addrHouse" class="form-label">House / Flat / Apartment Details <span class="required">*</span></label>
-                <input type="text" id="addrHouse" class="form-input" placeholder="e.g. Flat 402, Sunshine Residency" required>
-                <span class="field-error-msg hidden" id="errAddrHouse">Please enter your house or apartment details.</span>
-              </div>
-
-              <div class="form-group">
-                <label for="addrStreet" class="form-label">Street / Area / Landmark <span class="required">*</span></label>
-                <input type="text" id="addrStreet" class="form-input" placeholder="e.g. 5th Main Road, Indiranagar, near Metro Station" required>
-                <span class="field-error-msg hidden" id="errAddrStreet">Please enter street or area information.</span>
-              </div>
-
-              <div class="form-row-3">
-                <div class="form-group">
-                  <label for="addrCity" class="form-label">City <span class="required">*</span></label>
-                  <input type="text" id="addrCity" class="form-input" placeholder="Coimbatore" value="Coimbatore" required>
-                  <span class="field-error-msg hidden" id="errAddrCity">City is required.</span>
-                </div>
-
-                <div class="form-group">
-                  <label for="addrState" class="form-label">State <span class="required">*</span></label>
-                  <select id="addrState" class="form-select" required>
-                    <option value="">Select State</option>
-                    <option value="Tamil Nadu" selected>Tamil Nadu</option>
-                    <option value="Andhra Pradesh">Andhra Pradesh</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Gujarat">Gujarat</option>
-                    <option value="Karnataka">Karnataka</option>
-                    <option value="Kerala">Kerala</option>
-                    <option value="Maharashtra">Maharashtra</option>
-                    <option value="Punjab">Punjab</option>
-                    <option value="Rajasthan">Rajasthan</option>
-                    <option value="Telangana">Telangana</option>
-                    <option value="Uttar Pradesh">Uttar Pradesh</option>
-                    <option value="West Bengal">West Bengal</option>
-                  </select>
-                  <span class="field-error-msg hidden" id="errAddrState">Please select a state.</span>
-                </div>
-
-                <div class="form-group">
-                  <label for="addrPin" class="form-label">PIN Code <span class="required">*</span></label>
-                  <input type="text" id="addrPin" class="form-input" placeholder="641002" maxlength="6" required>
-                  <span class="field-error-msg hidden" id="errAddrPin">Enter a valid 6-digit Indian PIN code.</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Payment Method (Demo Simulation) -->
-            <div class="form-section">
-              <h3 class="form-section-title">
-                <i data-lucide="credit-card"></i>
-                <span>3. Payment Method (Demo Mode)</span>
-              </h3>
-
-              <div class="payment-options-grid">
-                
-                <!-- Cash on Delivery -->
-                <label class="payment-option-card">
-                  <input type="radio" name="paymentMethod" value="COD" checked>
-                  <div class="payment-card-content">
-                    <div class="payment-header">
-                      <i data-lucide="banknote"></i>
-                      <strong>Cash on Delivery (COD)</strong>
-                    </div>
-                    <p>Pay cash or scan QR upon physical package delivery at your doorstep.</p>
-                  </div>
-                </label>
-
-                <!-- Demo UPI -->
-                <label class="payment-option-card">
-                  <input type="radio" name="paymentMethod" value="UPI">
-                  <div class="payment-card-content">
-                    <div class="payment-header">
-                      <i data-lucide="smartphone"></i>
-                      <strong>Demo UPI (Simulated)</strong>
-                    </div>
-                    <p>Simulate instant payment via GPay, PhonePe, Paytm, or BHIM.</p>
-                  </div>
-                </label>
-
-                <!-- Demo Card -->
-                <label class="payment-option-card">
-                  <input type="radio" name="paymentMethod" value="CARD">
-                  <div class="payment-card-content">
-                    <div class="payment-header">
-                      <i data-lucide="credit-card"></i>
-                      <strong>Demo Card (Simulated)</strong>
-                    </div>
-                    <p>Simulate Visa, Mastercard, or RuPay test checkout.</p>
-                  </div>
-                </label>
-
-              </div>
-
-              <!-- Simulated UPI Box -->
-              <div class="simulated-payment-box hidden" id="simulatedUpiBox">
-                <div class="demo-badge-banner">
-                  <i data-lucide="shield-alert"></i>
-                  <span>Simulated UPI Flow — Do NOT enter real banking PINs or credentials.</span>
-                </div>
-                <div class="form-group">
-                  <label for="demoUpiId" class="form-label">Virtual Payment Address (Demo UPI ID)</label>
-                  <input type="text" id="demoUpiId" class="form-input" placeholder="shopperease@okhdfcbank" value="shopperease@okhdfcbank">
-                </div>
-              </div>
-
-              <!-- Simulated Card Box -->
-              <div class="simulated-payment-box hidden" id="simulatedCardBox">
-                <div class="demo-badge-banner">
-                  <i data-lucide="shield-alert"></i>
-                  <span>Simulated Card Flow — Do NOT enter real card numbers or security CVVs.</span>
-                </div>
-                <div class="form-group">
-                  <label for="demoCardNumber" class="form-label">Card Number (Simulated)</label>
-                  <input type="text" id="demoCardNumber" class="form-input" placeholder="4532 •••• •••• 8892" value="4532 8901 2345 8892" maxlength="19">
-                </div>
-                <div class="form-row-2">
-                  <div class="form-group">
-                    <label for="demoCardExpiry" class="form-label">Expiry (MM/YY)</label>
-                    <input type="text" id="demoCardExpiry" class="form-input" placeholder="12/28" value="12/28" maxlength="5">
-                  </div>
-                  <div class="form-group">
-                    <label for="demoCardCvv" class="form-label">CVV</label>
-                    <input type="password" id="demoCardCvv" class="form-input" placeholder="•••" value="123" maxlength="3">
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Submit Button inside Form -->
-            <div class="checkout-submit-wrapper">
-              <button type="submit" class="btn btn-primary btn-large btn-block" id="placeOrderBtn">
-                <i data-lucide="lock"></i>
-                <span id="placeOrderBtnText">Place Demo Order</span>
-              </button>
-            </div>
-
-          </form>
-        </div>
-
-        <!-- Right: Checkout Order Summary Column -->
-        <div class="checkout-summary-container">
-          <div class="checkout-summary-card">
-            <h3>Order Summary</h3>
-            
-            <!-- Compact items preview -->
-            <div class="checkout-items-list" id="checkoutItemsList">
-              <!-- Dynamically populated -->
-            </div>
-
-            <div class="checkout-calculations">
-              <div class="calc-row">
-                <span>Subtotal</span>
-                <span id="coSubtotal">₹0</span>
-              </div>
-              <div class="calc-row text-success hidden" id="coCouponRow">
-                <span>Coupon Discount</span>
-                <span id="coCouponDiscount">– ₹0</span>
-              </div>
-              <div class="calc-row">
-                <span>Taxable Amount</span>
-                <span id="coTaxable">₹0</span>
-              </div>
-              <div class="calc-row">
-                <span>GST (18% Demo)</span>
-                <span id="coGST">₹0</span>
-              </div>
-              <div class="calc-row">
-                <span>Delivery Charge</span>
-                <span id="coDelivery">₹0</span>
-              </div>
-              <div class="calc-row calc-total-row">
-                <span>Grand Total</span>
-                <span class="calc-total-value" id="coGrandTotal">₹0</span>
-              </div>
-            </div>
-
-            <!-- Trust features in checkout -->
-            <div class="checkout-trust-box">
-              <div class="trust-item">
-                <i data-lucide="shield-check"></i>
-                <span>Frontend demonstration project with 100% simulated transactions</span>
-              </div>
-              <div class="trust-item">
-                <i data-lucide="check-circle-2"></i>
-                <span>Instant simulated order confirmation &amp; cart clearance</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Order Confirmation Success Modal -->
-  <div class="order-confirm-backdrop hidden" id="orderConfirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmSuccessTitle">
-    <div class="order-confirm-card">
-      <div class="order-success-icon-wrapper">
-        <i data-lucide="check" class="success-checkmark"></i>
-      </div>
-
-      <h2 id="confirmSuccessTitle">Order Placed Successfully!</h2>
-      <p class="order-subtext">Thank you for your demo purchase on ShopEase. Your mock order has been logged.</p>
-
-      <div class="order-meta-box">
-        <div class="meta-row">
-          <span class="meta-label">Order Reference ID:</span>
-          <span class="meta-value order-id-highlight" id="confirmedOrderId">SE-2026-98142</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Customer Name:</span>
-          <span class="meta-value" id="confirmedCustomerName">Rahul Sharma</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Payment Method:</span>
-          <span class="meta-value" id="confirmedPaymentMethod">Cash on Delivery</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Delivery Address:</span>
-          <span class="meta-value" id="confirmedAddress">Coimbatore, Tamil Nadu</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Estimated Delivery:</span>
-          <span class="meta-value text-accent" id="confirmedDeliveryDate">Wed, 15 Oct 2026</span>
-        </div>
-      </div>
-
-      <!-- Items Ordered Table Preview -->
-      <div class="confirmed-items-wrapper">
-        <h4>Purchased Items</h4>
-        <div class="confirmed-items-list" id="confirmedItemsList">
-          <!-- Populated via script -->
-        </div>
-      </div>
-
-      <!-- Total Paid Row -->
-      <div class="confirmed-total-row">
-        <span>Total Amount:</span>
-        <span class="confirmed-final-price" id="confirmedTotalAmount">₹4,499</span>
-      </div>
-
-      <p class="demo-disclaimer-small">
-        ℹ️ This is a simulated checkout confirmation for portfolio evaluation. No real payment was debited and no physical shipment will occur.
-      </p>
-
-      <div class="order-confirm-actions">
-        <button type="button" class="btn btn-primary btn-large btn-block" id="confirmContinueShoppingBtn">
-          <i data-lucide="shopping-bag"></i>
-          <span>Continue Shopping</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Custom Confirmation Dialog (e.g. for Clear Cart) -->
-  <div class="confirm-dialog-backdrop hidden" id="customConfirmModal" role="alertdialog" aria-modal="true">
-    <div class="confirm-dialog-card">
-      <div class="dialog-icon-wrapper text-danger">
-        <i data-lucide="alert-triangle"></i>
-      </div>
-      <h3 id="confirmDialogTitle">Clear Shopping Cart?</h3>
-      <p id="confirmDialogMessage">Are you sure you want to remove all items from your shopping cart? This cannot be undone.</p>
-      <div class="dialog-buttons">
-        <button type="button" class="btn btn-outline" id="dialogCancelBtn">Cancel</button>
-        <button type="button" class="btn btn-danger" id="dialogAcceptBtn">Yes, Clear Cart</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Informational Legal / Privacy / Terms Modal -->
-  <div class="modal-backdrop hidden" id="infoModal" role="dialog" aria-modal="true">
-    <div class="info-modal-card">
-      <button type="button" class="modal-close-btn" id="closeInfoModalBtn" aria-label="Close information modal">
+  <!-- Quick View Modal -->
+  <div class="modal-overlay hidden" id="quickViewModal" role="dialog" aria-modal="true" aria-labelledby="qvTitle">
+    <div class="modal-container" style="max-width: 800px;">
+      <button type="button" class="modal-close-btn" onclick="window.ShopSmartUtils.closeModal('quickViewModal')">
         <i data-lucide="x"></i>
       </button>
-      <h3 id="infoModalTitle">ShopEase Information</h3>
-      <div class="info-modal-body" id="infoModalBody">
-        <!-- Content injected dynamically -->
-      </div>
-      <button type="button" class="btn btn-primary" id="infoModalOkBtn">Close</button>
-    </div>
-  </div>
-
-  <!-- Global Toast Notification Container -->
-  <div class="toast-container" id="toastContainer" aria-live="polite">
-    <!-- Toasts dynamically appended -->
-  </div>
-
-  <!-- Professional Footer -->
-  <footer class="main-footer" id="footer">
-    <div class="container footer-container">
-      
-      <!-- Brand & Mission Column -->
-      <div class="footer-col footer-brand-col">
-        <a href="#home" class="brand-logo footer-logo">
-          <div class="logo-icon-box">
-            <i data-lucide="shopping-bag"></i>
+      <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center;">
+        <div style="background-color: var(--bg-subtle); padding: 16px; border-radius: var(--radius-lg); text-align: center;">
+          <img id="qvImage" src="" alt="" style="max-height: 280px; margin: 0 auto; object-fit: contain;">
+        </div>
+        <div>
+          <div id="qvCategory" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-subtle); font-weight: 600;"></div>
+          <h2 id="qvTitle" style="font-size: 1.25rem; font-weight: 700; margin: 4px 0 8px;"></h2>
+          <div id="qvRating" style="font-size: 0.875rem; margin-bottom: 12px;"></div>
+          <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px;">
+            <span id="qvPrice" style="font-size: 1.5rem; font-weight: 700; color: var(--primary);"></span>
+            <span id="qvOriginalPrice" style="font-size: 0.9375rem; color: var(--text-subtle); text-decoration: line-through;"></span>
+            <span id="qvDiscount" class="card-badge-discount" style="position: static;"></span>
           </div>
-          <span class="logo-text">Shop<span class="logo-accent">Ease</span></span>
-        </a>
-        <p class="footer-bio">
-          ShopEase is a premier modern online shopping platform crafted with pure HTML5, CSS3, and Vanilla JavaScript. 
-          Bringing you curated electronics, fashion, and home lifestyle collections with transparent prices.
-        </p>
-        <div class="footer-payment-badges">
-          <span class="pay-pill">UPI</span>
-          <span class="pay-pill">RuPay</span>
-          <span class="pay-pill">Visa</span>
-          <span class="pay-pill">Mastercard</span>
-          <span class="pay-pill">COD</span>
+          <div id="qvStock" style="font-size: 0.875rem; margin-bottom: 12px;"></div>
+          <p id="qvDesc" class="text-muted" style="font-size: 0.875rem; line-height: 1.4; margin-bottom: 16px;"></p>
+          <ul id="qvHighlights" style="list-style: disc; padding-left: 18px; font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 20px;"></ul>
+          
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <input type="number" id="qvQuantity" value="1" min="1" max="99" style="width: 70px; text-align: center;">
+            <button type="button" class="btn btn-primary" id="qvAddToCartBtn">Add to Cart</button>
+            <a href="#" id="qvViewFullLink" class="btn btn-secondary">Full Details</a>
+          </div>
         </div>
       </div>
-
-      <!-- Quick Navigation Links -->
-      <div class="footer-col">
-        <h4 class="footer-heading">Quick Links</h4>
-        <ul class="footer-links-list">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#catalog">All Products</a></li>
-          <li><a href="#categories">Browse Categories</a></li>
-          <li><a href="#deals">Current Deals</a></li>
-          <li><a href="javascript:void(0)" id="footerOpenCartLink">Shopping Cart</a></li>
-        </ul>
-      </div>
-
-      <!-- Categories Links -->
-      <div class="footer-col">
-        <h4 class="footer-heading">Categories</h4>
-        <ul class="footer-links-list">
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Mobiles & Tablets">Mobiles &amp; Tablets</a></li>
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Laptops & Computers">Laptops &amp; Computers</a></li>
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Audio & Accessories">Audio &amp; Accessories</a></li>
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Fashion – Men">Fashion – Men</a></li>
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Fashion – Women">Fashion – Women</a></li>
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Footwear">Footwear</a></li>
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Home & Kitchen">Home &amp; Kitchen</a></li>
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Home Appliances">Home Appliances</a></li>
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Beauty & Personal Care">Beauty &amp; Personal Care</a></li>
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Sports & Fitness">Sports &amp; Fitness</a></li>
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Books & Stationery">Books &amp; Stationery</a></li>
-          <li><a href="javascript:void(0)" class="footer-cat-link" data-category="Gaming">Gaming</a></li>
-        </ul>
-      </div>
-
-      <!-- Customer Support & Contact Information -->
-      <div class="footer-col">
-        <h4 class="footer-heading">Customer Support</h4>
-        <ul class="footer-contact-list">
-          <li>
-            <i data-lucide="mail"></i>
-            <span>support@shopease.demo</span>
-          </li>
-          <li>
-            <i data-lucide="phone"></i>
-            <span>+91 1800-123-4567 (Mon-Sat, 9AM-8PM)</span>
-          </li>
-          <li>
-            <i data-lucide="map-pin"></i>
-            <span>ShopEase Retail Hub, D.B. Road, R.S. Puram, Coimbatore, Tamil Nadu - 641002, India</span>
-          </li>
-          <li>
-            <i data-lucide="shield-check"></i>
-            <span>Coimbatore Hub &bull; 100% Secure Simulated Platform</span>
-          </li>
-        </ul>
-      </div>
-
     </div>
+  </div>
 
-    <!-- Footer Bottom Strip -->
-    <div class="footer-bottom">
-      <div class="container footer-bottom-container">
-        <div class="footer-bottom-links">
-          <a href="javascript:void(0)" id="privacyLink">Privacy Policy</a>
-          <span class="divider">&bull;</span>
-          <a href="javascript:void(0)" id="termsLink">Terms &amp; Conditions</a>
-          <span class="divider">&bull;</span>
-          <a href="javascript:void(0)" id="shippingInfoLink">Shipping Information</a>
-          <span class="divider">&bull;</span>
-          <a href="javascript:void(0)" id="returnsPolicyLink">Return Policy</a>
+  <!-- Image Search Demo Modal -->
+  <div class="modal-overlay hidden" id="imageSearchModal" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 500px;">
+      <button type="button" class="modal-close-btn" onclick="window.ShopSmartUtils.closeModal('imageSearchModal')">
+        <i data-lucide="x"></i>
+      </button>
+      <h3 style="font-weight: 700; font-size: 1.25rem; margin-bottom: 6px;">Visual Image Search (Demo)</h3>
+      <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 16px;">
+        Upload a photo of any item to find visually similar products in the ShopSmart catalog.
+      </p>
+      <input type="file" id="imageSearchFileInput" accept="image/*" onchange="window.ShopSmartSearch.handleImageSearchUpload(this.files[0])">
+      <img id="imageSearchPreview" src="" alt="Uploaded preview" class="hidden" style="max-height: 160px; margin: 16px auto; border-radius: var(--radius-md);">
+      <div id="imageSearchResults"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- About Store -->
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-weight: 700; font-size: 1.25rem; color: #fff;">
+            <i data-lucide="shopping-cart" style="color: var(--primary);"></i> ShopSmart
+          </div>
+          <p style="color: #a8a29e; font-size: 0.875rem; line-height: 1.5; margin-bottom: 16px;">
+            A complete, human-crafted online shopping experience featuring 150+ products across 15 categories, verified photography, and authentic pricing in Indian Rupees.
+          </p>
+          <div style="font-size: 0.8125rem; color: #78716c;">
+            <strong>Coimbatore Commercial Hub:</strong><br>
+            ShopSmart Retail Center, D.B. Road, R.S. Puram, Coimbatore, Tamil Nadu - 641002, India
+          </div>
         </div>
-        <p class="copyright-text">
-          &copy; 2026 ShopEase &bull; Portfolio Demonstration Web Application. All rights reserved.
-        </p>
+
+        <!-- Product Categories -->
+        <div>
+          <h4 class="footer-heading">Top Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="products.html?category=Mobiles%20and%20Tablets">Mobiles &amp; Tablets</a></li>
+            <li><a href="products.html?category=Laptops%20and%20Computers">Laptops &amp; Computers</a></li>
+            <li><a href="products.html?category=Audio%20and%20Accessories">Audio &amp; Accessories</a></li>
+            <li><a href="products.html?category=Men%E2%80%99s%20Fashion">Men’s Fashion</a></li>
+            <li><a href="products.html?category=Women%E2%80%99s%20Fashion">Women’s Fashion</a></li>
+            <li><a href="products.html?category=Footwear">Footwear</a></li>
+            <li><a href="products.html?category=Bags%20and%20Travel">Bags &amp; Travel</a></li>
+            <li><a href="products.html?category=Gaming">Gaming Gear</a></li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-heading">Features &amp; Tools</h4>
+          <ul class="footer-links-list">
+            <li><a href="products.html">All 150 Products</a></li>
+            <li><a href="budget-shopping.html">Smart Budget Shopping</a></li>
+            <li><a href="assistant.html">AI Shopping Assistant</a></li>
+            <li><a href="compare.html">Product Comparison</a></li>
+            <li><a href="wishlist.html">My Wishlist</a></li>
+            <li><a href="cart.html">View Cart</a></li>
+            <li><a href="orders.html">Order History</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Support & Policies -->
+        <div>
+          <h4 class="footer-heading">Customer Care</h4>
+          <ul class="footer-links-list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="profile.html">My Account</a></li>
+          </ul>
+          <div style="margin-top: 16px; font-size: 0.8125rem; color: #a8a29e;">
+            <strong>Demonstration Coupons:</strong><br>
+            <code>SAVE10</code> (10% off)<br>
+            <code>SAVE200</code> (₹200 off &gt; ₹2k)<br>
+            <code>FREESHIP</code> (Free delivery)
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 ShopSmart Online Shopping Store. Built with Pure HTML5, CSS3 &amp; Vanilla JavaScript.</div>
+        <div>Configured for: Coimbatore, Tamil Nadu, India (Asia/Kolkata)</div>
       </div>
     </div>
   </footer>
 
-  <!-- Master Products Catalog (120 Verified Products across 12 Categories) -->
-  <script src="products.js"></script>
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/comparison.js"></script>
+  <script src="js/product-renderer.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
 
-  <!-- Application Logic -->
-  <script src="script.js"></script>
+  <!-- Home Page Dynamic Population -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Render 15 Category Chips
+      const categories = [
+        { name: "Mobiles and Tablets", icon: "smartphone" },
+        { name: "Laptops and Computers", icon: "laptop" },
+        { name: "Audio and Accessories", icon: "headphones" },
+        { name: "Men’s Fashion", icon: "shirt" },
+        { name: "Women’s Fashion", icon: "sparkles" },
+        { name: "Footwear", icon: "footprints" },
+        { name: "Home and Kitchen", icon: "utensils" },
+        { name: "Home Appliances", icon: "tv" },
+        { name: "Beauty and Personal Care", icon: "heart" },
+        { name: "Sports and Fitness", icon: "activity" },
+        { name: "Books and Stationery", icon: "book-open" },
+        { name: "Gaming", icon: "gamepad-2" },
+        { name: "Bags and Travel", icon: "briefcase" },
+        { name: "Furniture and Home Decor", icon: "armchair" },
+        { name: "Toys and Accessories", icon: "toy-brick" }
+      ];
 
+      const catContainer = document.getElementById('homeCategoriesGrid');
+      if (catContainer) {
+        catContainer.innerHTML = categories.map(c => `
+          <a href="products.html?category=${encodeURIComponent(c.name)}" class="category-chip">
+            <div class="category-chip-icon"><i data-lucide="${c.icon || 'tag'}"></i></div>
+            <div class="category-chip-name">${c.name}</div>
+          </a>
+        `).join('');
+      }
+
+      // 2. Render Featured Products (first 8)
+      const featGrid = document.getElementById('homeFeaturedGrid');
+      if (featGrid && typeof PRODUCTS !== 'undefined') {
+        const featured = PRODUCTS.slice(0, 8);
+        featGrid.innerHTML = featured.map(p => window.ShopSmartRenderer.createProductCardHTML(p)).join('');
+      }
+
+      // 3. Render Today's Deals (high discount items)
+      const dealsGrid = document.getElementById('homeDealsGrid');
+      if (dealsGrid && typeof PRODUCTS !== 'undefined') {
+        const deals = PRODUCTS.filter(p => p.discountPercent >= 40).slice(0, 8);
+        dealsGrid.innerHTML = deals.map(p => window.ShopSmartRenderer.createProductCardHTML(p)).join('');
+      }
+
+      // 4. Render Coimbatore Local Deals (products with Bestseller/Top Rated)
+      const coimbGrid = document.getElementById('homeCoimbatoreGrid');
+      if (coimbGrid && typeof PRODUCTS !== 'undefined') {
+        const local = PRODUCTS.filter(p => p.badge === 'Bestseller' || p.badge === 'Top Rated').slice(0, 8);
+        coimbGrid.innerHTML = local.map(p => window.ShopSmartRenderer.createProductCardHTML(p)).join('');
+      }
+
+      // 5. Render Bestsellers
+      const bestGrid = document.getElementById('homeBestsellersGrid');
+      if (bestGrid && typeof PRODUCTS !== 'undefined') {
+        const best = PRODUCTS.filter(p => p.rating >= 4.7).slice(0, 8);
+        bestGrid.innerHTML = best.map(p => window.ShopSmartRenderer.createProductCardHTML(p)).join('');
+      }
+
+      // 6. Check Recently Viewed
+      const recentGrid = document.getElementById('homeRecentGrid');
+      const recentSec = document.getElementById('homeRecentSection');
+      if (recentGrid && window.ShopSmartRenderer) {
+        const recent = window.ShopSmartRenderer.getRecentlyViewedProducts().slice(0, 4);
+        if (recent.length > 0) {
+          recentGrid.innerHTML = recent.map(p => window.ShopSmartRenderer.createProductCardHTML(p)).join('');
+          if (recentSec) recentSec.style.display = 'block';
+        }
+      }
+
+      window.ShopSmartUtils.refreshIcons();
+    });
+  </script>
 </body>
 </html>

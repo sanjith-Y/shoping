@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — ShopSmart</title>
+  <link rel="icon" type="image/svg+xml" href="assets/fallback/product-fallback.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body style="background-color: var(--bg-subtle);">
+
+  <!-- Simple Header -->
+  <header style="padding: 20px 0; border-bottom: 1px solid var(--border-color); background-color: var(--bg-surface);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="site-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        <span>ShopSmart<span class="logo-dot">.</span></span>
+      </a>
+      <a href="index.html" class="btn btn-secondary btn-sm"><i data-lucide="home"></i> Home</a>
+    </div>
+  </header>
+
+  <!-- Login Main -->
+  <main class="container" style="padding: 48px 0; max-width: 480px;">
+    
+    <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 36px; box-shadow: var(--shadow-md);">
+      
+      <div style="text-align: center; margin-bottom: 24px;">
+        <h1 style="font-size: 1.625rem; font-weight: 700; margin-bottom: 6px;">Welcome Back</h1>
+        <p class="text-muted" style="font-size: 0.875rem;">Sign in to your ShopSmart account to view orders and saved items.</p>
+      </div>
+
+      <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+        
+        <div style="margin-bottom: 18px;">
+          <label for="loginEmail" style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Email Address</label>
+          <input type="email" id="loginEmail" placeholder="sanjith@example.com" value="sanjith@example.com" required>
+        </div>
+
+        <div style="margin-bottom: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label for="loginPassword" style="font-size: 0.8125rem; font-weight: 600;">Password</label>
+            <a href="forgot-password.html" class="text-primary font-semibold" style="font-size: 0.75rem;">Forgot Password?</a>
+          </div>
+          <div style="position: relative;">
+            <input type="password" id="loginPassword" placeholder="••••••••" value="Password@123" required>
+            <button type="button" class="btn-search-tool" id="togglePasswordBtn" style="position: absolute; right: 8px; top: 7px;" onclick="togglePasswordVisibility('loginPassword')">
+              <i data-lucide="eye" style="width: 16px; height: 16px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+          <label class="filter-checkbox-label">
+            <input type="checkbox" id="loginRememberMe" checked>
+            <span style="font-size: 0.8125rem;">Remember Me</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="loginSubmitBtn">
+          Sign In
+        </button>
+
+      </form>
+
+      <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.875rem;">
+        Don't have an account yet? <a href="register.html" class="text-primary font-semibold">Create an account</a>
+      </div>
+
+      <div style="margin-top: 18px; background-color: var(--bg-subtle); padding: 12px; border-radius: var(--radius-md); font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;">
+        <strong>Demo Quick Login:</strong><br>
+        Email: <code>sanjith@example.com</code><br>
+        Password: <code>Password@123</code>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    function togglePasswordVisibility(inputId) {
+      const input = document.getElementById(inputId);
+      if (input) {
+        input.type = input.type === 'password' ? 'text' : 'password';
+      }
+    }
+
+    async function handleLoginSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('loginSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Signing In...';
+
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const remember = document.getElementById('loginRememberMe').checked;
+
+      try {
+        await window.ShopSmartAuth.loginUser(email, password, remember);
+        window.ShopSmartUtils.showToast('Login successful! Welcome back.', 'success');
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 800);
+      } catch (err) {
+        window.ShopSmartUtils.showToast(err.message, 'error');
+        btn.disabled = false;
+        btn.textContent = 'Sign In';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.ShopSmartUtils.refreshIcons();
+    });
+  </script>
+</body>
+</html>

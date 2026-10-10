@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — ShopSmart</title>
+  <link rel="icon" type="image/svg+xml" href="assets/fallback/product-fallback.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body style="background-color: var(--bg-subtle);">
+
+  <!-- Simple Header -->
+  <header style="padding: 20px 0; border-bottom: 1px solid var(--border-color); background-color: var(--bg-surface);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="site-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        <span>ShopSmart<span class="logo-dot">.</span></span>
+      </a>
+      <a href="index.html" class="btn btn-secondary btn-sm"><i data-lucide="home"></i> Home</a>
+    </div>
+  </header>
+
+  <!-- Register Main -->
+  <main class="container" style="padding: 48px 0; max-width: 520px;">
+    
+    <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 36px; box-shadow: var(--shadow-md);">
+      
+      <div style="text-align: center; margin-bottom: 24px;">
+        <h1 style="font-size: 1.625rem; font-weight: 700; margin-bottom: 6px;">Create Your Account</h1>
+        <p class="text-muted" style="font-size: 0.875rem;">Join ShopSmart to access exclusive Coimbatore deals, order tracking, and wishlist syncing.</p>
+      </div>
+
+      <form id="registerForm" onsubmit="handleRegisterSubmit(event)">
+        
+        <div style="margin-bottom: 16px;">
+          <label for="regName" style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Full Name *</label>
+          <input type="text" id="regName" placeholder="e.g. Sanjith Kumar" required minlength="3">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label for="regEmail" style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Email Address *</label>
+          <input type="email" id="regEmail" placeholder="sanjith@example.com" required>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label for="regPhone" style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Indian Mobile Number *</label>
+          <input type="tel" id="regPhone" placeholder="9876543210" required pattern="[6-9][0-9]{9}">
+          <span style="font-size: 0.75rem; color: var(--text-subtle);">10 digits starting with 6-9.</span>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label for="regPassword" style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Password *</label>
+          <input type="password" id="regPassword" placeholder="Minimum 6 characters" required minlength="6" oninput="checkPasswordStrength(this.value)">
+          <div id="pwStrengthMeter" style="font-size: 0.75rem; margin-top: 4px; color: var(--text-subtle);">Strength: Enter a password</div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label for="regConfirmPassword" style="font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: 6px;">Confirm Password *</label>
+          <input type="password" id="regConfirmPassword" placeholder="Re-enter password" required minlength="6">
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <label class="filter-checkbox-label">
+            <input type="checkbox" id="regTerms" required>
+            <span style="font-size: 0.8125rem;">
+              I agree to the <a href="terms.html" class="text-primary font-semibold" target="_blank">Terms and Conditions</a> and <a href="privacy.html" class="text-primary font-semibold" target="_blank">Privacy Policy</a>.
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="regSubmitBtn">
+          Create Account
+        </button>
+
+      </form>
+
+      <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.875rem;">
+        Already have an account? <a href="login.html" class="text-primary font-semibold">Sign In here</a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    function checkPasswordStrength(pw) {
+      const meter = document.getElementById('pwStrengthMeter');
+      if (!meter) return;
+      if (pw.length < 6) {
+        meter.textContent = 'Strength: Too Short (min 6 chars)';
+        meter.style.color = 'var(--danger)';
+      } else if (pw.length < 8 || !/[0-9]/.test(pw)) {
+        meter.textContent = 'Strength: Medium (Add numbers/symbols)';
+        meter.style.color = 'var(--accent-amber)';
+      } else {
+        meter.textContent = 'Strength: Strong ✓';
+        meter.style.color = 'var(--success)';
+      }
+    }
+
+    async function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('regSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Creating Account...';
+
+      const fullName = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const confirmPw = document.getElementById('regConfirmPassword').value;
+
+      if (password !== confirmPw) {
+        window.ShopSmartUtils.showToast('Passwords do not match.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Create Account';
+        return;
+      }
+
+      try {
+        await window.ShopSmartAuth.registerUser({ fullName, email, phone, password });
+        window.ShopSmartUtils.showToast('Account created successfully! Welcome to ShopSmart.', 'success');
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 800);
+      } catch (err) {
+        window.ShopSmartUtils.showToast(err.message, 'error');
+        btn.disabled = false;
+        btn.textContent = 'Create Account';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.ShopSmartUtils.refreshIcons();
+    });
+  </script>
+</body>
+</html>
